@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/styles.css">
+<script src="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+<style>
+:root{--font-heading:'Poppins',sans-serif;--font-body:'Poppins',sans-serif;--leading:28px;--half:14px;--edge:clamp(20px,5vw,72px);--ink:var(--color-text);--paper:var(--color-bg);--line:color-mix(in srgb,var(--paper) 16%,transparent);--line-soft:color-mix(in srgb,var(--paper) 8%,transparent);--dim:color-mix(in srgb,var(--paper) 74%,transparent);--accent-lt:var(--color-accent-400)}
+body{margin:0;text-wrap:pretty;background:var(--ink);color:var(--paper);font-family:var(--font-body)}
+a{color:var(--accent-lt)}
+a:hover{color:var(--paper)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--edge)}
+.mono{font-feature-settings:"tnum" 1;letter-spacing:.12em;text-transform:uppercase}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:clamp(12px,2.4vw,32px);padding:14px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
+.topbar img{height:20px;display:block}
+.topbar .pill{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--accent-lt);border:2px solid var(--color-accent);padding:5px 10px}
+.topbar .pill .dot{width:6px;height:6px;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+@keyframes blink{50%{opacity:.12}}
+.stage{position:relative;overflow:hidden;border-bottom:2px solid var(--line)}
+.mesh{position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to right,var(--line-soft) 0 1px,transparent 1px 72px),repeating-linear-gradient(to bottom,var(--line-soft) 0 1px,transparent 1px 72px)}
+.glow{position:absolute;top:-40%;right:-10%;width:64vw;height:64vw;pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--color-accent) 20%,transparent) 0%,transparent 62%)}
+.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--color-accent),transparent);opacity:.5;animation:sweep 7s linear infinite}
+@keyframes sweep{0%{top:-2%}100%{top:102%}}
+@media(prefers-reduced-motion:reduce){.scan,.topbar .pill .dot{animation:none}}
+.hero{position:relative;padding:calc(3*var(--leading)) 0}
+.status{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.status .dot{width:7px;height:7px;flex:none;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+.display{font-family:var(--font-heading);font-weight:700;font-size:clamp(38px,5vw,68px);line-height:1.05;letter-spacing:-.03em;margin:0;max-width:20ch}
+.sub{font-size:17.5px;line-height:var(--leading);max-width:62ch;color:var(--dim);margin:calc(1.3*var(--leading)) 0 0}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:2px solid var(--line)}
+.strip div{padding:calc(1.1*var(--leading)) clamp(18px,2.2vw,32px);border-left:2px solid var(--line)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:9px}
+.strip .v{display:block;font-size:15px;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--paper);font-feature-settings:"tnum" 1}
+@media(max-width:800px){.strip{grid-template-columns:1fr}.strip div{border-left:0;border-top:2px solid var(--line);padding-left:0;padding-block:var(--leading)}.strip div:first-child{border-top:0}}
+.sec{padding:calc(3*var(--leading)) 0;border-bottom:2px solid var(--line)}
+.kicker{display:block;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.h2{font-family:var(--font-heading);font-weight:700;font-size:clamp(26px,3vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0 0 calc(1.4*var(--leading));max-width:26ch}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--leading) clamp(24px,5vw,80px);align-items:center}
+.split h3{font-family:var(--font-heading);font-weight:700;font-size:26px;letter-spacing:-.015em;margin:0 0 var(--half)}
+.split p{font-size:16px;line-height:1.65;color:var(--dim);margin:0}
+.split-figure image-slot{width:100%;aspect-ratio:4/3}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.vm-grid>div{background:var(--ink);padding:calc(1.3*var(--leading)) clamp(16px,2vw,26px)}
+.vm-grid h3{font-family:var(--font-heading);font-weight:700;font-size:22px;margin:0 0 10px}
+.vm-grid p{font-size:15.5px;line-height:1.65;color:var(--dim);margin:0}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.pcard{background:var(--ink);padding:calc(1.3*var(--leading)) clamp(16px,2vw,26px)}
+.pcard h4{font-size:18px;margin:0 0 6px;font-weight:600}
+.pcard .role{font-size:11px;color:var(--accent-lt);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin:0 0 12px}
+.pcard p.bio{font-size:14.5px;line-height:1.65;color:var(--dim);margin:0}
+.close{position:relative;background:var(--ink);border-top:2px solid var(--color-accent);overflow:hidden}
+.close::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 150% at 0% 0%,color-mix(in srgb,var(--color-accent) 15%,transparent) 0%,transparent 60%)}
+.close .wrap{position:relative;z-index:1}
+.close h3{color:var(--paper)}
+.close .wrap{padding:calc(3.2*var(--leading)) var(--edge)}
+.close h3{font-family:var(--font-heading);font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.06;letter-spacing:-.025em;margin:0;max-width:22ch}
+.row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:calc(1.4*var(--leading))}
+.btn-onink{color:var(--paper);border-color:var(--paper)}
+.foffices{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1.5*var(--leading));margin-top:calc(1.6*var(--leading));padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
+.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--paper);margin:0 0 12px}
+.office .mark{display:block;height:56px;width:auto;margin-bottom:12px}
+.office p{font-size:13px;line-height:1.6;color:var(--dim);margin:0;max-width:28ch;text-wrap:pretty}
+@media(max-width:620px){.foffices{grid-template-columns:1fr}}
+.footer{padding:calc(2.2*var(--leading)) 0 calc(1.4*var(--leading))}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
+.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);margin:0 0 var(--half)}
+.fgrid a{display:block;color:var(--dim);text-decoration:none;margin-bottom:8px;font-size:14px}
+.fgrid a:hover{color:var(--accent-lt)}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:var(--half);font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+@media(max-width:1000px){.split{grid-template-columns:1fr}.vm-grid{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr}}
+@media(max-width:700px){.fgrid{grid-template-columns:1fr 1fr}}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,60px);align-items:center}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}}
+.viz{position:relative;border:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.viz .vhead{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt)}
+.viz .vbody{padding:14px 16px}
+.vrow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--dim)}
+.vrow:last-child{border-bottom:0}
+.vrow .ic{color:var(--accent-lt);display:flex}
+.vrow b{color:var(--paper);font-weight:500}
+.vrow .ok{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap}
+.vrow .no{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 58%,transparent);text-decoration:line-through;white-space:nowrap}
+.vnote{padding:12px 16px;border-top:2px solid var(--color-accent);font-size:11.5px;letter-spacing:.06em;color:var(--dim);line-height:1.6}
+.vnote b{color:var(--accent-lt);font-weight:600}
+.gauge{display:flex;align-items:center;gap:18px;padding:8px 0 14px;border-bottom:1px solid var(--line-soft)}
+.gauge .num{font-family:var(--font-heading);font-weight:700;font-size:32px;color:var(--paper);line-height:1}
+.gauge .cap{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin-top:6px}
+.nodes{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:4px 0 14px}
+.node{border:2px solid var(--line);padding:10px;font-size:12.5px;color:var(--paper)}
+.node span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:5px}
+.dashlink{height:2px;background:repeating-linear-gradient(to right,var(--color-accent) 0 8px,transparent 8px 16px);min-width:34px;animation:flowx 1.4s linear infinite}
+@keyframes flowx{to{background-position:16px 0}}
+@media(prefers-reduced-motion:reduce){.dashlink{animation:none}}
+/* page signature — wide architectural grid */
+.mesh{background-image:repeating-linear-gradient(to right,color-mix(in srgb,var(--paper) 6%,transparent) 0 1px,transparent 1px 84px),repeating-linear-gradient(to bottom,color-mix(in srgb,var(--paper) 6%,transparent) 0 1px,transparent 1px 84px)}
+body{background-image:repeating-linear-gradient(to bottom,color-mix(in srgb,var(--paper) 2.5%,transparent) 0 1px,transparent 1px 112px);background-attachment:fixed}
+/* light theme — swaps ground and ink; every rule below reads --ink / --paper */
+html[data-theme="light"],body[data-theme="light"]{--ink:var(--color-bg);--paper:var(--color-text);--line:color-mix(in srgb,var(--color-text) 18%,transparent);--line-soft:color-mix(in srgb,var(--color-text) 9%,transparent);--dim:color-mix(in srgb,var(--color-text) 76%,transparent);--accent-lt:var(--color-accent-700)}
+html[data-theme="light"] .themebtn .sun,body[data-theme="light"] .themebtn .sun{display:block}
+html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moon{display:none}
+/* magnetic product nav */
+.pnav{position:relative;display:flex;gap:2px;margin-left:auto}
+.pnav a{position:relative;z-index:1;padding:10px 14px;font-size:13px;line-height:1;color:var(--dim);text-decoration:none;white-space:nowrap;transition:color .3s ease}
+.pnav a:hover,.pnav a:focus-visible,.pnav a[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
+.pnav .pblock{position:absolute;top:0;bottom:0;left:0;width:0;opacity:0;background:var(--color-accent);z-index:0;transition:transform .46s cubic-bezier(.34,1.4,.44,1),width .46s cubic-bezier(.34,1.4,.44,1),opacity .3s ease}
+.navstrip{display:flex;align-items:center;gap:14px;padding:11px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));border-bottom:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.navstrip .dot{width:7px;height:7px;background:var(--color-accent);flex:none}
+.navstrip .key{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap;font-weight:600}
+.navstrip .sep{width:1px;height:15px;background:var(--line);flex:none}
+.navstrip .val{font-size:12.5px;color:var(--dim)}
+.navstrip .val.fade{animation:navfade .42s cubic-bezier(.22,1,.36,1)}
+@keyframes navfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.themebtn{appearance:none;background:none;border:2px solid var(--line);color:var(--paper);width:34px;height:34px;flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease}
+.themebtn:hover{border-color:var(--color-accent);color:var(--accent-lt)}
+.themebtn .sun{display:none}
+[data-theme="light"] .themebtn .sun{display:block}
+[data-theme="light"] .themebtn .moon{display:none}
+@media(prefers-reduced-motion:reduce){.pnav .pblock{transition-duration:.01ms}.navstrip .val.fade{animation:none}}
+@media(max-width:1240px){.topbar .pill{display:none}}
+@media(max-width:900px){.pnav,.navstrip{display:none}}
+@media(max-width:1000px){.pnav a{padding:10px 11px;font-size:12.5px}}
+</style>
+<script src="./site.js"></script>
+</helmet>
+
+<header class="topbar">
+  <a href="index.dc.html"><img src="assets/ektar-logo.png" alt="Ektar"></a>
+  <span class="pill mono"><span class="dot"></span>Since 2022</span>
+  <nav class="pnav">
+    <a href="authentication.dc.html" data-role="ekShield · Authentication" data-line="Device-bound, phishing-resistant login — mobile, web, call centre, ATM, 3DS.">ekShield</a>
+    <a href="ekprotect.dc.html" data-role="ekProtect · Attest & risk" data-line="Malware, overlays, rooted devices and RATs, caught inside the app.">ekProtect</a>
+    <a href="ekbind.dc.html" data-role="ekBind · SIM binding" data-line="Operator-verified SIM checks via SNA and Reverse SMS. No code to intercept.">ekBind</a>
+    <a href="eksign.dc.html" data-role="ekSign · Signing" data-line="In-channel signing, bound to the document and sealed with SHA-256.">ekSign</a>
+    <a href="eksell.dc.html" data-role="ekSell · Distribution" data-line="Bank products into employer, fintech and retail channels.">ekSell</a>
+    <a href="ai.dc.html" data-role="AI at Ektar" data-line="In the products that detect fraud, and in the practice that ships them.">AI</a>
+    <a href="about.dc.html" aria-current="page" data-role="About Ektar" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a>
+    <span class="pblock"></span>
+  </nav>
+  <button type="button" class="themebtn" aria-label="Switch between dark and light theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg></button>
+  <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+</header>
+<div class="navstrip"><span class="dot"></span><span class="key"></span><span class="sep"></span><span class="val"></span></div>
+
+<section class="stage">
+  <div class="mesh"></div>
+  <div class="glow"></div>
+  <div class="scan"></div>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+      <p class="status mono"><span class="dot"></span>Our story — Dubai · Singapore · Chennai</p>
+      <h1 class="display">We think like bankers. We build like technologists.</h1>
+      <p class="sub">Ektar was founded in 2022 by three experienced ex-bankers. We build digital security solutions for banking's digital channels — and we have lived inside the institutions we now serve, which means we understand the operational constraints, compliance requirements, and procurement realities that shape how banks actually adopt technology.</p>
+      </div>
+      <div class="viz">
+        <div class="vhead"><span>Ektar · at a glance</span><span>Since 2022</span></div>
+        <div class="vbody">
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.5 8.5 9 10 5.5-1.5 9-5 9-10V6z"></path></svg></span><span><b>Founded</b></span><span class="ok">2022</span></div>
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20"></rect><path d="M9 18h6"></path></svg></span><span><b>Founders</b></span><span class="ok">3 ex-bankers</span></div>
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"></path></svg></span><span><b>Markets</b></span><span class="ok">GCC · South Asia · SEA</span></div>
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><span><b>Offices</b></span><span class="ok">Dubai · Singapore · Chennai</span></div>
+        </div>
+        <div class="vnote">Standard Chartered leadership backgrounds — <b>we have run the channels we now secure</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="strip mono">
+    <div><span class="k">Founded</span><span class="v">2022</span></div>
+    <div><span class="k">Founders</span><span class="v">3 ex-bankers, Standard Chartered</span></div>
+    <div><span class="k">Offices</span><span class="v">Dubai · Singapore · Chennai</span></div>
+  </div>
+
+  <section class="sec">
+    <div class="split">
+      <div>
+        <h3>Live, not theoretical</h3>
+        <p>Our products are live. Our clients are some of the largest banks in the region. Our roadmap is defined by where the fraud threat and the regulatory landscape are going next.</p>
+      </div>
+      <figure class="split-figure grayscale" style="margin:0">
+        <image-slot id="founders-photo" shape="rect" placeholder="Drop a team photo"></image-slot>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Vision &amp; mission</span>
+    <div class="vm-grid">
+      <div>
+        <h3>Our Vision</h3>
+        <p>To make banking safer, smarter, and more trustworthy — for every bank, every channel, and every customer — until trust is no longer something people hope for, but something they simply expect from the banks they rely on each and every day.</p>
+      </div>
+      <div>
+        <h3>Our Mission</h3>
+        <p>We build digital security products that close the three layers of vulnerability in banking's digital channels — protecting every device, every app, and every user interaction — so banks can serve their customers with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Our founders</span>
+    <h2 class="h2">Three ex-bankers who lived the problem.</h2>
+    <div class="pgrid">
+      <div class="pcard">
+        <h4>Sandeep Bose</h4>
+        <p class="role">Co-Founder and CEO</p>
+        <p class="bio">29 years at Standard Chartered Bank in Consumer Banking Leadership roles. Last role: Regional Head of Personal and Business Banking for Africa, Middle East and Europe. Board Member at Bahrain Development Bank and Advisor at Foundation Holdings.</p>
+      </div>
+      <div class="pcard">
+        <h4>Ramanathan Mullainathan</h4>
+        <p class="role">Co-Founder and CTO</p>
+        <p class="bio">23 years of IT leadership experience consulting global banks — Standard Chartered, JPMC, Fidelity, State Street, Bear Stearns. Most recent role: Global Head, Technologies for Retail, Private &amp; Business Banking Channels at Standard Chartered.</p>
+      </div>
+      <div class="pcard">
+        <h4>Sethu Ramaswamy</h4>
+        <p class="role">Co-founder and CPO</p>
+        <p class="bio">26 years with Standard Chartered Bank in Consumer Banking Leadership roles, with deep expertise in Product Management and Credit Cards/Payments. Last role: Regional Head of Affluent Banking for Africa, Middle East &amp; Europe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Advisory board</span>
+    <div class="pgrid">
+      <div class="pcard">
+        <h4>A. D. Ganesh</h4>
+        <p class="role">Founder &amp; CEO, Quantum Consultants FZ LLC</p>
+        <p class="bio">26 years of banking experience across India, Middle East, Sub-Saharan Africa and Europe. Formerly Managing Director and Regional Head of Commercial Banking, Africa and Middle East, at Standard Chartered Bank.</p>
+      </div>
+      <div class="pcard">
+        <h4>Andrew Bainbridge</h4>
+        <p class="role">Chair, Private Infrastructure Development Group</p>
+        <p class="bio">Extensive experience in commercial banking, risk management, infrastructure financing, business strategy, and acquisitions and disposals across emerging and developed markets.</p>
+      </div>
+      <div class="pcard">
+        <h4>Suvo Sarkar</h4>
+        <p class="role">Founder &amp; CEO, 3D Advisory</p>
+        <p class="bio">Over 36 years of experience across Asia and the Middle East. Formerly Senior Executive Vice President and Group Head of Retail Banking and Wealth Management at Emirates NBD.</p>
+      </div>
+      <div class="pcard">
+        <h4>Vignesh Ramanujam</h4>
+        <p class="role">CEO, second venture</p>
+        <p class="bio">Previously a Partner at Lok Capital, overseeing investments in over 40 companies. Has personally supported over 50 startups globally, spanning technology investing, fundraising, and early-stage strategy.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <h3>Built by bankers, for bankers.</h3>
+    <div class="row">
+      <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="footer">
+    <div class="fgrid">
+      <div>
+        <h4>Products</h4>
+        <a href="authentication.dc.html">ekShield</a>
+        <a href="ekprotect.dc.html">ekProtect</a>
+        <a href="ekbind.dc.html">ekBind</a>
+        <a href="eksign.dc.html">ekSign</a>
+        <a href="eksell.dc.html">ekSell</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.dc.html">About us</a>
+        <a href="ai.dc.html">AI</a>
+        <a href="blog.dc.html">Blog</a>
+        <a href="careers.dc.html">Careers</a>
+        <a href="contact.dc.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="contact.dc.html">Talk to us</a>
+        <a href="https://www.linkedin.com/company/ektar-technologies/">LinkedIn</a>
+        <a href="https://www.youtube.com/@ektar-technologies">YouTube</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© Ektar 2022–2026. All rights reserved.</span>
+      <span><a href="https://ektar.com/termsofuse/" style="color:inherit">Terms of Use</a> · <a href="https://ektar.com/privacy-policy/" style="color:inherit">Privacy Policy</a></span>
+    </div>
+    <div class="foffices">
+      <div class="office">
+        <h5>Singapore</h5>
+        <img class="mark" src="assets/office-singapore.png" alt="">
+        <p>18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966</p>
+      </div>
+      <div class="office">
+        <h5>UAE</h5>
+        <img class="mark" src="assets/office-uae.png" alt="">
+        <p>Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE</p>
+      </div>
+      <div class="office">
+        <h5>India</h5>
+        <img class="mark" src="assets/office-india.png" alt="">
+        <p>Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+</body>
+</html>

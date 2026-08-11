@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/styles.css">
+<script src="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+<style>
+:root{--font-heading:'Poppins',sans-serif;--font-body:'Poppins',sans-serif;--leading:28px;--half:14px;--edge:clamp(20px,5vw,72px);--ink:var(--color-text);--paper:var(--color-bg);--line:color-mix(in srgb,var(--paper) 16%,transparent);--line-soft:color-mix(in srgb,var(--paper) 8%,transparent);--dim:color-mix(in srgb,var(--paper) 74%,transparent);--accent-lt:var(--color-accent-400)}
+body{margin:0;text-wrap:pretty;background:var(--ink);color:var(--paper);font-family:var(--font-body)}
+a{color:var(--accent-lt)}
+a:hover{color:var(--paper)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--edge)}
+.mono{font-feature-settings:"tnum" 1;letter-spacing:.12em;text-transform:uppercase}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:clamp(12px,2.4vw,32px);padding:14px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
+.topbar img{height:20px;display:block}
+.topbar .pill{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--accent-lt);border:2px solid var(--color-accent);padding:5px 10px}
+.topbar .pill .dot{width:6px;height:6px;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+@keyframes blink{50%{opacity:.12}}
+.stage{position:relative;overflow:hidden;border-bottom:2px solid var(--line)}
+.mesh{position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to right,var(--line-soft) 0 1px,transparent 1px 72px),repeating-linear-gradient(to bottom,var(--line-soft) 0 1px,transparent 1px 72px)}
+.glow{position:absolute;top:-40%;right:-10%;width:64vw;height:64vw;pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--color-accent) 20%,transparent) 0%,transparent 62%)}
+.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--color-accent),transparent);opacity:.5;animation:sweep 7s linear infinite}
+@keyframes sweep{0%{top:-2%}100%{top:102%}}
+@media(prefers-reduced-motion:reduce){.scan,.topbar .pill .dot{animation:none}}
+.hero{position:relative;padding:calc(3*var(--leading)) 0}
+.status{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.status .dot{width:7px;height:7px;flex:none;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+.display{font-family:var(--font-heading);font-weight:700;font-size:clamp(38px,5vw,68px);line-height:1.08;letter-spacing:-.03em;margin:0;max-width:20ch}
+.sub{font-size:17.5px;line-height:var(--leading);max-width:62ch;color:var(--dim);margin:calc(1.3*var(--leading)) 0 0}
+.row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:calc(1.4*var(--leading))}
+.btn-onink{color:var(--paper);border-color:var(--paper)}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:2px solid var(--line)}
+.strip div{padding:calc(1.1*var(--leading)) clamp(18px,2.2vw,32px);border-left:2px solid var(--line)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:9px}
+.strip .v{display:block;font-size:15px;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--paper);font-feature-settings:"tnum" 1}
+@media(max-width:800px){.strip{grid-template-columns:1fr}.strip div{border-left:0;border-top:2px solid var(--line);padding-left:0;padding-block:var(--leading)}.strip div:first-child{border-top:0}}
+.sec{padding:calc(3*var(--leading)) 0;border-bottom:2px solid var(--line)}
+.kicker{display:block;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.h2{font-family:var(--font-heading);font-weight:700;font-size:clamp(28px,3.2vw,42px);line-height:1.14;letter-spacing:-.02em;margin:0 0 var(--half);max-width:28ch}
+.lede{font-size:16px;line-height:1.65;max-width:64ch;color:var(--dim);margin:0 0 calc(1.8*var(--leading))}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.cards.two{grid-template-columns:repeat(2,1fr)}
+.card2{background:var(--ink);padding:calc(1.3*var(--leading)) clamp(16px,2vw,26px)}
+.card2 .tag{font-size:11px;color:var(--accent-lt);letter-spacing:.12em;text-transform:uppercase;margin:0 0 var(--leading)}
+.card2 p.t{font-size:18px;line-height:1.4;margin:0;font-weight:600;color:var(--paper)}
+.card2 p.d{font-size:14px;line-height:1.6;color:var(--dim);margin:10px 0 0}
+.card2 ul{margin:12px 0 0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--dim)}
+.card2 ul li::marker{color:var(--color-accent)}
+/* journeys */
+.track{border-top:2px solid var(--line);padding:calc(1.4*var(--leading)) 0;display:grid;grid-template-columns:minmax(180px,240px) minmax(0,1fr);gap:clamp(16px,3vw,48px)}
+.track .tname{margin:0}
+.track .tname b{display:block;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--paper);margin-bottom:6px}
+.track .tname span{font-size:12px;color:var(--accent-lt);letter-spacing:.1em;text-transform:uppercase}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:12px;margin:0}
+.steps li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:15px;line-height:1.6;color:var(--dim)}
+.steps li::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:11.5px;letter-spacing:.1em;color:var(--accent-lt);border:2px solid var(--line);width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+/* modes */
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.mode{background:var(--ink);padding:calc(1.2*var(--leading)) clamp(16px,2vw,24px)}
+.mode b{display:block;font-family:var(--font-heading);font-weight:700;font-size:19px;margin-bottom:8px}
+.mode p{font-size:14px;line-height:1.6;color:var(--dim);margin:0 0 14px}
+.mode code{display:block;font-size:12.5px;letter-spacing:.06em;color:var(--accent-lt);border-top:2px solid var(--line);padding-top:10px}
+/* signature block */
+.sigwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,440px);gap:clamp(24px,4vw,64px);align-items:start}
+.sigblock{border:2px solid var(--paper);background:var(--ink)}
+.sigblock .head{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-bottom:2px solid var(--line);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt)}
+.sigrow{display:grid;grid-template-columns:130px 1fr;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line-soft);font-size:13.5px}
+.sigrow span:first-child{color:color-mix(in srgb,var(--paper) 62%,transparent);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;align-self:center}
+.sigrow span:last-child{color:var(--paper)}
+.sigrow.ok span:last-child{color:var(--accent-lt);font-weight:600;letter-spacing:.1em}
+.sealrow{padding:12px 14px;font-size:11.5px;letter-spacing:.1em;color:var(--dim);border-top:2px solid var(--color-accent)}
+.sealrow b{color:var(--accent-lt);font-weight:600}
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th{text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt);font-weight:600;padding:12px 16px 12px 0;border-bottom:2px solid var(--color-accent)}
+.tbl td{padding:14px 16px 14px 0;border-bottom:2px solid var(--line);color:var(--dim);line-height:1.6;vertical-align:top}
+.tbl td:first-child{color:var(--paper);font-weight:500;width:30%}
+.close{position:relative;background:var(--ink);border-top:2px solid var(--color-accent);overflow:hidden}
+.close::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 150% at 0% 0%,color-mix(in srgb,var(--color-accent) 15%,transparent) 0%,transparent 60%)}
+.close .wrap{position:relative;z-index:1}
+.close h3{color:var(--paper)}
+.close .wrap{padding:calc(3.2*var(--leading)) var(--edge)}
+.close h3{font-family:var(--font-heading);font-weight:700;font-size:clamp(32px,4.2vw,54px);line-height:1.08;letter-spacing:-.025em;margin:0;max-width:24ch}
+.foffices{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1.5*var(--leading));margin-top:calc(1.6*var(--leading));padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
+.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--paper);margin:0 0 12px}
+.office .mark{display:block;height:56px;width:auto;margin-bottom:12px}
+.office p{font-size:13px;line-height:1.6;color:var(--dim);margin:0;max-width:28ch;text-wrap:pretty}
+@media(max-width:620px){.foffices{grid-template-columns:1fr}}
+.footer{padding:calc(2.2*var(--leading)) 0 calc(1.4*var(--leading))}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
+.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);margin:0 0 var(--half)}
+.fgrid a{display:block;color:var(--dim);text-decoration:none;margin-bottom:8px;font-size:14px}
+.fgrid a:hover{color:var(--accent-lt)}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:var(--half);font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+@media(max-width:1000px){.cards,.cards.two,.modes{grid-template-columns:1fr}.track{grid-template-columns:1fr;gap:16px}.sigwrap{grid-template-columns:1fr}.tbl td:first-child{width:auto}}
+@media(max-width:700px){.fgrid{grid-template-columns:1fr 1fr}.sigrow{grid-template-columns:1fr;gap:2px}}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,60px);align-items:center}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}}
+.viz{position:relative;border:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.viz .vhead{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt)}
+.viz .vbody{padding:14px 16px}
+.vrow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--dim)}
+.vrow:last-child{border-bottom:0}
+.vrow .ic{color:var(--accent-lt);display:flex}
+.vrow b{color:var(--paper);font-weight:500}
+.vrow .ok{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap}
+.vrow .no{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 58%,transparent);text-decoration:line-through;white-space:nowrap}
+.vnote{padding:12px 16px;border-top:2px solid var(--color-accent);font-size:11.5px;letter-spacing:.06em;color:var(--dim);line-height:1.6}
+.vnote b{color:var(--accent-lt);font-weight:600}
+.gauge{display:flex;align-items:center;gap:18px;padding:8px 0 14px;border-bottom:1px solid var(--line-soft)}
+.gauge .num{font-family:var(--font-heading);font-weight:700;font-size:32px;color:var(--paper);line-height:1}
+.gauge .cap{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin-top:6px}
+.nodes{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:4px 0 14px}
+.node{border:2px solid var(--line);padding:10px;font-size:12.5px;color:var(--paper)}
+.node span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:5px}
+.dashlink{height:2px;background:repeating-linear-gradient(to right,var(--color-accent) 0 8px,transparent 8px 16px);min-width:34px;animation:flowx 1.4s linear infinite}
+@keyframes flowx{to{background-position:16px 0}}
+@media(prefers-reduced-motion:reduce){.dashlink{animation:none}}
+/* page artwork — ledger, continuously drifting */
+.ledgerbg{position:absolute;top:0;right:0;bottom:0;left:44%;overflow:hidden;pointer-events:none;mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.35) 14%,#000 46%);-webkit-mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.35) 14%,#000 46%)}
+.ledgerbg .roll{display:flex;flex-direction:column;gap:10px;padding:18px 0;animation:drift 170s linear infinite;will-change:transform}
+@keyframes drift{to{transform:translateY(-50%)}}
+.ledgerbg .lr{display:flex;gap:22px;font-size:12.5px;line-height:1.6;letter-spacing:1.8px;white-space:nowrap;color:color-mix(in srgb,var(--paper) 13%,transparent);transition:color 1.4s ease}
+.ledgerbg .lr.live{color:var(--accent-lt);background:color-mix(in srgb,var(--color-accent) 9%,transparent);border-bottom:2px solid color-mix(in srgb,var(--color-accent) 70%,transparent);animation:liveglow 5s ease-in-out infinite}
+@keyframes liveglow{0%,100%{opacity:.7}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.ledgerbg .roll,.ledgerbg .lr.live{animation:none}}
+@media(max-width:1000px){.ledgerbg{left:58%;opacity:.42}}
+/* light theme — swaps ground and ink; every rule below reads --ink / --paper */
+html[data-theme="light"],body[data-theme="light"]{--ink:var(--color-bg);--paper:var(--color-text);--line:color-mix(in srgb,var(--color-text) 18%,transparent);--line-soft:color-mix(in srgb,var(--color-text) 9%,transparent);--dim:color-mix(in srgb,var(--color-text) 76%,transparent);--accent-lt:var(--color-accent-700)}
+html[data-theme="light"] .themebtn .sun,body[data-theme="light"] .themebtn .sun{display:block}
+html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moon{display:none}
+/* magnetic product nav */
+.pnav{position:relative;display:flex;gap:2px;margin-left:auto}
+.pnav a{position:relative;z-index:1;padding:10px 14px;font-size:13px;line-height:1;color:var(--dim);text-decoration:none;white-space:nowrap;transition:color .3s ease}
+.pnav a:hover,.pnav a:focus-visible,.pnav a[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
+.pnav .pblock{position:absolute;top:0;bottom:0;left:0;width:0;opacity:0;background:var(--color-accent);z-index:0;transition:transform .46s cubic-bezier(.34,1.4,.44,1),width .46s cubic-bezier(.34,1.4,.44,1),opacity .3s ease}
+.navstrip{display:flex;align-items:center;gap:14px;padding:11px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));border-bottom:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.navstrip .dot{width:7px;height:7px;background:var(--color-accent);flex:none}
+.navstrip .key{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap;font-weight:600}
+.navstrip .sep{width:1px;height:15px;background:var(--line);flex:none}
+.navstrip .val{font-size:12.5px;color:var(--dim)}
+.navstrip .val.fade{animation:navfade .42s cubic-bezier(.22,1,.36,1)}
+@keyframes navfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.themebtn{appearance:none;background:none;border:2px solid var(--line);color:var(--paper);width:34px;height:34px;flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease}
+.themebtn:hover{border-color:var(--color-accent);color:var(--accent-lt)}
+.themebtn .sun{display:none}
+[data-theme="light"] .themebtn .sun{display:block}
+[data-theme="light"] .themebtn .moon{display:none}
+@media(prefers-reduced-motion:reduce){.pnav .pblock{transition-duration:.01ms}.navstrip .val.fade{animation:none}}
+@media(max-width:1240px){.topbar .pill{display:none}}
+@media(max-width:900px){.pnav,.navstrip{display:none}}
+@media(max-width:1000px){.pnav a{padding:10px 11px;font-size:12.5px}}
+</style>
+<script src="./site.js"></script>
+</helmet>
+
+<header class="topbar">
+  <a href="index.dc.html"><img src="assets/ektar-logo.png" alt="Ektar"></a>
+  <span class="pill mono"><span class="dot"></span>Signatures valid</span>
+  <nav class="pnav">
+    <a href="authentication.dc.html" data-role="ekShield · Authentication" data-line="Device-bound, phishing-resistant login — mobile, web, call centre, ATM, 3DS.">ekShield</a>
+    <a href="ekprotect.dc.html" data-role="ekProtect · Attest & risk" data-line="Malware, overlays, rooted devices and RATs, caught inside the app.">ekProtect</a>
+    <a href="ekbind.dc.html" data-role="ekBind · SIM binding" data-line="Operator-verified SIM checks via SNA and Reverse SMS. No code to intercept.">ekBind</a>
+    <a href="eksign.dc.html" aria-current="page" data-role="ekSign · Signing" data-line="In-channel signing, bound to the document and sealed with SHA-256.">ekSign</a>
+    <a href="eksell.dc.html" data-role="ekSell · Distribution" data-line="Bank products into employer, fintech and retail channels.">ekSell</a>
+    <a href="ai.dc.html" data-role="AI at Ektar" data-line="In the products that detect fraud, and in the practice that ships them.">AI</a>
+    <a href="about.dc.html" data-role="About Ektar" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a>
+    <span class="pblock"></span>
+  </nav>
+  <button type="button" class="themebtn" aria-label="Switch between dark and light theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg></button>
+  <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+</header>
+<div class="navstrip"><span class="dot"></span><span class="key"></span><span class="sep"></span><span class="val"></span></div>
+
+<section class="stage">
+  <div class="ledgerbg" aria-hidden="true">
+    <div class="roll">
+    <div class="lr"><span>sig 1 of 3 · borrower</span><span>a3f9·c2d1</span></div>
+    <div class="lr"><span>sig 2 of 3 · co-borrower</span><span>e4b8·f7c0</span></div>
+    <div class="lr live"><span>sig 3 of 3 · guarantor</span><span>signed · sha-256 sealed</span></div>
+    <div class="lr"><span>mandate change · single</span><span>918d·5b6e</span></div>
+    <div class="lr"><span>fatca declaration</span><span>a417·f0c3</span></div>
+    <div class="lr"><span>suitability form</span><span>92bb·7de4</span></div>
+    <div class="lr"><span>policy acceptance</span><span>1a58·04af</span></div>
+    <div class="lr"><span>joint account opening</span><span>7b21·e5c9</span></div>
+    <div class="lr"><span>credit card agreement</span><span>3f9a·c2e1</span></div>
+    <div class="lr"><span>loan agreement · sequential</span><span>88d0·5b6e</span></div>
+    <div class="lr"><span>crs declaration</span><span>a208·31dd</span></div>
+    <div class="lr"><span>mandate change · joint</span><span>f17b·9c4e</span></div>
+    <div class="lr"><span>bancassurance terms</span><span>04af·1a58</span></div>
+    <div class="lr"><span>suitability review</span><span>7de4·92bb</span></div>
+    <div class="lr"><span>sig 1 of 3 · borrower</span><span>a3f9·c2d1</span></div>
+    <div class="lr"><span>sig 2 of 3 · co-borrower</span><span>e4b8·f7c0</span></div>
+    <div class="lr live"><span>sig 3 of 3 · guarantor</span><span>signed · sha-256 sealed</span></div>
+    <div class="lr"><span>mandate change · single</span><span>918d·5b6e</span></div>
+    <div class="lr"><span>fatca declaration</span><span>a417·f0c3</span></div>
+    <div class="lr"><span>suitability form</span><span>92bb·7de4</span></div>
+    <div class="lr"><span>policy acceptance</span><span>1a58·04af</span></div>
+    <div class="lr"><span>joint account opening</span><span>7b21·e5c9</span></div>
+    <div class="lr"><span>credit card agreement</span><span>3f9a·c2e1</span></div>
+    <div class="lr"><span>loan agreement · sequential</span><span>88d0·5b6e</span></div>
+    <div class="lr"><span>crs declaration</span><span>a208·31dd</span></div>
+    <div class="lr"><span>mandate change · joint</span><span>f17b·9c4e</span></div>
+    <div class="lr"><span>bancassurance terms</span><span>04af·1a58</span></div>
+    <div class="lr"><span>suitability review</span><span>7de4·92bb</span></div>
+    </div>
+  </div>
+  <div class="glow"></div>
+  <div class="scan"></div>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+      <p class="status mono"><span class="dot"></span>Document signing &amp; integrity · ekSign</p>
+      <h1 class="display">Signing inside your own channel. Proof that outlives the session.</h1>
+      <p class="sub">ekSign brings document signing back inside the bank. Customers review and sign in your app or on your own branded page, authenticated by the MFA they already use — and every signature is cryptographically bound to the document, so tampering is detectable forever. No third-party portal, no third-party brand, no third-party custody of your audit trail.</p>
+      <div class="row">
+        <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+        <button type="button" class="btn btn-ghost btn-onink" onclick="location.href='index.dc.html'">← All products</button>
+      </div>
+      </div>
+      <div class="viz">
+        <div class="vhead"><span>ekSign · execution status</span><span>2 of 3 signed</span></div>
+        <div class="vbody">
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6v20h12V7z"></path><path d="M14 2v5h5"></path></svg></span><span><b>Primary borrower</b></span><span class="ok">Signed</span></div>
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6v20h12V7z"></path><path d="M14 2v5h5"></path></svg></span><span><b>Co-borrower</b></span><span class="ok">Signed</span></div>
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6v20h12V7z"></path><path d="M14 2v5h5"></path></svg></span><span><b>Guarantor</b></span><span class="ok">Awaiting</span></div>
+        <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 10V7a5 5 0 0 1 10 0v3"></path><rect x="3" y="10" width="18" height="11"></rect></svg></span><span><b>Authentication</b></span><span class="ok">Bank MFA · national ID</span></div>
+        </div>
+        <div class="vnote">Seal <b>SHA-256 a3f9·c2d1·e4b8</b> — any alteration after signing fails verification</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="strip mono">
+    <div><span class="k">Cryptography</span><span class="v">ECDSA P-256 · SHA-256 document seal</span></div>
+    <div><span class="k">Authentication</span><span class="v">Bank MFA · national digital ID</span></div>
+    <div><span class="k">Integration</span><span class="v">One API call · no workflow change</span></div>
+  </div>
+
+  <section class="sec">
+    <span class="kicker mono">Why banks move signing in-house</span>
+    <h2 class="h2">A third-party portal breaks the journey and holds your record.</h2>
+    <p class="lede">Most banks sign through an external e-signature platform. That means a customer receives an email that is not from the bank, is redirected to another brand's portal, and verifies with that platform's own SMS OTP — an event with no link to their banking identity. The signed documents and the audit trail then live in the vendor's platform, where the bank is a tenant and pricing or availability changes affect access to its own records.</p>
+    <div class="cards">
+      <div class="card2"><p class="tag">Experience</p><p class="t">The journey leaves the bank</p><p class="d">Another brand's email, domain and portal sit in the middle of a regulated banking action.</p></div>
+      <div class="card2"><p class="tag">Identity</p><p class="t">Signing is not tied to the customer</p><p class="d">A vendor OTP proves access to an inbox or a phone number, not that your verified customer signed.</p></div>
+      <div class="card2"><p class="tag">Custody &amp; cost</p><p class="t">The bank does not own the record</p><p class="d">Audit trail held externally, priced per envelope. ekSign replaces that with a marginal cost per signing event on infrastructure the bank already runs.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">What ekSign is</span>
+    <h2 class="h2">Two capabilities you already own, joined into one product.</h2>
+    <div class="cards two">
+      <div class="card2">
+        <p class="tag">Cryptographic engine</p>
+        <p class="t">Tamper-evident signing and audit</p>
+        <p class="d">ekSign creates a SHA-256 fingerprint of the document, binds each signing event to that fingerprint with an ECDSA P-256 signature, chains multi-party signatures to one another, and produces a complete audit record the bank holds.</p>
+        <ul>
+          <li>Signature bound to exact document contents</li>
+          <li>Any post-signing alteration fails verification</li>
+          <li>Audit record owned and stored by the bank</li>
+        </ul>
+      </div>
+      <div class="card2">
+        <p class="tag">Authentication layer</p>
+        <p class="t">The MFA your customers already have</p>
+        <p class="d">The bank's existing MFA — biometric, push approval or TOTP — fires as the signing action, so the signature is bound to a bank-verified identity. Non-customers authenticate with national digital ID (for example UAE Pass, Emirates ID-backed).</p>
+        <ul>
+          <li>No new enrolment, app or password</li>
+          <li>Signing event linked to the banking identity</li>
+          <li>Step-up strength configurable per document type</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Signing journeys</span>
+    <h2 class="h2">Three tracks, depending on who has to sign.</h2>
+
+    <div class="track">
+      <p class="tname"><b>Track A</b><span>Single signatory · existing customer</span></p>
+      <ol class="steps">
+        <li>The bank initiates a signing request; the customer receives a push notification in the banking app.</li>
+        <li>The customer opens and reviews the document in full, inside the app.</li>
+        <li>On "Sign", the bank's MFA fires an authentication challenge — biometric, push approval or TOTP.</li>
+        <li>The signature is recorded, the document sealed, and a signed copy stored in the bank's systems and delivered to the customer.</li>
+      </ol>
+    </div>
+
+    <div class="track">
+      <p class="tname"><b>Track B</b><span>Multi-signatory · sequential, parallel or mixed</span></p>
+      <ol class="steps">
+        <li>The bank's workflow system initiates the request, specifying each signatory, their role, and the signing order.</li>
+        <li>ekSign notifies the first signatory (sequential) or all signatories at once (parallel), each in their own channel.</li>
+        <li>Each party reviews and authenticates — in the banking app for customers, on a bank-branded secure page for everyone else.</li>
+        <li>Each completed signature is cryptographically chained to the previous one, and the workflow system is notified after every signature.</li>
+        <li>Once all required parties have signed, the document is sealed with all signature blocks and delivered to all parties.</li>
+      </ol>
+    </div>
+
+    <div class="track">
+      <p class="tname"><b>Track C</b><span>Non-customer · guarantor, co-applicant, prospect</span></p>
+      <ol class="steps">
+        <li>The bank shares the document as a secure link sent from its own domain, by SMS or email — no third-party domain.</li>
+        <li>The recipient opens it on a bank-branded signing page in the browser.</li>
+        <li>They authenticate with national digital ID — no bank account or app required.</li>
+        <li>The signature is recorded and sealed; the signed document is delivered to the recipient and retained by the bank.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Signing order</span>
+    <h2 class="h2">The bank's workflow owns the sequence.</h2>
+    <p class="lede">The workflow system sets the mode when it initiates the request, and ekSign enforces it — advancing automatically in sequential mode while the bank retains the ability to pause, redirect or escalate at any point. A document is not executed until every required signature is present.</p>
+    <div class="modes">
+      <div class="mode"><b>Sequential</b><p>Signatories sign one at a time in a defined order; each party is notified only once the previous signature completes.</p><code>Borrower → Co-borrower → Guarantor</code></div>
+      <div class="mode"><b>Parallel</b><p>All signatories are notified simultaneously and may sign in any order. Used where no priority sequence is needed.</p><code>Joint holder A ∥ Joint holder B</code></div>
+      <div class="mode"><b>Mixed</b><p>Combines both: parties sign in parallel, then a later signatory is notified once the earlier group has completed.</p><code>(Co-borrower A ∥ Co-borrower B) → Guarantor</code></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">What the signature looks like</span>
+    <h2 class="h2">A visible block per signatory, and one seal over everything.</h2>
+    <div class="sigwrap">
+      <div>
+        <p class="lede" style="margin-bottom:var(--leading)">Each signature appears as a structured block on the document, labelled with the signatory's role and sequence position, and it travels with both digital and printed copies. Beneath them sits a SHA-256 seal covering all content and all signatures: alter one character of the document, or one field of any signature, and verification fails immediately.</p>
+        <table class="tbl">
+          <tbody>
+            <tr><td>Sequence</td><td>Signature n of N, with the signatory's role on the document</td></tr>
+            <tr><td>Signature</td><td>ECDSA P-256, bound to the document fingerprint and chained to the prior signature</td></tr>
+            <tr><td>Seal</td><td>SHA-256 hash over document content and every signature block</td></tr>
+            <tr><td>Verification</td><td>Through the bank's own systems on request, or by QR seal where the bank wants third parties to verify an issued document unaided</td></tr>
+            <tr><td>Record</td><td>Signed copy and audit trail retained by the bank</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sigblock">
+        <div class="head"><span>Signature 1 of 3</span><span>Primary borrower</span></div>
+        <div class="sigrow"><span>Signed by</span><span>A. Al Mansoori</span></div>
+        <div class="sigrow"><span>Date &amp; time</span><span>23 Jul 2026 · 14:32:07 GST</span></div>
+        <div class="sigrow"><span>Authenticated via</span><span>Bank MFA (biometric)</span></div>
+        <div class="sigrow"><span>Reference</span><span>SGN-2026-00891-001</span></div>
+        <div class="sigrow ok"><span>Status</span><span>Signed</span></div>
+        <div class="sealrow">Document hash (SHA-256) <b>a3f9·c2d1·e4b8·f7…</b><br>Tamper-evident seal over all content and signatures</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Authentication by signer type</span>
+    <h2 class="h2">The right identity mechanism per signatory.</h2>
+    <table class="tbl">
+      <thead>
+        <tr><th>Signer</th><th>Method</th><th>What it means</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Existing customer</td><td>Bank MFA</td><td>The same MFA used for transfers and high-risk actions. No new enrolment, and the signing event ties directly to a verified banking identity.</td></tr>
+        <tr><td>Non-customer<br>(guarantor, co-applicant)</td><td>National digital ID</td><td>Government identity backed by a national ID document. No bank enrolment needed; covers residents and most expatriates.</td></tr>
+        <tr><td>Prospective customer<br>(onboarding)</td><td>National digital ID</td><td>Identity is established at the point of signing and linked to the customer record once the account is opened.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Priority use cases</span>
+    <h2 class="h2">Where banks start.</h2>
+    <table class="tbl">
+      <thead>
+        <tr><th>Document type</th><th>Signing mode</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Loan &amp; credit card agreements</td><td>Sequential</td><td>Highest legal weight. Borrower → co-borrower → guarantor, each party signing in order.</td></tr>
+        <tr><td>Joint account opening</td><td>Parallel</td><td>Both account holders sign simultaneously; completion triggers account activation.</td></tr>
+        <tr><td>Account mandate changes</td><td>Single / sequential</td><td>Sole mandate: single signatory. Joint mandate: sequential or parallel by mandate type.</td></tr>
+        <tr><td>FATCA / CRS declarations</td><td>Single</td><td>Regulatory identity-verified signature; national digital ID covers non-resident signers.</td></tr>
+        <tr><td>Investment suitability forms</td><td>Single</td><td>Risk appetite declaration. Biometric MFA adds evidentiary strength.</td></tr>
+        <tr><td>Insurance policy acceptance</td><td>Single</td><td>Bancassurance terms acceptance; the workflow system routes to policy issuance on completion.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">ekSign vs a third-party portal</span>
+    <h2 class="h2">The same signature, on your side of the wall.</h2>
+    <table class="tbl">
+      <thead>
+        <tr><th>Third-party e-signature platform</th><th>ekSign</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Customer redirected to the vendor's portal and brand</td><td>Customer signs in the banking app or on a bank-branded page</td></tr>
+        <tr><td>Authenticated by vendor SMS OTP or email</td><td>Authenticated by the bank's own MFA, or national digital ID</td></tr>
+        <tr><td>Signing event not linked to the banking identity</td><td>Signing event cryptographically bound to a bank-verified identity</td></tr>
+        <tr><td>Multi-signatory routing managed inside the vendor platform</td><td>Routing defined and owned by the bank's workflow system</td></tr>
+        <tr><td>No tamper detection on the signed document</td><td>SHA-256 seal detects any alteration after signing</td></tr>
+        <tr><td>Audit trail held by the vendor — the bank is a tenant</td><td>Full audit trail owned and held by the bank</td></tr>
+        <tr><td>Vendor branding throughout the experience</td><td>Bank brand on every touchpoint — app, page, signature block, emails</td></tr>
+        <tr><td>Fixed per-envelope licence fee at scale</td><td>Marginal cost per signing event on Ektar's platform</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <h3>Replace a recurring licence with a capability you own.</h3>
+    <div class="row">
+      <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="footer">
+    <div class="fgrid">
+      <div>
+        <h4>Products</h4>
+        <a href="authentication.dc.html">ekShield</a>
+        <a href="ekprotect.dc.html">ekProtect</a>
+        <a href="ekbind.dc.html">ekBind</a>
+        <a href="eksign.dc.html">ekSign</a>
+        <a href="eksell.dc.html">ekSell</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.dc.html">About us</a>
+        <a href="ai.dc.html">AI</a>
+        <a href="blog.dc.html">Blog</a>
+        <a href="careers.dc.html">Careers</a>
+        <a href="contact.dc.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="contact.dc.html">Talk to us</a>
+        <a href="https://www.linkedin.com/company/ektar-technologies/">LinkedIn</a>
+        <a href="https://www.youtube.com/@ektar-technologies">YouTube</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© Ektar 2022–2026. All rights reserved.</span>
+      <span><a href="https://ektar.com/termsofuse/" style="color:inherit">Terms of Use</a> · <a href="https://ektar.com/privacy-policy/" style="color:inherit">Privacy Policy</a></span>
+    </div>
+    <div class="foffices">
+      <div class="office">
+        <h5>Singapore</h5>
+        <img class="mark" src="assets/office-singapore.png" alt="">
+        <p>18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966</p>
+      </div>
+      <div class="office">
+        <h5>UAE</h5>
+        <img class="mark" src="assets/office-uae.png" alt="">
+        <p>Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE</p>
+      </div>
+      <div class="office">
+        <h5>India</h5>
+        <img class="mark" src="assets/office-india.png" alt="">
+        <p>Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+</body>
+</html>

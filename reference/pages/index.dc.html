@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/styles.css">
+<script src="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap">
+<style>
+:root{--font-heading:'Poppins',sans-serif;--font-body:'Poppins',sans-serif;--leading:28px;--half:14px;--edge:clamp(20px,5vw,72px);--ink:var(--color-text);--paper:var(--color-bg);--line:color-mix(in srgb,var(--paper) 16%,transparent);--line-soft:color-mix(in srgb,var(--paper) 8%,transparent);--dim:color-mix(in srgb,var(--paper) 74%,transparent);--accent-lt:var(--color-accent-400)}
+body{margin:0;text-wrap:pretty;background:var(--ink);color:var(--paper);font-family:var(--font-body)}
+a{color:var(--accent-lt)}
+a:hover{color:var(--paper)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--edge)}
+.mono{font-feature-settings:"tnum" 1;letter-spacing:.12em;text-transform:uppercase}
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:clamp(12px,2.4vw,32px);padding:14px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));background:color-mix(in srgb,var(--ink) 90%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
+.topbar img{height:20px;display:block}
+.topbar .pill{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--accent-lt);border:2px solid var(--color-accent);padding:5px 10px}
+.topbar .pill .dot{width:6px;height:6px;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+@keyframes blink{50%{opacity:.12}}
+.stage{position:relative;overflow:hidden;border-bottom:2px solid var(--line)}
+.hrain{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.6;mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.25) 18%,#000 55%);-webkit-mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.25) 18%,#000 55%)}
+.mesh{position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to right,var(--line-soft) 0 1px,transparent 1px 72px),repeating-linear-gradient(to bottom,var(--line-soft) 0 1px,transparent 1px 72px)}
+.glow{position:absolute;top:-35%;right:-5%;width:66vw;height:66vw;pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--color-accent) 22%,transparent) 0%,transparent 60%)}
+.scanline{position:absolute;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--color-accent),transparent);opacity:.45;animation:sweep 7s linear infinite}
+@keyframes sweep{0%{top:-2%}100%{top:102%}}
+@media(prefers-reduced-motion:reduce){.scanline,.topbar .pill .dot,.ring,.fpscan,.flowbar,.pulsebar i{animation:none}}
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);padding:calc(3*var(--leading)) 0 calc(3.2*var(--leading));align-items:center}
+.protect{display:flex;align-items:center;gap:.3em;font-family:var(--font-heading);font-weight:600;font-size:clamp(26px,3vw,40px);letter-spacing:-.02em;line-height:1.2;color:var(--paper);margin:0 0 var(--half)}
+.protect .swap{display:inline-flex;align-items:center;flex:none}
+.protect .reel{display:block;flex:none;height:1.35em;overflow:hidden;clip-path:inset(0 -.32em)}
+.protect .rin{display:block;transition:transform .85s cubic-bezier(.65,0,.2,1)}
+.protect em{display:block;height:1.35em;line-height:1.35em;text-align:left;font-style:italic;font-weight:600;color:var(--color-accent);white-space:pre}
+.protect .caret{display:inline-block;width:.5em;height:1em;background:var(--color-accent);margin-left:.28em;flex:none;animation:caretblink 1.06s steps(2,jump-none) infinite}
+@keyframes caretblink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.protect .rin{transition:none}.protect .caret{animation:none}}
+.status{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.status .dot{width:7px;height:7px;flex:none;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+.display{font-family:var(--font-heading);font-weight:700;font-size:clamp(38px,5vw,70px);line-height:1.14;letter-spacing:-.03em;margin:0}
+.display .line{display:block}
+.display em{font-style:normal;color:var(--accent-lt)}
+.sub{font-size:17.5px;line-height:var(--leading);max-width:52ch;color:var(--dim);margin:calc(1.2*var(--leading)) 0 0}
+.row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:calc(1.4*var(--leading))}
+.btn-onink{color:var(--paper);border-color:var(--paper)}
+/* hero solutions callout */
+.solpanel{position:relative;z-index:2;border:2px solid var(--line);background:color-mix(in srgb,var(--ink) 82%,transparent);backdrop-filter:blur(2px)}
+.solpanel .sp-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:2px solid var(--line);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt)}
+.solpanel .sp-head b{color:var(--dim);font-weight:400;letter-spacing:.1em}
+.sol{display:grid;grid-template-columns:auto 1fr auto;gap:0 14px;align-items:baseline;padding:14px 16px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .18s ease,padding-left .18s ease}
+.sol:last-child{border-bottom:0}
+.sol .num{font-size:11px;letter-spacing:.1em;color:color-mix(in srgb,var(--paper) 45%,transparent)}
+.sol .nm{font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--paper)}
+.sol .role{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap}
+.sol .d{grid-column:2/4;font-size:13px;line-height:1.55;color:var(--dim);margin:5px 0 0;text-wrap:pretty}
+.sol:hover,.sol:focus-visible{background:color-mix(in srgb,var(--color-accent) 12%,transparent);padding-left:22px}
+.sol:hover .nm,.sol:focus-visible .nm{color:var(--accent-lt)}
+.sol:focus-visible{outline:2px solid var(--color-accent);outline-offset:-2px}
+@media(prefers-reduced-motion:reduce){.sol{transition:none}}
+/* device + protection field */
+.shield-stack{position:relative;display:flex;justify-content:center;align-items:center;min-height:520px}
+.ring{position:absolute;border:2px solid color-mix(in srgb,var(--color-accent) 45%,transparent);animation:ringout 4s ease-out infinite}
+.ring.r1{width:300px;height:300px;animation-delay:0s}
+.ring.r2{width:300px;height:300px;animation-delay:1.3s}
+.ring.r3{width:300px;height:300px;animation-delay:2.6s}
+@keyframes ringout{0%{transform:scale(.75);opacity:.75}100%{transform:scale(1.9);opacity:0}}
+.device{position:relative;z-index:2;width:288px;border:2px solid var(--paper);background:var(--ink);box-shadow:0 0 0 8px color-mix(in srgb,var(--ink) 90%,transparent)}
+.dev-top{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:2px solid var(--line);font-size:10px;color:var(--dim);letter-spacing:.1em}
+.dev-top .bars{display:flex;gap:3px;align-items:flex-end}
+.dev-top .bars i{width:3px;background:var(--paper)}
+.dev-top .bars i:nth-child(1){height:5px}
+.dev-top .bars i:nth-child(2){height:8px}
+.dev-top .bars i:nth-child(3){height:11px}
+.dev-body{padding:20px 18px 18px}
+.dev-label{font-size:10.5px;color:var(--accent-lt);letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
+.dev-app{font-size:15px;font-weight:600;margin:0 0 18px;color:var(--paper)}
+.fp{position:relative;width:150px;height:150px;margin:0 auto 16px;overflow:hidden;border:2px solid var(--line)}
+.fp svg{position:absolute;inset:0;width:100%;height:100%}
+.fpscan{position:absolute;left:0;right:0;height:3px;background:var(--color-accent);box-shadow:0 0 18px 4px color-mix(in srgb,var(--color-accent) 60%,transparent);animation:fpsweep 2.6s ease-in-out infinite}
+@keyframes fpsweep{0%,100%{top:6%}50%{top:92%}}
+.verified{display:flex;align-items:center;gap:9px;border:2px solid var(--color-accent);padding:9px 11px;margin-bottom:14px}
+.verified svg{flex:none;color:var(--accent-lt)}
+.verified b{font-size:12px;color:var(--paper);font-weight:600;letter-spacing:.02em}
+.verified span{display:block;font-size:10.5px;color:var(--accent-lt);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.chips{display:flex;flex-direction:column;gap:7px}
+.chip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);padding:7px 9px;font-size:11px;color:var(--dim)}
+.chip .x{flex:none;width:14px;height:14px;border:2px solid var(--color-accent);position:relative}
+.chip .x::before,.chip .x::after{content:"";position:absolute;left:1px;right:1px;top:50%;height:0;border-top:2px solid var(--color-accent)}
+.chip .x::before{transform:rotate(45deg)}
+.chip .x::after{transform:rotate(-45deg)}
+.chip b{color:var(--accent-lt);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10px;margin-left:auto;white-space:nowrap}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:2px solid var(--line)}
+.strip div{padding:calc(1.1*var(--leading)) clamp(18px,2.2vw,32px);border-left:2px solid var(--line)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:9px}
+.strip .v{display:block;font-size:15px;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--paper);font-feature-settings:"tnum" 1}
+@media(max-width:800px){.strip{grid-template-columns:1fr}.strip div{border-left:0;border-top:2px solid var(--line);padding-left:0;padding-block:var(--leading)}.strip div:first-child{border-top:0}}
+.sec{padding:calc(3*var(--leading)) 0;border-bottom:2px solid var(--line)}
+.kicker{display:block;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.h2{font-family:var(--font-heading);font-weight:700;font-size:clamp(28px,3.2vw,42px);line-height:1.14;letter-spacing:-.02em;margin:0 0 var(--half);max-width:26ch}
+.lede{font-size:16px;line-height:1.65;max-width:62ch;color:var(--dim);margin:0 0 calc(1.8*var(--leading))}
+/* attack surface tiles */
+.threats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.threat{position:relative;background:var(--ink);padding:calc(1.2*var(--leading)) clamp(16px,2vw,24px)}
+.threat::after{content:"";position:absolute;top:0;right:0;width:18px;height:18px;border-top:2px solid var(--color-accent);border-right:2px solid var(--color-accent);pointer-events:none}
+.threat svg{color:var(--accent-lt);margin-bottom:14px}
+.threat .n{font-size:16px;font-weight:600;margin:0 0 6px;color:var(--paper)}
+.threat .d{font-size:13.5px;line-height:1.55;color:var(--dim);margin:0 0 12px}
+.threat .st{font-size:10.5px;color:var(--accent-lt);letter-spacing:.14em;text-transform:uppercase;margin:0}
+/* layers */
+.layer{position:relative;display:grid;grid-template-columns:auto minmax(120px,150px) minmax(0,1fr) auto;gap:clamp(14px,2.4vw,36px);align-items:start;padding:calc(1.5*var(--leading)) 0;border-top:2px solid var(--line);transition:background .2s}
+.layer:hover{background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.layer:hover .go{color:var(--paper);border-color:var(--color-accent)}
+.iconbox{width:56px;height:56px;border:2px solid var(--color-accent);display:flex;align-items:center;justify-content:center;color:var(--accent-lt)}
+.lnum{font-family:var(--font-heading);font-weight:600;font-size:11.5px;color:var(--dim);margin:0;letter-spacing:.14em;text-transform:uppercase}
+.lnum span{display:block;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.02em;color:var(--paper);margin-top:6px;text-transform:none}
+.ltitle{font-family:var(--font-heading);font-weight:600;font-size:20px;letter-spacing:-.01em;margin:0 0 10px}
+.lcopy{font-size:15px;line-height:1.65;color:var(--dim);margin:0 0 12px;max-width:58ch}
+.pulsebar{height:5px;background:color-mix(in srgb,var(--paper) 10%,transparent);position:relative;overflow:hidden;max-width:320px}
+.pulsebar i{position:absolute;inset:0 auto 0 0;background:var(--color-accent);animation:pulse 3.4s ease-in-out infinite}
+.layer:nth-of-type(2) .pulsebar i{animation-delay:.6s}
+.layer:nth-of-type(3) .pulsebar i{animation-delay:1.2s}
+@keyframes pulse{0%,100%{width:24%}50%{width:86%}}
+.go{align-self:center;font-size:12.5px;color:var(--accent-lt);text-decoration:none;border:2px solid var(--line);padding:9px 14px;white-space:nowrap;transition:color .2s,border-color .2s}
+.signal{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center;border-top:2px solid var(--color-accent);padding:calc(1.3*var(--leading)) 0 0;margin-top:calc(1.3*var(--leading))}
+.signal .lbl{font-size:12px;color:var(--accent-lt);letter-spacing:.12em;text-transform:uppercase;margin:0}
+.signal p{font-size:14.5px;line-height:1.6;color:var(--dim);margin:10px 0 0;max-width:64ch}
+.flowbar{height:8px;background:repeating-linear-gradient(to right,var(--color-accent) 0 10px,transparent 10px 22px);animation:flow 1.6s linear infinite}
+@keyframes flow{to{background-position:22px 0}}
+/* cryptographic layer */
+.hexband{overflow:hidden;border-bottom:2px solid var(--line);padding:9px 0;white-space:nowrap}
+.hexband span{display:inline-block;font-size:11.5px;letter-spacing:.24em;color:color-mix(in srgb,var(--paper) 26%,transparent);font-feature-settings:"tnum" 1;animation:drift 44s linear infinite}
+@keyframes drift{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.hexband span{animation:none}}
+.crypto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:clamp(28px,4vw,64px);align-items:center}
+.csteps{display:flex;flex-direction:column;gap:2px;background:var(--line);margin-top:calc(1.4*var(--leading))}
+.cstep{background:var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:16px 0}
+.cstep .ic{width:44px;height:44px;border:2px solid var(--color-accent);display:flex;align-items:center;justify-content:center;color:var(--accent-lt)}
+.cstep b{display:block;font-size:15px;font-weight:600;color:var(--paper);margin-bottom:4px}
+.cstep small{font-size:13.5px;line-height:1.55;color:var(--dim)}
+.doccard{position:relative;border:2px solid var(--paper);padding:22px 22px 18px;background:var(--ink)}
+.doccard .seal{position:absolute;top:-2px;right:-2px;width:22px;height:22px;border-top:2px solid var(--color-accent);border-right:2px solid var(--color-accent)}
+.doc-title{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt);margin:0 0 14px}
+.doc-lines{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.doc-lines i{height:6px;background:color-mix(in srgb,var(--paper) 14%,transparent)}
+.doc-lines i:nth-child(2){width:82%}
+.doc-lines i:nth-child(3){width:64%}
+.qrrow{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;border-top:2px solid var(--line);padding-top:16px}
+.qrrow svg{color:var(--paper)}
+.hash{font-size:11.5px;letter-spacing:.14em;color:var(--dim);font-feature-settings:"tnum" 1;word-break:break-all;margin:0 0 10px}
+.hash b{color:var(--accent-lt);font-weight:600}
+.prodgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.prod{background:var(--ink);padding:calc(1.3*var(--leading)) clamp(16px,2vw,26px);display:flex;flex-direction:column}
+.prod .nm{font-family:var(--font-heading);font-weight:700;font-size:22px;letter-spacing:-.01em;margin:0 0 4px;color:var(--paper)}
+.prod .role{font-size:11px;color:var(--accent-lt);letter-spacing:.12em;text-transform:uppercase;margin:0 0 14px}
+.prod p.d{font-size:14px;line-height:1.6;color:var(--dim);margin:0 0 16px}
+.prod a{margin-top:auto;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--accent-lt)}
+.prod a:hover{color:var(--paper)}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 calc(2*var(--leading))}
+.mrow{display:flex;gap:12px;padding:var(--half) 0;border-top:2px solid var(--line)}
+.mrow .sq{flex:none;width:8px;height:8px;background:var(--color-accent);margin-top:8px}
+.mrow p{margin:0;font-size:14.5px;line-height:1.6;color:var(--dim)}
+.mrow strong{color:var(--paper)}
+@media(max-width:1000px){.prodgrid{grid-template-columns:1fr}.mgrid{grid-template-columns:1fr}}
+.valid{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--color-accent);padding:7px 10px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt)}
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.metric{background:var(--ink);padding:calc(1.3*var(--leading)) clamp(16px,2vw,26px)}
+.metric .tag{font-size:11px;color:var(--accent-lt);letter-spacing:.14em;text-transform:uppercase;margin:0 0 var(--leading)}
+.metric .n{font-family:var(--font-heading);font-weight:700;font-size:clamp(36px,4.2vw,56px);line-height:1.08;letter-spacing:-.025em;color:var(--paper);margin:0;font-feature-settings:"tnum" 1}
+.metric .lbl{font-size:12px;color:var(--accent-lt);margin:var(--half) 0 8px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.metric .cp{font-size:14px;line-height:1.6;color:var(--dim);margin:0;max-width:34ch}
+.close{position:relative;background:var(--ink);border-top:2px solid var(--color-accent);overflow:hidden}
+.close::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 150% at 0% 0%,color-mix(in srgb,var(--color-accent) 15%,transparent) 0%,transparent 60%)}
+.close .wrap{position:relative;z-index:1}
+.close h3{color:var(--paper)}
+.close .wrap{padding:calc(3.2*var(--leading)) var(--edge)}
+.close h3{font-family:var(--font-heading);font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.1;letter-spacing:-.025em;margin:0;max-width:22ch}
+.foffices{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1.5*var(--leading));margin-top:calc(1.6*var(--leading));padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
+.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--paper);margin:0 0 12px}
+.office .mark{display:block;height:56px;width:auto;margin-bottom:12px}
+.office p{font-size:13px;line-height:1.6;color:var(--dim);margin:0;max-width:28ch;text-wrap:pretty}
+@media(max-width:620px){.foffices{grid-template-columns:1fr}}
+.footer{padding:calc(2.2*var(--leading)) 0 calc(1.4*var(--leading))}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
+.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);margin:0 0 var(--half)}
+.fgrid a{display:block;color:var(--dim);text-decoration:none;margin-bottom:8px;font-size:14px}
+.fgrid a:hover{color:var(--accent-lt)}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:var(--half);font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+@media(max-width:1050px){.hero{grid-template-columns:1fr}.shield-stack{min-height:480px}.threats{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.crypto{grid-template-columns:1fr}.layer{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.lnum span{margin-top:4px}.go{align-self:flex-start}}
+@media(max-width:700px){.fgrid{grid-template-columns:1fr 1fr}.signal{grid-template-columns:1fr}}
+/* light theme — swaps ground and ink; every rule below reads --ink / --paper */
+html[data-theme="light"],body[data-theme="light"]{--ink:var(--color-bg);--paper:var(--color-text);--line:color-mix(in srgb,var(--color-text) 18%,transparent);--line-soft:color-mix(in srgb,var(--color-text) 9%,transparent);--dim:color-mix(in srgb,var(--color-text) 76%,transparent);--accent-lt:var(--color-accent-700)}
+html[data-theme="light"] .themebtn .sun,body[data-theme="light"] .themebtn .sun{display:block}
+html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moon{display:none}
+/* magnetic product nav */
+.pnav{position:relative;display:flex;gap:2px;margin-left:auto}
+.pnav a{position:relative;z-index:1;padding:10px 14px;font-size:13px;line-height:1;color:var(--dim);text-decoration:none;white-space:nowrap;transition:color .3s ease}
+.pnav a:hover,.pnav a:focus-visible,.pnav a[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
+.pnav .pblock{position:absolute;top:0;bottom:0;left:0;width:0;opacity:0;background:var(--color-accent);z-index:0;transition:transform .46s cubic-bezier(.34,1.4,.44,1),width .46s cubic-bezier(.34,1.4,.44,1),opacity .3s ease}
+.navstrip{display:flex;align-items:center;gap:14px;padding:11px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));border-bottom:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.navstrip .dot{width:7px;height:7px;background:var(--color-accent);flex:none}
+.navstrip .key{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap;font-weight:600}
+.navstrip .sep{width:1px;height:15px;background:var(--line);flex:none}
+.navstrip .val{font-size:12.5px;color:var(--dim)}
+.navstrip .val.fade{animation:navfade .42s cubic-bezier(.22,1,.36,1)}
+@keyframes navfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.themebtn{appearance:none;background:none;border:2px solid var(--line);color:var(--paper);width:34px;height:34px;flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease}
+.themebtn:hover{border-color:var(--color-accent);color:var(--accent-lt)}
+.themebtn .sun{display:none}
+[data-theme="light"] .themebtn .sun{display:block}
+[data-theme="light"] .themebtn .moon{display:none}
+@media(prefers-reduced-motion:reduce){.pnav .pblock{transition-duration:.01ms}.navstrip .val.fade{animation:none}}
+@media(max-width:1240px){.topbar .pill{display:none}}
+@media(max-width:900px){.pnav,.navstrip{display:none}}
+@media(max-width:1000px){.pnav a{padding:10px 11px;font-size:12.5px}}
+</style>
+<script src="./site.js"></script>
+</helmet>
+
+<header class="topbar">
+  <a href="index.dc.html"><img src="assets/ektar-logo.png" alt="Ektar"></a>
+  <span class="pill mono"><span class="dot"></span>Systems live</span>
+  <nav class="pnav">
+    <a href="authentication.dc.html" data-role="ekShield · Authentication" data-line="Device-bound, phishing-resistant login — mobile, web, call centre, ATM, 3DS.">ekShield</a>
+    <a href="ekprotect.dc.html" data-role="ekProtect · Attest &amp; risk" data-line="Malware, overlays, rooted devices and RATs, caught inside the app.">ekProtect</a>
+    <a href="ekbind.dc.html" data-role="ekBind · SIM binding" data-line="Operator-verified SIM checks via SNA and Reverse SMS. No code to intercept.">ekBind</a>
+    <a href="eksign.dc.html" data-role="ekSign · Signing" data-line="In-channel signing, bound to the document and sealed with SHA-256.">ekSign</a>
+    <a href="eksell.dc.html" data-role="ekSell · Distribution" data-line="Bank products into employer, fintech and retail channels.">ekSell</a>
+    <a href="ai.dc.html" data-role="AI at Ektar" data-line="In the products that detect fraud, and in the practice that ships them.">AI</a>
+    <a href="about.dc.html" data-role="About Ektar" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a>
+    <span class="pblock"></span>
+  </nav>
+  <button type="button" class="themebtn" aria-label="Switch between dark and light theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg></button>
+  <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+</header>
+<div class="navstrip"><span class="dot"></span><span class="key"></span><span class="sep"></span><span class="val"></span></div>
+
+<section class="stage">
+  <canvas class="hrain" ref="{{ rainRef }}" aria-hidden="true"></canvas>
+  <div class="mesh"></div>
+  <div class="glow"></div>
+  <div class="scanline"></div>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="protect">Protect <span class="swap" style="width:{{ swapW }}"><span class="reel"><span class="rin" style="transform:{{ shift }};transition-duration:{{ spinDur }}"><em>the User</em><em>the App</em><em>the Device</em><em>the User</em></span></span></span><span class="caret"></span></p>
+        <h1 class="display"><span class="line">Digital security,</span><span class="line">engineered for</span><span class="line"><em>Banks</em></span></h1>
+        <p class="sub">Fraud has moved to the device, the app, and the authentication layer. Ektar secures all three — with integrated solutions and proven products built by bankers who know where the gaps are.</p>
+        <div class="row">
+          <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+          <button type="button" class="btn btn-ghost btn-onink" onclick="location.href='#layers'">See the three layers</button>
+        </div>
+      </div>
+
+      <div class="solpanel">
+        <div class="sp-head mono"><span>Solutions</span><b>Five products · one security layer</b></div>
+        <a class="sol" href="authentication.dc.html">
+          <span class="num mono">01</span><span class="nm">ekShield</span><span class="role">Authentication</span>
+          <p class="d">Device-bound, phishing-resistant login across mobile, web, call centre, ATM and 3DS.</p>
+        </a>
+        <a class="sol" href="ekprotect.dc.html">
+          <span class="num mono">02</span><span class="nm">ekProtect</span><span class="role">Attest &amp; risk</span>
+          <p class="d">Malware, overlays, rooted devices and RATs, caught inside the app.</p>
+        </a>
+        <a class="sol" href="ekbind.dc.html">
+          <span class="num mono">03</span><span class="nm">ekBind</span><span class="role">SIM binding</span>
+          <p class="d">Operator-verified SIM checks via Silent Network Authentication and Reverse SMS.</p>
+        </a>
+        <a class="sol" href="eksign.dc.html">
+          <span class="num mono">04</span><span class="nm">ekSign</span><span class="role">Signing</span>
+          <p class="d">In-channel document signing, bound to the document and sealed with SHA-256.</p>
+        </a>
+        <a class="sol" href="eksell.dc.html">
+          <span class="num mono">05</span><span class="nm">ekSell</span><span class="role">Distribution</span>
+          <p class="d">Bank products into employer, fintech and retail channels.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="strip mono">
+    <div><span class="k">Deployed</span><span class="v">UAE's 3rd largest bank</span></div>
+    <div><span class="k">Contracted</span><span class="v">Oman's 3rd largest bank</span></div>
+    <div><span class="k">Aligned with</span><span class="v">CBUAE · RBI · SAMA · FIDO Member</span></div>
+  </div>
+
+  <div class="hexband" aria-hidden="true"><span>9c4e f17b a208 31dd 04af 7b21 e5c9 3f9a c2e1 88d0 5b6e a417 f0c3 92bb 7de4 1a58 · ecdsa p-256 · sha-256 · fido2 · device-bound · 9c4e f17b a208 31dd 04af 7b21 e5c9 3f9a c2e1 88d0 5b6e a417 f0c3 92bb 7de4 1a58 · ecdsa p-256 · sha-256 · fido2 · device-bound · </span></div>
+
+  <section class="sec">
+    <span class="kicker mono">The attack surface</span>
+    <h2 class="h2">Six ways into a banking app. Ektar closes all six.</h2>
+    <p class="lede">Mobile apps, internet banking portals, and payment APIs created an attack surface fraudsters can probe from anywhere, at scale, at near-zero cost. These are the vectors we shut down.</p>
+    <div class="threats">
+      <div class="threat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10V7a5 5 0 0 1 10 0v3"></path><rect x="3" y="10" width="18" height="11"></rect><path d="M12 15v2"></path></svg>
+        <p class="n">SMS OTP interception</p>
+        <p class="d">The most exploited authentication method — banned or restricted in five markets.</p>
+        <p class="st">Closed by ekShield &amp; ekBind</p>
+      </div>
+      <div class="threat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="12" height="12"></rect><rect x="9" y="9" width="12" height="12"></rect></svg>
+        <p class="n">Overlay attacks</p>
+        <p class="d">A fake screen drawn over the real app captures credentials in place.</p>
+        <p class="st">Closed by ekProtect</p>
+      </div>
+      <div class="threat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20"></rect><path d="M9 18h6"></path><path d="m8 8 3 3-3 3"></path></svg>
+        <p class="n">Rooted devices &amp; RATs</p>
+        <p class="d">Remote access tools drive the session while the customer watches.</p>
+        <p class="st">Closed by ekProtect</p>
+      </div>
+      <div class="threat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.5 8.5 9 10 5.5-1.5 9-5 9-10V6z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+        <p class="n">Malware in the app</p>
+        <p class="d">Runtime injection and tampering inside an otherwise trusted app.</p>
+        <p class="st">Closed by ekProtect</p>
+      </div>
+      <div class="threat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6v20h12V7z"></path><path d="M14 2v5h5"></path><path d="m9 14 2 2 4-4"></path></svg>
+        <p class="n">Forged documents</p>
+        <p class="d">Salary certificates, statements and letters altered after issuance.</p>
+        <p class="st">Closed by ekSign</p>
+      </div>
+      <div class="threat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"></path><path d="M3 3l18 18"></path></svg>
+        <p class="n">Deepfakes &amp; synthetic IDs</p>
+        <p class="d">AI-generated identities and documents — up 1,210% in 2025.</p>
+        <p class="st">Closed across all three layers</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="layers">
+    <span class="kicker mono">The three layers</span>
+    <h2 class="h2">Three security challenges. Three proven solutions.</h2>
+    <p class="lede">Every solution addresses a distinct layer of fraud risk in banking's digital channels. They work independently and share a common signal layer that makes each one more accurate when deployed together.</p>
+
+    <div class="layer">
+      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10V7a5 5 0 0 1 10 0v3"></path><rect x="3" y="10" width="18" height="11"></rect><circle cx="12" cy="15.5" r="1.5"></circle></svg></span>
+      <p class="lnum">Layer 01<span>ekShield · ekBind</span></p>
+      <div>
+        <h3 class="ltitle">Device-bound authentication, bound to a verified SIM</h3>
+        <p class="lcopy">Replace SMS OTP with phishing-resistant, device-bound authentication across every channel — mobile, web, call centre, ATM, and 3DS. ekBind adds SIM binding via Silent Network Authentication and Reverse SMS, so a swapped SIM is caught before a transaction proceeds. Compliant with CBUAE, RBI, SAMA, BSP, and MAS mandates.</p>
+        <div class="pulsebar"><i></i></div>
+      </div>
+      <a class="go mono" href="authentication.dc.html">Open →</a>
+    </div>
+
+    <div class="layer">
+      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20"></rect><path d="M9 18h6"></path><path d="M9 8h6"></path><path d="M9 12h6"></path></svg></span>
+      <p class="lnum">Layer 02<span>ekProtect</span></p>
+      <div>
+        <h3 class="ltitle">Attestation, runtime defence and behavioural risk</h3>
+        <p class="lcopy">Attest device and app integrity, detect malware, overlay attacks, rooted devices, and remote access tools — from inside the banking app — and suspend the session automatically when a threat is found. Behavioural analysis and ML-driven per-transaction risk decisioning turn every signal into a real-time score. CBUAE-mandated.</p>
+        <div class="pulsebar"><i></i></div>
+      </div>
+      <a class="go mono" href="ekprotect.dc.html">Open →</a>
+    </div>
+
+    <div class="layer">
+      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6v20h12V7z"></path><path d="M14 2v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></span>
+      <p class="lnum">Layer 03<span>ekSign</span></p>
+      <div>
+        <h3 class="ltitle">In-channel signing with cryptographic proof</h3>
+        <p class="lcopy">Customers sign inside the banking app or on a bank-branded page, authenticated by the MFA they already use. Each signature is bound to a SHA-256 fingerprint of the document and chained across signatories, so any later alteration fails verification — and the bank keeps the record.</p>
+        <div class="pulsebar"><i></i></div>
+      </div>
+      <a class="go mono" href="eksign.dc.html">Open →</a>
+    </div>
+
+    <div class="signal">
+      <div>
+        <p class="lbl">Shared signal layer</p>
+        <p>All three layers feed one signal layer — each product becomes more accurate with every other product a bank deploys.</p>
+      </div>
+      <div class="flowbar"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Cryptographic proof</span>
+    <h2 class="h2">Signed at issuance. Verified in milliseconds.</h2>
+    <div class="crypto">
+      <div>
+        <p class="lede" style="margin-bottom:0">Every document a bank issues is signed with an ECDSA key pair at the moment of creation. Alter one character and the signature no longer matches — tampering stops being a judgement call and becomes arithmetic.</p>
+        <div class="csteps">
+          <div class="cstep">
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.5 12.5 8-8"></path><path d="m15 4h5v5"></path></svg></span>
+            <span><b>Sign</b><small>The issuing system calls one API. An ECDSA P-256 signature is bound to the document's exact contents.</small></span>
+          </div>
+          <div class="cstep">
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16"></rect><path d="M8 8h3v3H8z"></path><path d="M16 16h.01"></path><path d="M13 13h3v3"></path></svg></span>
+            <span><b>Seal</b><small>A QR seal carries the signature and the verification endpoint. No change to the document workflow.</small></span>
+          </div>
+          <div class="cstep">
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="m8 12 3 3 5-6"></path></svg></span>
+            <span><b>Verify</b><small>Any party scans the seal. Authenticity returns in milliseconds — no login, no portal, no callback to the bank.</small></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doccard">
+        <span class="seal"></span>
+        <p class="doc-title">Salary certificate · signed</p>
+        <div class="doc-lines"><i></i><i></i><i></i></div>
+        <div class="qrrow">
+          <svg width="104" height="104" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="14" height="14"></rect><rect x="6" y="6" width="6" height="6" fill="currentColor" stroke="none"></rect>
+            <rect x="40" y="2" width="14" height="14"></rect><rect x="44" y="6" width="6" height="6" fill="currentColor" stroke="none"></rect>
+            <rect x="2" y="40" width="14" height="14"></rect><rect x="6" y="44" width="6" height="6" fill="currentColor" stroke="none"></rect>
+            <g fill="currentColor" stroke="none">
+              <rect x="22" y="2" width="4" height="4"></rect><rect x="30" y="2" width="4" height="4"></rect>
+              <rect x="22" y="10" width="4" height="4"></rect><rect x="34" y="10" width="4" height="4"></rect>
+              <rect x="2" y="22" width="4" height="4"></rect><rect x="10" y="22" width="4" height="4"></rect>
+              <rect x="22" y="22" width="4" height="4"></rect><rect x="30" y="26" width="4" height="4"></rect>
+              <rect x="40" y="22" width="4" height="4"></rect><rect x="48" y="26" width="4" height="4"></rect>
+              <rect x="22" y="34" width="4" height="4"></rect><rect x="34" y="30" width="4" height="4"></rect>
+              <rect x="22" y="44" width="4" height="4"></rect><rect x="30" y="40" width="4" height="4"></rect>
+              <rect x="40" y="40" width="4" height="4"></rect><rect x="48" y="48" width="4" height="4"></rect>
+              <rect x="34" y="48" width="4" height="4"></rect><rect x="44" y="34" width="4" height="4"></rect>
+            </g>
+          </svg>
+          <div>
+            <p class="hash">sha256 <b>9c4e·f17b·a208·31dd</b><br>sig r/s <b>3f9a·c2e1</b></p>
+            <span class="valid"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4 10-11"></path></svg>Signature valid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Our products</span>
+    <h2 class="h2">Five products. One signal layer.</h2>
+    <p class="lede">Each can be deployed independently or as part of an integrated platform. All share a common signal layer that compounds in value with every product a bank deploys.</p>
+    <div class="prodgrid">
+      <div class="prod">
+        <p class="nm">ekShield</p>
+        <p class="role">Authentication</p>
+        <p class="d">Device-bound, phishing-resistant authentication across mobile, web, call centre, ATM, and 3DS. White-labelled and live at UAE's 3rd largest bank.</p>
+        <a href="authentication.dc.html">Learn more →</a>
+      </div>
+      <div class="prod">
+        <p class="nm">ekProtect</p>
+        <p class="role">Attest &amp; behavioural risk</p>
+        <p class="d">Embeds in the banking app. Attests device and app integrity, detects malware, overlays, rooted devices and RATs, suspends sessions on detection, and scores risk per transaction.</p>
+        <a href="ekprotect.dc.html">Learn more →</a>
+      </div>
+      <div class="prod">
+        <p class="nm">ekBind</p>
+        <p class="role">SIM binding</p>
+        <p class="d">SIM binding via Silent Network Authentication and Reverse SMS. Catches SIM swap, port-out, and device change before a transaction proceeds.</p>
+        <a href="ekbind.dc.html">Learn more →</a>
+      </div>
+      <div class="prod">
+        <p class="nm">ekSign</p>
+        <p class="role">Document integrity</p>
+        <p class="d">In-channel signing authenticated by the bank's own MFA, plus ECDSA signing and a SHA-256 seal that makes tampering detectable. The bank owns the journey and the audit trail.</p>
+        <a href="eksign.dc.html">Learn more →</a>
+      </div>
+      <div class="prod">
+        <p class="nm">ekSell</p>
+        <p class="role">Distribution</p>
+        <p class="d">Connect banks to retail ecosystems — employers, fintechs, retailers — for cost-effective digital product distribution. Ektar's founding platform.</p>
+        <a href="eksell.dc.html">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">Regulatory tailwinds</span>
+    <h2 class="h2">Regulators are ordering the upgrade.</h2>
+    <p class="lede">Across the GCC, South Asia, and Southeast Asia, regulators have banned SMS OTP, mandated passkeys, and required real-time malware detection. Every bank in these markets needs what Ektar builds — and many have a hard deadline to decide.</p>
+    <div class="mgrid">
+      <div class="mrow"><span class="sq"></span><p><strong>UAE — CBUAE Notice 3057.</strong> SMS OTP and email OTP banned. In-app verification, passkeys, and biometrics mandated. Real-time malware session suspension required.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>Saudi Arabia — SAMA Counter-Fraud Framework.</strong> FIDO2 device-bound credentials mandated. Real-time fraud monitoring required. Penalties up to SAR 5M per breach.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>India — RBI Authentication Directions 2025.</strong> Sole reliance on SMS OTP banned for high-risk transactions. Real-time risk-based authentication mandatory per transaction.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>Singapore — MAS/ABS Directive.</strong> SMS OTP phased out for all retail bank digital token users.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>Philippines — BSP Circular 1213.</strong> Direct prohibition on SMS/email OTP for high-risk banking transactions.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>Malaysia — BNM RMiT 2026.</strong> Device binding, adaptive MFA, and risk-based authentication mandated for all licensed banks.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">The problem</span>
+    <h2 class="h2">Banking fraud has changed. Most defences haven't.</h2>
+    <p class="lede">The tools most banks rely on were built for a different era. The threat has moved on.</p>
+    <div class="metrics">
+      <div class="metric">
+        <p class="tag">Data / 01</p>
+        <p class="n" data-count="485" data-prefix="~$" data-suffix="B">~$485B</p>
+        <p class="lbl">Banking fraud losses (2023)</p>
+        <p class="cp">Part of $1.03 trillion in total consumer scam losses globally. Card fraud alone: $33.4B.</p>
+      </div>
+      <div class="metric">
+        <p class="tag">Data / 02</p>
+        <p class="n" data-count="1210" data-prefix="+" data-suffix="%">+1,210%</p>
+        <p class="lbl">AI-enabled fraud (2025)</p>
+        <p class="cp">Deepfakes, synthetic identities, AI-generated documents. Traditional defences cannot keep pace.</p>
+      </div>
+      <div class="metric">
+        <p class="tag">Data / 03</p>
+        <p class="n" data-count="93" data-suffix="%">93%</p>
+        <p class="lbl">Still using SMS OTP</p>
+        <p class="cp">The most exploited authentication method — now banned or restricted across UAE, India, Saudi Arabia, Philippines, and Singapore.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <h3>Every bank in these markets has a deadline. Let's talk about yours.</h3>
+    <div class="row">
+      <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="footer">
+    <div class="fgrid">
+      <div>
+        <h4>Products</h4>
+        <a href="authentication.dc.html">ekShield</a>
+        <a href="ekprotect.dc.html">ekProtect</a>
+        <a href="ekbind.dc.html">ekBind</a>
+        <a href="eksign.dc.html">ekSign</a>
+        <a href="eksell.dc.html">ekSell</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.dc.html">About us</a>
+        <a href="ai.dc.html">AI</a>
+        <a href="blog.dc.html">Blog</a>
+        <a href="careers.dc.html">Careers</a>
+        <a href="contact.dc.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="contact.dc.html">Talk to us</a>
+        <a href="https://www.linkedin.com/company/ektar-technologies/">LinkedIn</a>
+        <a href="https://www.youtube.com/@ektar-technologies">YouTube</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© Ektar 2022–2026. All rights reserved.</span>
+      <span><a href="https://ektar.com/termsofuse/" style="color:inherit">Terms of Use</a> · <a href="https://ektar.com/privacy-policy/" style="color:inherit">Privacy Policy</a></span>
+    </div>
+    <div class="foffices">
+      <div class="office">
+        <h5>Singapore</h5>
+        <img class="mark" src="assets/office-singapore.png" alt="">
+        <p>18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966</p>
+      </div>
+      <div class="office">
+        <h5>UAE</h5>
+        <img class="mark" src="assets/office-uae.png" alt="">
+        <p>Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE</p>
+      </div>
+      <div class="office">
+        <h5>India</h5>
+        <img class="mark" src="assets/office-india.png" alt="">
+        <p>Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  events = [
+    { text: "Overlay attack detected", flag: "blocked" },
+    { text: "Remote access tool active", flag: "suspended" },
+    { text: "Rooted device", flag: "denied" },
+    { text: "SMS OTP replay attempt", flag: "blocked" },
+    { text: "Tampered document scan", flag: "flagged" },
+    { text: "Screen-capture malware", flag: "blocked" }
+  ];
+
+  state = { chips: [], word: 0 };
+
+  componentDidMount() {
+    this.i = 0;
+    const seed = [];
+    for (let k = 0; k < 3; k++) seed.push(this.pick());
+    this.setState({ chips: seed });
+    this.timer = setInterval(() => {
+      this.setState(s => ({ chips: [this.pick(), ...s.chips].slice(0, 3) }));
+    }, 2600);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.wordTimer = setInterval(() => {
+        this.setState(s => ({ word: s.word + 1 }));
+        clearTimeout(this.snapTimer);
+        this.snapTimer = setTimeout(() => {
+          this.setState(s => {
+            if (s.word < 3) return null;
+            this.noTrans = true;
+            return { word: 0 };
+          });
+          requestAnimationFrame(() => { this.noTrans = false; });
+        }, 1000);
+      }, 3200);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measureWidths());
+    else setTimeout(() => this.measureWidths(), 300);
+    this.countUp();
+    requestAnimationFrame(() => this.startRain());
+    this.onResize = () => this.sizeRain();
+    window.addEventListener("resize", this.onResize);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    clearInterval(this.wordTimer);
+    cancelAnimationFrame(this.raf);
+    window.removeEventListener("resize", this.onResize);
+  }
+
+  rainRef = el => { this.canvas = el; };
+
+  GLYPHS = "0123456789abcdef<>/\\|=+*#$%&@{}[]".split("");
+  g() { return this.GLYPHS[Math.floor(Math.random() * this.GLYPHS.length)]; }
+
+  rgbOf(css, fallback) {
+    const probe = document.createElement("canvas").getContext("2d");
+    probe.fillStyle = fallback;
+    probe.fillStyle = css || fallback;
+    const v = probe.fillStyle;
+    if (v[0] === "#") {
+      const h = v.length === 4 ? v.slice(1).split("").map(c => c + c).join("") : v.slice(1);
+      return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+    }
+    const m = v.match(/[\d.]+/g) || [];
+    return [+m[0] || 0, +m[1] || 0, +m[2] || 0];
+  }
+
+  readColors() {
+    const cs = getComputedStyle(this.canvas);
+    this.cPaper = this.rgbOf(cs.getPropertyValue("--paper").trim(), "#ffffff");
+    this.cAccent = this.rgbOf(cs.getPropertyValue("--accent-lt").trim() || cs.getPropertyValue("--color-accent").trim(), "#ec3013");
+  }
+
+  sizeRain() {
+    const c = this.canvas;
+    if (!c) return;
+    const r = c.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = Math.round(r.width * dpr);
+    c.height = Math.round(r.height * dpr);
+    this.ctx = c.getContext("2d");
+    this.ctx.scale(dpr, dpr);
+    this.vw = r.width; this.vh = r.height;
+    this.cell = 16; this.lineH = 24;
+    this.cells = Math.max(1, Math.ceil(this.vw / this.cell) + 2);
+    const rows = Math.max(1, Math.ceil(this.vh / this.lineH));
+    this.rows = Array.from({ length: rows }, () => this.makeRow(true));
+  }
+
+  makeRow(seed) {
+    return {
+      head: seed ? -Math.random() * this.cells * 1.2 : -Math.random() * 14,
+      speed: 0.02 + Math.random() * 0.05,
+      trail: 10 + Math.floor(Math.random() * 22),
+      glyphs: Array.from({ length: this.cells }, () => this.g()),
+      accent: Math.random() < 0.12
+    };
+  }
+
+  drawRain() {
+    const ctx = this.ctx;
+    if (!ctx) return;
+    ctx.clearRect(0, 0, this.vw, this.vh);
+    ctx.font = "13px ui-monospace, SFMono-Regular, Menlo, monospace";
+    ctx.textBaseline = "top";
+    const [pr, pg, pb] = this.cPaper, [ar, ag, ab] = this.cAccent;
+    for (let j = 0; j < this.rows.length; j++) {
+      const row = this.rows[j];
+      row.head += row.speed;
+      const headCol = Math.floor(row.head);
+      const wrap = i => ((i % this.cells) + this.cells) % this.cells;
+      if (Math.random() < 0.03) row.glyphs[wrap(headCol)] = this.g();
+      for (let t = 0; t < row.trail; t++) {
+        const cx = headCol - t;
+        if (cx < 0 || cx > this.cells) continue;
+        const f = 1 - t / row.trail;
+        let a = f * f * 0.42, r = pr, g = pg, b = pb;
+        if (t === 0) { a = 0.9; if (row.accent) { r = ar; g = ag; b = ab; } }
+        else if (t === 1) a = 0.38;
+        if (row.accent && t > 0) { r = Math.round((r + ar) / 2); g = Math.round((g + ag) / 2); b = Math.round((b + ab) / 2); }
+        ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + a.toFixed(3) + ")";
+        ctx.fillText(row.glyphs[wrap(cx)], cx * this.cell, j * this.lineH);
+      }
+      if (headCol - row.trail > this.cells) this.rows[j] = this.makeRow(false);
+    }
+    if (((this.frame = (this.frame || 0) + 1) % 90) === 0) this.readColors();
+    this.raf = requestAnimationFrame(() => this.drawRain());
+  }
+
+  startRain() {
+    if (!this.canvas) return;
+    this.readColors();
+    this.sizeRain();
+    if (!this.ctx) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.rows.forEach(r => { r.head = Math.random() * this.cells; });
+      const raf = window.requestAnimationFrame;
+      window.requestAnimationFrame = () => 0;
+      this.drawRain();
+      window.requestAnimationFrame = raf;
+      return;
+    }
+    this.drawRain();
+  }
+
+  pick() {
+    const e = this.events[this.i++ % this.events.length];
+    return { id: this.i + "-" + Math.random(), text: e.text, flag: e.flag };
+  }
+
+  countUp() {
+    const nodes = document.querySelectorAll("[data-count]");
+    if (!nodes.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const run = el => {
+      const target = parseFloat(el.dataset.count);
+      const pre = el.dataset.prefix || "", suf = el.dataset.suffix || "";
+      const dur = 1100, t0 = performance.now();
+      const tick = now => {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = pre + Math.round(target * eased).toLocaleString() + suf;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.4 });
+    nodes.forEach(n => io.observe(n));
+  }
+
+  WORDS = ["the User", "the App", "the Device"];
+
+  measureWidths() {
+    const el = document.querySelector(".protect em");
+    if (!el) return;
+    const cs = getComputedStyle(el);
+    const probe = document.createElement("div");
+    probe.style.cssText = "position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre;font-style:" +
+      cs.fontStyle + ";font-weight:" + cs.fontWeight + ";font-size:" + cs.fontSize +
+      ";font-family:" + cs.fontFamily + ";letter-spacing:" + cs.letterSpacing;
+    document.body.appendChild(probe);
+    this.widths = this.WORDS.map(word => {
+      probe.textContent = "";
+      const spans = word.split("").map(ch => {
+        const s = document.createElement("span");
+        s.textContent = ch;
+        probe.appendChild(s);
+        return s;
+      });
+      return spans.map(s => s.getBoundingClientRect().width);
+    });
+    const totals = this.widths.map(a => a.reduce((x, y) => x + y, 0));
+    probe.remove();
+    this.swapW = (Math.max(...totals) + 16).toFixed(2) + "px";
+    this.forceUpdate();
+  }
+
+  renderVals() {
+    const w = this.state.word;
+    return {
+      chips: this.state.chips, rainRef: this.rainRef,
+      shift: "translateY(-" + (w * 1.35).toFixed(2) + "em)",
+      spinDur: this.noTrans ? "0s" : ".85s",
+      swapW: this.swapW || "auto"
+    };
+  }
+}
+
+</script>
+</body>
+</html>
