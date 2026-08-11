@@ -7,6 +7,7 @@ import AttackSurfaceGrid from "@/components/AttackSurfaceGrid";
 import ThreeLayersSection from "@/components/ThreeLayersSection";
 import CryptoProofVisual from "@/components/CryptoProofVisual";
 import ProductGrid from "@/components/ProductGrid";
+import TeamSection from "@/components/TeamSection";
 import RegulatoryTailwinds from "@/components/RegulatoryTailwinds";
 import StatBand from "@/components/StatBand";
 import { hero, closingCta } from "@/lib/content/home";
@@ -21,7 +22,7 @@ export default function Home() {
         <div className="scanline" />
         <div className="wrap">
           <div className="hero">
-            <div>
+            <div className="reveal">
               <HeroRotator words={hero.rotatorWords} />
               <h1 className="display">
                 <span className="line">{hero.h1Lines[0]}</span>
@@ -40,22 +41,40 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <SolutionsPanel />
+            <div className="reveal">
+              <SolutionsPanel />
+            </div>
           </div>
         </div>
       </section>
 
       <div className="wrap">
         <AnnouncementStrip />
-        <AttackSurfaceGrid />
-        <ThreeLayersSection />
-        <CryptoProofVisual />
-        <ProductGrid />
-        <RegulatoryTailwinds />
-        <StatBand />
+        <div className="reveal">
+          <AttackSurfaceGrid />
+        </div>
+        <div className="reveal">
+          <ThreeLayersSection />
+        </div>
+        <div className="reveal">
+          <CryptoProofVisual />
+        </div>
+        <div className="reveal">
+          <ProductGrid />
+        </div>
+        <div className="reveal">
+          <RegulatoryTailwinds />
+        </div>
+        <div className="reveal">
+          <StatBand />
+        </div>
       </div>
 
-      <section className="close">
+      <div className="wrap reveal">
+        <TeamSection />
+      </div>
+
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closingCta.heading}</h3>
           <div className="row">

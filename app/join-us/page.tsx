@@ -17,7 +17,7 @@ export default function CareersPage() {
         <div className="scan" />
         <div className="wrap">
           <div className="hero">
-            <div>
+            <div className="reveal">
               <p className="status mono">
                 <span className="dot" />
                 {hero.statusText}
@@ -33,7 +33,7 @@ export default function CareersPage() {
                 </Link>
               </div>
             </div>
-            <div className="viz">
+            <div className="viz reveal">
               <div className="vhead">
                 <span>Ektar · where we work</span>
                 <span>Open applications</span>
@@ -72,7 +72,7 @@ export default function CareersPage() {
       </section>
 
       <div className="wrap">
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Join us</span>
           <JoinForm />
         </section>

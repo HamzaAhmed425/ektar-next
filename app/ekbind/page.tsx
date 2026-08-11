@@ -99,7 +99,7 @@ export default function EkBindPage() {
           ))}
         </div>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">How binding works</span>
           <h2 className="h2">Two ways to prove the SIM. No OTP in either.</h2>
           <div className="cards">
@@ -114,7 +114,7 @@ export default function EkBindPage() {
         </section>
       </div>
 
-      <section className="close">
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">

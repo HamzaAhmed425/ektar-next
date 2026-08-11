@@ -109,7 +109,7 @@ export default function EkProtectPage() {
           ))}
         </div>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Attestation &amp; detection</span>
           <h2 className="h2">What ekProtect detects and stops</h2>
           <div className="cards">
@@ -123,7 +123,7 @@ export default function EkProtectPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Risk decisioning</span>
           <h2 className="h2">{riskDecisioning.heading}</h2>
           <p className="lede">{riskDecisioning.intro}</p>
@@ -139,7 +139,7 @@ export default function EkProtectPage() {
         </section>
       </div>
 
-      <section className="close">
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">

@@ -16,7 +16,7 @@ export default function AboutPage() {
         <div className="scan" />
         <div className="wrap">
           <div className="hero">
-            <div>
+            <div className="reveal">
               <p className="status mono">
                 <span className="dot" />
                 {hero.statusText}
@@ -24,7 +24,7 @@ export default function AboutPage() {
               <h1 className="display">{hero.title}</h1>
               <p className="sub">{hero.sub}</p>
             </div>
-            <div className="viz">
+            <div className="viz reveal">
               <div className="vhead">
                 <span>Ektar · at a glance</span>
                 <span>Since 2022</span>
@@ -97,7 +97,7 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <section className="sec">
+        <section className="sec reveal">
           <div className="split">
             <div>
               <h3>{liveNotTheoretical.heading}</h3>
@@ -107,7 +107,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Vision &amp; mission</span>
           <div className="vm-grid">
             <div>
@@ -121,7 +121,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Our founders</span>
           <h2 className="h2">Three ex-bankers who lived the problem.</h2>
           <div className="pgrid">
@@ -135,7 +135,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Advisory board</span>
           <div className="pgrid">
             {advisors.map((a) => (
@@ -149,7 +149,7 @@ export default function AboutPage() {
         </section>
       </div>
 
-      <section className="close">
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">

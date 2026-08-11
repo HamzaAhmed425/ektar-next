@@ -16,7 +16,7 @@ export default function AiPage() {
         <div className="scan" />
         <div className="wrap">
           <div className="hero">
-            <div>
+            <div className="reveal">
               <p className="status mono">
                 <span className="dot" />
                 {hero.statusText}
@@ -32,7 +32,7 @@ export default function AiPage() {
                 </Link>
               </div>
             </div>
-            <div className="viz">
+            <div className="viz reveal">
               <div className="vhead">
                 <span>AI at Ektar</span>
                 <span>Two places</span>
@@ -95,7 +95,7 @@ export default function AiPage() {
       </section>
 
       <div className="wrap">
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Where AI sits</span>
           <div className="cards two">
             {whereAiSits.map((c) => (
@@ -109,7 +109,7 @@ export default function AiPage() {
         </section>
       </div>
 
-      <section className="close">
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">

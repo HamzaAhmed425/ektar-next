@@ -744,3 +744,37 @@ textarea.input { min-height: 110px; resize: vertical; }
   .layout { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   16. Team — flip cards (hover/focus reveals bio)
+   ══════════════════════════════════════════════════════════════════════ */
+.team-group-title { font-family: var(--font-heading); font-weight: 700; font-size: 20px; margin: calc(1.6 * var(--leading)) 0 var(--half); }
+.team-group-title:first-of-type { margin-top: calc(1.2 * var(--leading)); }
+.team { display: grid; grid-template-columns: repeat(var(--team-cols, 4), 1fr); gap: 2px; background: var(--line); }
+.teamcard { aspect-ratio: 3/4; background: var(--ink); perspective: 1200px; }
+.teamcard-inner { position: relative; width: 100%; height: 100%; transition: transform .6s cubic-bezier(.22,1,.36,1); transform-style: preserve-3d; }
+.teamcard:hover .teamcard-inner, .teamcard:focus-within .teamcard-inner { transform: rotateY(180deg); }
+.teamcard-front, .teamcard-back { position: absolute; inset: 0; backface-visibility: hidden; }
+.teamcard-front { overflow: hidden; }
+.teamcard-front::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--ink) 88%, transparent) 0%, transparent 55%); }
+.teamcard-tag { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 14px; }
+.teamcard-tag b { display: block; font-size: 19px; color: var(--paper); }
+.teamcard-back { transform: rotateY(180deg); background: var(--ink); border: 2px solid var(--color-accent); padding: 18px; display: flex; flex-direction: column; overflow: auto; }
+.teamcard-back b { font-size: 19px; color: var(--paper); margin-bottom: 4px; }
+.teamcard-back .role { display: block; font-size: 12.5px; color: var(--accent-lt); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; }
+.teamcard-back p { font-size: 14.5px; line-height: 1.6; color: var(--dim); margin: 0; }
+@media (max-width: 1000px) { .team { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 1000px) { .team-3col { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 700px) { .team-3col { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px) { .team { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .teamcard-inner { transition: none; } }
+
+/* site-wide scroll-reveal — fade + lift each section/hero in as it enters view */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.reveal.in-view { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* page transition — fade + rise on every route change */
+.page-transition { animation: page-in .5s cubic-bezier(.22,1,.36,1) both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .page-transition { animation: none; } }

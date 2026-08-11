@@ -23,7 +23,7 @@ export default function ProductHero({
       <div className="scan" />
       <div className="wrap">
         <div className="hero">
-          <div>
+          <div className="reveal">
             <p className="status mono">
               <span className="dot" />
               {statusText}
@@ -39,7 +39,7 @@ export default function ProductHero({
               </Link>
             </div>
           </div>
-          {visual}
+          <div className="reveal">{visual}</div>
         </div>
       </div>
     </section>

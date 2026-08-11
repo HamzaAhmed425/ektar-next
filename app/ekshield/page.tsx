@@ -45,7 +45,7 @@ export default function EkShieldPage() {
           ))}
         </div>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Capabilities</span>
           <h2 className="h2">What ekShield replaces SMS OTP with</h2>
           <div className="cards">
@@ -58,7 +58,7 @@ export default function EkShieldPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Security architecture</span>
           <h2 className="h2">{securityArchitecture.heading}</h2>
           <p className="lede">{securityArchitecture.intro}</p>
@@ -81,7 +81,7 @@ export default function EkShieldPage() {
           <p className="confnote">{securityArchitecture.note}</p>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Application controls</span>
           <h2 className="h2">Policy enforced on the device, not just the server.</h2>
           <div className="cards">
@@ -95,7 +95,7 @@ export default function EkShieldPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Device lock requirement</span>
           <h2 className="h2">{deviceLock.heading}</h2>
           <p className="lede">{deviceLock.intro}</p>
@@ -119,7 +119,7 @@ export default function EkShieldPage() {
           </table>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Regulatory tailwinds</span>
           <h2 className="h2">Regulators are ordering the upgrade.</h2>
           <p className="lede">
@@ -143,7 +143,7 @@ export default function EkShieldPage() {
         </section>
       </div>
 
-      <section className="close">
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">

@@ -89,7 +89,7 @@ export default function EkSellPage() {
           ))}
         </div>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">What ekSell does</span>
           <h2 className="h2">Cost-effective distribution, without building the channel.</h2>
           <div className="cards">
@@ -103,7 +103,7 @@ export default function EkSellPage() {
         </section>
       </div>
 
-      <section className="close">
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">

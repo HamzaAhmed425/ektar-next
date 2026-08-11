@@ -86,7 +86,7 @@ export default function EkSignPage() {
           ))}
         </div>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Why banks move signing in-house</span>
           <h2 className="h2">{whyInHouse.heading}</h2>
           <p className="lede">{whyInHouse.intro}</p>
@@ -101,7 +101,7 @@ export default function EkSignPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">What ekSign is</span>
           <h2 className="h2">{whatItIs.heading}</h2>
           <div className="cards two">
@@ -120,7 +120,7 @@ export default function EkSignPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Signing journeys</span>
           <h2 className="h2">Three tracks, depending on who has to sign.</h2>
           {tracks.map((t) => (
@@ -138,7 +138,7 @@ export default function EkSignPage() {
           ))}
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Signing order</span>
           <h2 className="h2">{signingOrder.heading}</h2>
           <p className="lede">{signingOrder.intro}</p>
@@ -153,7 +153,7 @@ export default function EkSignPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">What the signature looks like</span>
           <h2 className="h2">{signatureLook.heading}</h2>
           <div className="sigwrap">
@@ -206,7 +206,7 @@ export default function EkSignPage() {
           </div>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Authentication by signer type</span>
           <h2 className="h2">{signerTypes.heading}</h2>
           <table className="tbl">
@@ -229,7 +229,7 @@ export default function EkSignPage() {
           </table>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Priority use cases</span>
           <h2 className="h2">{useCases.heading}</h2>
           <table className="tbl">
@@ -252,7 +252,7 @@ export default function EkSignPage() {
           </table>
         </section>
 
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">ekSign vs a third-party portal</span>
           <h2 className="h2">{comparison.heading}</h2>
           <table className="tbl">
@@ -276,7 +276,7 @@ export default function EkSignPage() {
         </section>
       </div>
 
-      <section className="close">
+      <section className="close reveal">
         <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">

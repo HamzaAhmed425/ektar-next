@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TermsOfUsePage() {
   return (
-    <section className="sec">
+    <section className="sec reveal">
       <div className="wrap">
         <span className="kicker mono">Legal</span>
         <h1 className="h2">Terms of Use</h1>

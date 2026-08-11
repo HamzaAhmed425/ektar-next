@@ -16,7 +16,7 @@ export default function BlogPage() {
         <div className="scan" />
         <div className="wrap">
           <div className="hero">
-            <div>
+            <div className="reveal">
               <p className="status mono">
                 <span className="dot" />
                 {hero.statusText}
@@ -32,7 +32,7 @@ export default function BlogPage() {
                 </Link>
               </div>
             </div>
-            <div className="viz">
+            <div className="viz reveal">
               <div className="vhead">
                 <span>What we write about</span>
                 <span>Notes</span>
@@ -73,7 +73,7 @@ export default function BlogPage() {
       </section>
 
       <div className="wrap">
-        <section className="sec">
+        <section className="sec reveal">
           <span className="kicker mono">Placeholder entries — replace with real posts</span>
           <div className="posts">
             {placeholderPosts.map((p, i) => (

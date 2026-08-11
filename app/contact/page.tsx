@@ -16,7 +16,7 @@ export default function ContactPage() {
         <div className="scan" />
         <div className="wrap">
           <div className="hero">
-            <div>
+            <div className="reveal">
               <p className="status mono">
                 <span className="dot" />
                 {hero.statusText}
@@ -24,7 +24,7 @@ export default function ContactPage() {
               <h1 className="display">{hero.title}</h1>
               <p className="sub">{hero.sub}</p>
             </div>
-            <div className="viz">
+            <div className="viz reveal">
               <div className="vhead">
                 <span>Ektar · get in touch</span>
                 <span>Channel open</span>
@@ -66,11 +66,11 @@ export default function ContactPage() {
 
       <div className="wrap">
         <div className="layout">
-          <div className="pane">
+          <div className="pane reveal">
             <span className="kicker mono">Request a demo</span>
             <ContactForm />
           </div>
-          <div className="pane">
+          <div className="pane reveal">
             <span className="kicker mono">Offices</span>
             {offices.map((o) => (
               <div className="office" key={o.name}>

@@ -4,6 +4,8 @@ import "./globals.css";
 import { AgentationProvider } from "@/components/AgentationProvider";
 import Topbar from "@/components/Topbar";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
+import ScrollReveal from "@/components/ScrollReveal";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const poppins = Poppins({
@@ -29,8 +31,9 @@ export default function RootLayout({
       <body>
         <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <Topbar />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer />
+        <ScrollReveal />
         <AgentationProvider />
       </body>
     </html>

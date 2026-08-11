@@ -42,7 +42,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="fgrid">
           <div>
-            <Image src="/ektar-logo.png" alt="Ektar" width={90} height={25} />
+            <Image src="/ektar-logo.png" alt="Ektar" width={86} height={25} />
           </div>
           <div>
             <h4>Products</h4>
