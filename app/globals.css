@@ -728,6 +728,9 @@ textarea.input { min-height: 110px; resize: vertical; }
 .form-grid .input::placeholder { color: color-mix(in srgb, var(--paper) 45%, transparent); }
 .form-grid textarea.input { min-height: 130px; resize: vertical; font-family: inherit; }
 .btn-block { width: 100%; margin-top: var(--space-2); justify-content: center; }
+.form-note { margin-top: var(--space-2); font-size: 13px; }
+.form-note.ok { color: var(--accent-lt); }
+.form-note.error { color: #ff6b6b; }
 
 .layout { display: grid; grid-template-columns: minmax(0,1fr) minmax(300px,400px); gap: 2px; background: var(--line); border-bottom: 2px solid var(--line); }
 .pane { background: var(--ink); padding: calc(2 * var(--leading)) clamp(18px,2.4vw,36px); }
