@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { hero, atAGlance, liveNotTheoretical, vision, mission, founders, advisors, closing } from "@/lib/content/about";
+import { hero, atAGlance, liveNotTheoretical, vision, mission, closing } from "@/lib/content/about";
+import TeamSection from "@/components/TeamSection";
 
 export const metadata: Metadata = {
   title: "About — Ektar",
@@ -121,32 +122,9 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="sec reveal">
-          <span className="kicker mono">Our founders</span>
-          <h2 className="h2">Three ex-bankers who lived the problem.</h2>
-          <div className="pgrid">
-            {founders.map((f) => (
-              <div className="pcard" key={f.name}>
-                <h4>{f.name}</h4>
-                <p className="role">{f.role}</p>
-                <p className="bio">{f.bio}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="sec reveal">
-          <span className="kicker mono">Advisory board</span>
-          <div className="pgrid">
-            {advisors.map((a) => (
-              <div className="pcard" key={a.name}>
-                <h4>{a.name}</h4>
-                <p className="role">{a.role}</p>
-                <p className="bio">{a.bio}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div className="reveal">
+          <TeamSection />
+        </div>
       </div>
 
       <section className="close reveal">

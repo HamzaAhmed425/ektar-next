@@ -7,6 +7,7 @@ import AttackSurfaceGrid from "@/components/AttackSurfaceGrid";
 import ThreeLayersSection from "@/components/ThreeLayersSection";
 import CryptoProofVisual from "@/components/CryptoProofVisual";
 import ProductGrid from "@/components/ProductGrid";
+import AiAtEktar from "@/components/AiAtEktar";
 import TeamSection from "@/components/TeamSection";
 import RegulatoryTailwinds from "@/components/RegulatoryTailwinds";
 import StatBand from "@/components/StatBand";
@@ -68,6 +69,10 @@ export default function Home() {
         <div className="reveal">
           <StatBand />
         </div>
+      </div>
+
+      <div className="wrap reveal">
+        <AiAtEktar />
       </div>
 
       <div className="wrap reveal">
