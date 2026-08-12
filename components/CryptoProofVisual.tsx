@@ -49,58 +49,7 @@ export default function CryptoProofVisual() {
           </div>
         </div>
 
-        <div className="doccard">
-          <span className="seal" />
-          <p className="doc-title">{cryptoProof.card.title}</p>
-          <div className="doc-lines">
-            <i />
-            <i />
-            <i />
-          </div>
-          <div className="qrrow">
-            <svg width="104" height="104" viewBox="0 0 56 56" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="2" y="2" width="14" height="14" />
-              <rect x="6" y="6" width="6" height="6" fill="currentColor" stroke="none" />
-              <rect x="40" y="2" width="14" height="14" />
-              <rect x="44" y="6" width="6" height="6" fill="currentColor" stroke="none" />
-              <rect x="2" y="40" width="14" height="14" />
-              <rect x="6" y="44" width="6" height="6" fill="currentColor" stroke="none" />
-              <g fill="currentColor" stroke="none">
-                <rect x="22" y="2" width="4" height="4" />
-                <rect x="30" y="2" width="4" height="4" />
-                <rect x="22" y="10" width="4" height="4" />
-                <rect x="34" y="10" width="4" height="4" />
-                <rect x="2" y="22" width="4" height="4" />
-                <rect x="10" y="22" width="4" height="4" />
-                <rect x="22" y="22" width="4" height="4" />
-                <rect x="30" y="26" width="4" height="4" />
-                <rect x="40" y="22" width="4" height="4" />
-                <rect x="48" y="26" width="4" height="4" />
-                <rect x="22" y="34" width="4" height="4" />
-                <rect x="34" y="30" width="4" height="4" />
-                <rect x="22" y="44" width="4" height="4" />
-                <rect x="30" y="40" width="4" height="4" />
-                <rect x="40" y="40" width="4" height="4" />
-                <rect x="48" y="48" width="4" height="4" />
-                <rect x="34" y="48" width="4" height="4" />
-                <rect x="44" y="34" width="4" height="4" />
-              </g>
-            </svg>
-            <div>
-              <p className="hash">
-                sha256 <b>{cryptoProof.card.sha256}</b>
-                <br />
-                sig r/s <b>{cryptoProof.card.sig}</b>
-              </p>
-              <span className="valid">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m5 13 4 4 10-11" />
-                </svg>
-                {cryptoProof.card.status.replace(".", "")}
-              </span>
-            </div>
-          </div>
-        </div>
+        <img className="ss-img-0b1c" src="/Passwordless%201.png" alt="Placeholder" />
       </div>
     </section>
   );
