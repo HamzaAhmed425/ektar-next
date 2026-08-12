@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   return (
-    <div key={pathname} className="page-transition">
+    <div key={pathname} className="page-transition xl:text-[#e2e2e2]">
       {children}
     </div>
   );
