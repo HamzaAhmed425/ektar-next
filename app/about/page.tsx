@@ -104,7 +104,7 @@ export default function AboutPage() {
               <h3>{liveNotTheoretical.heading}</h3>
               <p>{liveNotTheoretical.body}</p>
             </div>
-            <div className="split-figure">Team photo</div>
+            <img className="ss-img-afbe" src="/Group-27-1-1024x294-1.webp" alt="Placeholder" />
           </div>
         </section>
 
