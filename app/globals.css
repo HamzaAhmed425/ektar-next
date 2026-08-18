@@ -74,6 +74,13 @@
   --line-soft: color-mix(in srgb, var(--paper) 8%, transparent);
   --dim: color-mix(in srgb, var(--paper) 74%, transparent);
   --accent-lt: var(--color-accent-400);
+
+  /* Faint decorative-text tints (hexband ticker, .sol index numbers). Blending
+     a small % of --paper reads fine on a dark --ink background, but the same
+     % blended onto a light --ink background stays far too close to it in
+     perceived luminance — needs a much higher % to read at all. */
+  --ghost-faint: color-mix(in srgb, var(--paper) 26%, transparent);
+  --ghost-mid: color-mix(in srgb, var(--paper) 45%, transparent);
 }
 
 /* Toggled by lib/theme.ts on <html>/<body> data-theme, persisted to
@@ -86,6 +93,8 @@ body[data-theme="light"] {
   --line-soft: color-mix(in srgb, var(--color-text) 9%, transparent);
   --dim: color-mix(in srgb, var(--color-text) 76%, transparent);
   --accent-lt: var(--color-accent-700);
+  --ghost-faint: color-mix(in srgb, var(--color-text) 62%, transparent);
+  --ghost-mid: color-mix(in srgb, var(--color-text) 62%, transparent);
 }
 
 @theme inline {
@@ -415,7 +424,7 @@ textarea.input { min-height: 110px; resize: vertical; }
 .solpanel .sp-head b { color: var(--dim); font-weight: 400; letter-spacing: .1em; }
 .sol { display: grid; grid-template-columns: auto 1fr auto; gap: 0 14px; align-items: baseline; padding: 14px 16px; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .18s ease, padding-left .18s ease; }
 .sol:last-child { border-bottom: 0; }
-.sol .num { font-size: 11px; letter-spacing: .1em; color: color-mix(in srgb, var(--paper) 45%, transparent); }
+.sol .num { font-size: 11px; letter-spacing: .1em; color: var(--ghost-mid); }
 .sol .nm { font-size: 19px; font-weight: 600; letter-spacing: -.01em; color: var(--paper); }
 .sol .role { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-lt); white-space: nowrap; }
 .sol .d { grid-column: 2/4; font-size: 13px; line-height: 1.55; color: var(--dim); margin: 5px 0 0; text-wrap: pretty; }
@@ -487,7 +496,7 @@ textarea.input { min-height: 110px; resize: vertical; }
 .strip .v { display: block; font-size: 15px; line-height: 1.5; letter-spacing: normal; text-transform: none; color: var(--paper); font-feature-settings: "tnum" 1; }
 
 .hexband { overflow: hidden; border-bottom: 2px solid var(--line); padding: 9px 0; white-space: nowrap; }
-.hexband span { display: inline-block; font-size: 11.5px; letter-spacing: .24em; color: color-mix(in srgb, var(--paper) 26%, transparent); font-feature-settings: "tnum" 1; animation: drift 44s linear infinite; }
+.hexband span { display: inline-block; font-size: 11.5px; letter-spacing: .24em; color: var(--ghost-faint); font-feature-settings: "tnum" 1; animation: drift 44s linear infinite; }
 
 .threats { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--line); }
 .threat { position: relative; background: var(--ink); padding: calc(1.2 * var(--leading)) clamp(16px,2vw,24px); }
@@ -716,10 +725,17 @@ textarea.input { min-height: 110px; resize: vertical; }
 .pcard p.bio { font-size: 14.5px; line-height: 1.65; color: var(--dim); margin: 0; }
 
 .posts { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--line); }
-.post { background: var(--ink); padding: calc(1.3 * var(--leading)) clamp(16px,2vw,26px); }
+.posts.two { grid-template-columns: repeat(2,1fr); }
+.post { background: var(--ink); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: background .18s ease; }
+.post:hover { background: color-mix(in srgb, var(--paper) 4%, transparent); }
+.post-thumb { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; border-bottom: 2px solid var(--line); background: var(--paper); }
+.post-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post-body { padding: calc(1.3 * var(--leading)) clamp(16px,2vw,26px); display: flex; flex-direction: column; flex: 1; }
 .post .meta { font-size: 11px; color: var(--accent-lt); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 var(--leading); }
 .post h3 { font-family: var(--font-heading); font-weight: 600; font-size: 19px; line-height: 1.35; margin: 0 0 10px; }
 .post p { font-size: 14px; line-height: 1.6; color: var(--dim); margin: 0; }
+.post .read { margin-top: 14px; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-lt); }
+.post:hover .read { color: var(--paper); }
 
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--leading) calc(1.4 * var(--leading)); }
 .form-grid .field.full { grid-column: 1/-1; }
@@ -747,6 +763,19 @@ textarea.input { min-height: 110px; resize: vertical; }
   .layout { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
 }
+
+/* Blog — single post */
+.postmeta { max-width: 74ch; }
+.postmeta .h2 { max-width: none; }
+.article-figure { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 2px solid var(--line); margin: 0 0 calc(1.8 * var(--leading)); }
+.article-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.article { max-width: 74ch; }
+.article h3 { font-family: var(--font-heading); font-weight: 700; font-size: 22px; letter-spacing: -.01em; margin: calc(1.6 * var(--leading)) 0 var(--half); }
+.article h3:first-child { margin-top: 0; }
+.article p { font-size: 16px; line-height: 1.75; color: var(--dim); margin: 0 0 var(--leading); }
+.article ul, .article ol { margin: 0 0 var(--leading); padding-left: 22px; }
+.article li { font-size: 16px; line-height: 1.7; color: var(--dim); margin-bottom: 8px; }
+.postfoot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; padding-top: calc(1.4 * var(--leading)); margin-top: calc(1.8 * var(--leading)); border-top: 2px solid var(--line); max-width: 74ch; }
 
 /* ══════════════════════════════════════════════════════════════════════════
    16. Team — flip cards (hover/focus reveals bio)

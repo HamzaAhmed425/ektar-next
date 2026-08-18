@@ -1,0 +1,386 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "Ektar home" [ref=f1e3] [cursor=pointer]:
+      - /url: /
+      - img "Ektar" [ref=f1e4]
+    - generic [ref=f1e5]: Systems live
+    - navigation [ref=f1e7]:
+      - link "ekShield" [ref=f1e8] [cursor=pointer]:
+        - /url: /ekshield
+      - link "ekProtect" [ref=f1e9] [cursor=pointer]:
+        - /url: /ekprotect
+      - link "ekBind" [ref=f1e10] [cursor=pointer]:
+        - /url: /ekbind
+      - link "ekSign" [ref=f1e11] [cursor=pointer]:
+        - /url: /eksign
+      - link "ekSell" [ref=f1e12] [cursor=pointer]:
+        - /url: /eksell
+      - link "AI" [ref=f1e13] [cursor=pointer]:
+        - /url: /ai
+      - link "About" [ref=f1e14] [cursor=pointer]:
+        - /url: /about
+    - button "Toggle theme" [ref=f1e15] [cursor=pointer]
+    - link "Book a demo" [ref=f1e18] [cursor=pointer]:
+      - /url: /contact
+  - generic [ref=f1e19]:
+    - generic [ref=f1e21]: Five products
+    - generic [ref=f1e23]: One signal layer — each product sharpens the others.
+  - generic [ref=f1e24]:
+    - generic [ref=f1e28]:
+      - generic [ref=f1e29]:
+        - paragraph [ref=f1e30]:
+          - text: Protect
+          - generic [ref=f1e33]:
+            - emphasis [ref=f1e34]: the User
+            - emphasis [ref=f1e35]: the App
+            - emphasis [ref=f1e36]: the Device
+            - emphasis [ref=f1e37]: the User
+        - heading "Digital security, engineered for Banks" [level=1] [ref=f1e39]:
+          - generic [ref=f1e40]: Digital security,
+          - generic [ref=f1e41]: engineered for
+          - emphasis [ref=f1e43]: Banks
+        - paragraph [ref=f1e44]: Fraud has moved to the device, the app, and the authentication layer. Ektar secures all three — with integrated solutions and proven products built by bankers who know where the gaps are.
+        - generic [ref=f1e45]:
+          - link "Book a demo" [ref=f1e46] [cursor=pointer]:
+            - /url: /contact
+          - link "See the three layers" [ref=f1e47] [cursor=pointer]:
+            - /url: "#layers"
+      - generic [ref=f1e49]:
+        - generic [ref=f1e50]: Five products · one security layer
+        - link "01 ekShield Authentication Device-bound, phishing-resistant login across mobile, web, call centre, ATM and 3DS." [ref=f1e51] [cursor=pointer]:
+          - /url: /ekshield
+          - generic [ref=f1e52]: "01"
+          - generic [ref=f1e53]: ekShield
+          - generic [ref=f1e54]: Authentication
+          - generic [ref=f1e55]: Device-bound, phishing-resistant login across mobile, web, call centre, ATM and 3DS.
+        - link "02 ekProtect Attest & risk Malware, overlays, rooted devices and RATs, caught inside the app." [ref=f1e56] [cursor=pointer]:
+          - /url: /ekprotect
+          - generic [ref=f1e57]: "02"
+          - generic [ref=f1e58]: ekProtect
+          - generic [ref=f1e59]: Attest & risk
+          - generic [ref=f1e60]: Malware, overlays, rooted devices and RATs, caught inside the app.
+        - link "03 ekBind SIM binding Operator-verified SIM checks via Silent Network Authentication and Reverse SMS." [ref=f1e61] [cursor=pointer]:
+          - /url: /ekbind
+          - generic [ref=f1e62]: "03"
+          - generic [ref=f1e63]: ekBind
+          - generic [ref=f1e64]: SIM binding
+          - generic [ref=f1e65]: Operator-verified SIM checks via Silent Network Authentication and Reverse SMS.
+        - link "04 ekSign Signing In-channel document signing, bound to the document and sealed with SHA-256." [ref=f1e66] [cursor=pointer]:
+          - /url: /eksign
+          - generic [ref=f1e67]: "04"
+          - generic [ref=f1e68]: ekSign
+          - generic [ref=f1e69]: Signing
+          - generic [ref=f1e70]: In-channel document signing, bound to the document and sealed with SHA-256.
+        - link "05 ekSell Distribution Bank products into employer, fintech and retail channels." [ref=f1e71] [cursor=pointer]:
+          - /url: /eksell
+          - generic [ref=f1e72]: "05"
+          - generic [ref=f1e73]: ekSell
+          - generic [ref=f1e74]: Distribution
+          - generic [ref=f1e75]: Bank products into employer, fintech and retail channels.
+    - generic [ref=f1e76]:
+      - generic [ref=f1e77]:
+        - generic [ref=f1e78]:
+          - generic [ref=f1e79]: Deployed
+          - generic [ref=f1e80]: UAE's 3rd largest bank
+        - generic [ref=f1e81]:
+          - generic [ref=f1e82]: Contracted
+          - generic [ref=f1e83]: Oman's 3rd largest bank
+        - generic [ref=f1e84]:
+          - generic [ref=f1e85]: Aligned with
+          - generic [ref=f1e86]: CBUAE · RBI · SAMA · FIDO Member
+      - generic [ref=f1e87]: 9c4e f17b a208 31dd 04af 7b21 e5c9 3f9a c2e1 88d0 5b6e a417 f0c3 92bb 7de4 1a58 · ecdsa p-256 · sha-256 · fido2 · device-bound · 9c4e f17b a208 31dd 04af 7b21 e5c9 3f9a c2e1 88d0 5b6e a417 f0c3 92bb 7de4 1a58 · ecdsa p-256 · sha-256 · fido2 · device-bound ·
+      - generic [ref=f1e90]:
+        - generic [ref=f1e91]: The attack surface
+        - heading "Six ways into a banking app. Ektar closes all six." [level=2] [ref=f1e92]
+        - paragraph [ref=f1e93]: Mobile apps, internet banking portals, and payment APIs created an attack surface fraudsters can probe from anywhere, at scale, at near-zero cost. These are the vectors we shut down.
+        - generic [ref=f1e94]:
+          - generic [ref=f1e95]:
+            - paragraph [ref=f1e98]: SMS OTP interception
+            - paragraph [ref=f1e99]: The most exploited authentication method — banned or restricted in five markets.
+            - paragraph [ref=f1e100]: Closed by ekShield & ekBind
+          - generic [ref=f1e101]:
+            - paragraph [ref=f1e104]: Overlay attacks
+            - paragraph [ref=f1e105]: A fake screen drawn over the real app captures credentials in place.
+            - paragraph [ref=f1e106]: Closed by ekProtect
+          - generic [ref=f1e107]:
+            - paragraph [ref=f1e110]: Rooted devices & RATs
+            - paragraph [ref=f1e111]: Remote access tools drive the session while the customer watches.
+            - paragraph [ref=f1e112]: Closed by ekProtect
+          - generic [ref=f1e113]:
+            - paragraph [ref=f1e116]: Malware in the app
+            - paragraph [ref=f1e117]: Runtime injection and tampering inside an otherwise trusted app.
+            - paragraph [ref=f1e118]: Closed by ekProtect
+          - generic [ref=f1e119]:
+            - paragraph [ref=f1e122]: Forged documents
+            - paragraph [ref=f1e123]: Salary certificates, statements and letters altered after issuance.
+            - paragraph [ref=f1e124]: Closed by ekSign
+          - generic [ref=f1e125]:
+            - paragraph [ref=f1e128]: Deepfakes & synthetic IDs
+            - paragraph [ref=f1e129]: AI-generated identities and documents — up 1,210% in 2025.
+            - paragraph [ref=f1e130]: Closed by Closed across all three layers
+      - generic [ref=f1e132]:
+        - generic [ref=f1e133]: The three layers
+        - heading "Three security challenges. Three proven solutions." [level=2] [ref=f1e134]
+        - paragraph [ref=f1e135]: Every solution addresses a distinct layer of fraud risk in banking's digital channels. They work independently and share a common signal layer that makes each one more accurate when deployed together.
+        - generic [ref=f1e136]:
+          - paragraph [ref=f1e142]:
+            - text: Layer 01
+            - generic [ref=f1e143]: ekShield · ekBind
+          - generic [ref=f1e144]:
+            - heading "Device-bound authentication, bound to a verified SIM" [level=3] [ref=f1e145]
+            - paragraph [ref=f1e146]: Replace SMS OTP with phishing-resistant, device-bound authentication across every channel — mobile, web, call centre, ATM, and 3DS. ekBind adds SIM binding via Silent Network Authentication and Reverse SMS, so a swapped SIM is caught before a transaction proceeds. Compliant with CBUAE, RBI, SAMA, BSP, and MAS mandates.
+          - link "Open →" [ref=f1e148] [cursor=pointer]:
+            - /url: /ekshield
+        - generic [ref=f1e149]:
+          - paragraph [ref=f1e153]:
+            - text: Layer 02
+            - generic [ref=f1e154]: ekProtect
+          - generic [ref=f1e155]:
+            - heading "Attestation, runtime defence and behavioural risk" [level=3] [ref=f1e156]
+            - paragraph [ref=f1e157]: Attest device and app integrity, detect malware, overlay attacks, rooted devices, and remote access tools — from inside the banking app — and suspend the session automatically when a threat is found. Behavioural analysis and ML-driven per-transaction risk decisioning turn every signal into a real-time score. CBUAE-mandated.
+          - link "Open →" [ref=f1e159] [cursor=pointer]:
+            - /url: /ekprotect
+        - generic [ref=f1e160]:
+          - paragraph [ref=f1e165]:
+            - text: Layer 03
+            - generic [ref=f1e166]: ekSign
+          - generic [ref=f1e167]:
+            - heading "In-channel signing with cryptographic proof" [level=3] [ref=f1e168]
+            - paragraph [ref=f1e169]: Customers sign inside the banking app or on a bank-branded page, authenticated by the MFA they already use. Each signature is bound to a SHA-256 fingerprint of the document and chained across signatories, so any later alteration fails verification — and the bank keeps the record.
+          - link "Open →" [ref=f1e171] [cursor=pointer]:
+            - /url: /eksign
+        - generic [ref=f1e173]:
+          - paragraph [ref=f1e174]: Shared signal layer
+          - paragraph [ref=f1e175]: all three layers feed one signal layer — each product becomes more accurate with every other product a bank deploys.
+      - generic [ref=f1e178]:
+        - generic [ref=f1e179]: Cryptographic proof
+        - heading "Signed at issuance. Verified in milliseconds." [level=2] [ref=f1e180]
+        - generic [ref=f1e181]:
+          - generic [ref=f1e182]:
+            - paragraph [ref=f1e183]: Every document a bank issues is signed with an ECDSA key pair at the moment of creation. Alter one character and the signature no longer matches — tampering stops being a judgement call and becomes arithmetic.
+            - generic [ref=f1e184]:
+              - generic [ref=f1e191]:
+                - generic [ref=f1e192]: Sign
+                - text: Issuing system calls one API; ECDSA P-256 signature bound to the document's exact contents.
+              - generic [ref=f1e199]:
+                - generic [ref=f1e200]: Seal
+                - text: A QR seal carries the signature and verification endpoint; no change to the document workflow.
+              - generic [ref=f1e209]:
+                - generic [ref=f1e210]: Verify
+                - text: Any party scans the seal; authenticity returns in milliseconds — no login, no portal, no callback to the bank.
+          - img "Placeholder" [ref=f1e211]
+      - generic [ref=f1e213]:
+        - generic [ref=f1e214]: Our products
+        - heading "Five products. One signal layer." [level=2] [ref=f1e215]
+        - paragraph [ref=f1e216]: Each can be deployed independently or as part of an integrated platform. All share a common signal layer that compounds in value with every product a bank deploys.
+        - generic [ref=f1e217]:
+          - generic [ref=f1e218]:
+            - paragraph [ref=f1e219]: ekShield
+            - paragraph [ref=f1e220]: Authentication
+            - paragraph [ref=f1e221]: Device-bound, phishing-resistant authentication across mobile, web, call centre, ATM, and 3DS. White-labelled and live at UAE's 3rd largest bank.
+            - link "Learn more →" [ref=f1e222] [cursor=pointer]:
+              - /url: /ekshield
+          - generic [ref=f1e223]:
+            - paragraph [ref=f1e224]: ekProtect
+            - paragraph [ref=f1e225]: Attest & behavioural risk
+            - paragraph [ref=f1e226]: Embeds in the banking app. Attests device and app integrity, detects malware, overlays, rooted devices and RATs, suspends sessions on detection, and scores risk per transaction.
+            - link "Learn more →" [ref=f1e227] [cursor=pointer]:
+              - /url: /ekprotect
+          - generic [ref=f1e228]:
+            - paragraph [ref=f1e229]: ekBind
+            - paragraph [ref=f1e230]: SIM binding
+            - paragraph [ref=f1e231]: SIM binding via Silent Network Authentication and Reverse SMS. Catches SIM swap, port-out, and device change before a transaction proceeds.
+            - link "Learn more →" [ref=f1e232] [cursor=pointer]:
+              - /url: /ekbind
+          - generic [ref=f1e233]:
+            - paragraph [ref=f1e234]: ekSign
+            - paragraph [ref=f1e235]: Document integrity
+            - paragraph [ref=f1e236]: In-channel signing authenticated by the bank's own MFA, plus ECDSA signing and a SHA-256 seal that makes tampering detectable. The bank owns the journey and the audit trail.
+            - link "Learn more →" [ref=f1e237] [cursor=pointer]:
+              - /url: /eksign
+          - generic [ref=f1e238]:
+            - paragraph [ref=f1e239]: ekSell
+            - paragraph [ref=f1e240]: Distribution
+            - paragraph [ref=f1e241]: Connect banks to retail ecosystems — employers, fintechs, retailers — for cost-effective digital product distribution. Ektar's founding platform.
+            - link "Learn more →" [ref=f1e242] [cursor=pointer]:
+              - /url: /eksell
+      - generic [ref=f1e244]:
+        - generic [ref=f1e245]: Regulatory tailwinds
+        - heading "Regulators are ordering the upgrade." [level=2] [ref=f1e246]
+        - paragraph [ref=f1e247]: Across the GCC, South Asia, and Southeast Asia, regulators have banned SMS OTP, mandated passkeys, and required real-time malware detection. Every bank in these markets needs what Ektar builds — and many have a hard deadline to decide.
+        - generic [ref=f1e248]:
+          - paragraph [ref=f1e251]:
+            - strong [ref=f1e252]: UAE — CBUAE Notice 3057.
+            - text: SMS OTP and email OTP banned. In-app verification, passkeys, and biometrics mandated. Real-time malware session suspension required.
+          - paragraph [ref=f1e255]:
+            - strong [ref=f1e256]: Saudi Arabia — SAMA Counter-Fraud Framework.
+            - text: FIDO2 device-bound credentials mandated. Real-time fraud monitoring required. Penalties up to SAR 5M per breach.
+          - paragraph [ref=f1e259]:
+            - strong [ref=f1e260]: India — RBI Authentication Directions 2025.
+            - text: Sole reliance on SMS OTP banned for high-risk transactions. Real-time risk-based authentication mandatory per transaction.
+          - paragraph [ref=f1e263]:
+            - strong [ref=f1e264]: Singapore — MAS/ABS Directive.
+            - text: SMS OTP phased out for all retail bank digital token users.
+          - paragraph [ref=f1e267]:
+            - strong [ref=f1e268]: Philippines — BSP Circular 1213.
+            - text: Direct prohibition on SMS/email OTP for high-risk banking transactions.
+          - paragraph [ref=f1e271]:
+            - strong [ref=f1e272]: Malaysia — BNM RMiT 2026.
+            - text: Device binding, adaptive MFA, and risk-based authentication mandated for all licensed banks.
+      - generic [ref=f1e274]:
+        - generic [ref=f1e275]: The problem
+        - heading "Banking fraud has changed. Most defences haven't." [level=2] [ref=f1e276]
+        - paragraph [ref=f1e277]: The tools most banks rely on were built for a different era. The threat has moved on.
+        - generic [ref=f1e278]:
+          - generic [ref=f1e279]:
+            - paragraph [ref=f1e280]: Data / 01
+            - paragraph [ref=f1e281]: ~$485B
+            - paragraph [ref=f1e282]: Banking fraud losses (2023)
+            - paragraph [ref=f1e283]: "Part of $1.03 trillion in total consumer scam losses globally. Card fraud alone: $33.4B."
+          - generic [ref=f1e284]:
+            - paragraph [ref=f1e285]: Data / 02
+            - paragraph [ref=f1e286]: +1,210%
+            - paragraph [ref=f1e287]: AI-enabled fraud (2025)
+            - paragraph [ref=f1e288]: Deepfakes, synthetic identities, AI-generated documents. Traditional defences cannot keep pace.
+          - generic [ref=f1e289]:
+            - paragraph [ref=f1e290]: Data / 03
+            - paragraph [ref=f1e291]: 93%
+            - paragraph [ref=f1e292]: Still using SMS OTP
+            - paragraph [ref=f1e293]: The most exploited authentication method — now banned or restricted across UAE, India, Saudi Arabia, Philippines, and Singapore.
+    - generic [ref=f1e295]:
+      - generic [ref=f1e296]: AI at Ektar
+      - heading "AI is not just in our products. It's in how we build them." [level=2] [ref=f1e297]
+      - generic [ref=f1e298]:
+        - generic [ref=f1e299]:
+          - paragraph [ref=f1e300]: "01"
+          - paragraph [ref=f1e301]: AI in our products
+          - paragraph [ref=f1e302]: ekSign uses AI-assisted fraud pattern detection. The RASP SDK uses behavioural analysis to distinguish legitimate users from malware at runtime. The Fraud & Risk Engine will be ML driven at its core — per-transaction risk decisioning across all signal layers.
+        - generic [ref=f1e303]:
+          - paragraph [ref=f1e304]: "02"
+          - paragraph [ref=f1e305]: AI in how we build
+          - paragraph [ref=f1e306]: Our engineering teams use AI-assisted development practices to accelerate delivery and maintain high code quality — with human engineers accountable for every design decision, security control, and integration point.
+    - generic [ref=f1e308]:
+      - generic [ref=f1e309]: Founders & advisory board
+      - heading "The team behind Ektar." [level=2] [ref=f1e310]
+      - paragraph [ref=f1e311]: Ex-bankers and industry veterans who lived the problem before they built the fix.
+      - heading "Our Founders" [level=3] [ref=f1e312]
+      - generic [ref=f1e313]:
+        - generic [ref=f1e315]:
+          - generic [ref=f1e316]:
+            - img "Sandeep Bose" [ref=f1e317]
+            - generic [ref=f1e318]: Sandeep Bose
+          - generic [ref=f1e320]:
+            - generic [ref=f1e321]: Sandeep Bose
+            - generic [ref=f1e322]: Co-Founder and CEO
+            - paragraph [ref=f1e323]: Sandeep has 29 years of experience at Standard Chartered Bank in Consumer Banking Leadership roles. His last role was Regional Head of Personal and Business Banking for Africa, Middle East and Europe.
+        - generic [ref=f1e325]:
+          - generic [ref=f1e326]:
+            - img "Ramanathan Mullainathan" [ref=f1e327]
+            - generic [ref=f1e328]: Ramanathan Mullainathan
+          - generic [ref=f1e330]:
+            - generic [ref=f1e331]: Ramanathan Mullainathan
+            - generic [ref=f1e332]: Co-Founder and CTO
+            - paragraph [ref=f1e333]: Ramanathan has 23 years of IT leadership experience consulting global banks — Standard Chartered, JPMC, Fidelity, State Street, Bear Stearns. His most recent role was as Global Head, Technologies for Retail, Private & Business Banking Channels with Standard Chartered.
+        - generic [ref=f1e335]:
+          - generic [ref=f1e336]:
+            - img "Sethu Ramaswamy" [ref=f1e337]
+            - generic [ref=f1e338]: Sethu Ramaswamy
+          - generic [ref=f1e340]:
+            - generic [ref=f1e341]: Sethu Ramaswamy
+            - generic [ref=f1e342]: Co-Founder and CPO
+            - paragraph [ref=f1e343]: Sethu has 26 years of experience with Standard Chartered Bank in Consumer Banking Leadership roles. He brings extensive expertise in Product Management and Credit Cards/Payments. His last role was Regional Head of Affluent Banking for Africa, Middle East & Europe.
+      - heading "Our Advisory Board" [level=3] [ref=f1e344]
+      - generic [ref=f1e345]:
+        - generic [ref=f1e347]:
+          - generic [ref=f1e348]:
+            - img "A. D. Ganesh" [ref=f1e349]
+            - generic [ref=f1e350]: A. D. Ganesh
+          - generic [ref=f1e352]:
+            - generic [ref=f1e353]: A. D. Ganesh
+            - generic [ref=f1e354]: Founder & CEO, Quantum Consultants FZ LLC
+            - paragraph [ref=f1e355]: Ganesh has 26 years of extensive banking experience across India, Middle East, Sub Saharan Africa and Europe. His last job was at Standard Chartered Bank as Managing Director and Regional Head of Commercial Banking in Africa and Middle East.
+        - generic [ref=f1e357]:
+          - generic [ref=f1e358]:
+            - img "Andrew Bainbridge" [ref=f1e359]
+            - generic [ref=f1e360]: Andrew Bainbridge
+          - generic [ref=f1e362]:
+            - generic [ref=f1e363]: Andrew Bainbridge
+            - generic [ref=f1e364]: Chair, Private Infrastructure Development Group Limited
+            - paragraph [ref=f1e365]: A professional in commercial banking and risk management, with extensive experience in emerging and developed markets, infrastructure financing, and business strategy.
+        - generic [ref=f1e367]:
+          - generic [ref=f1e368]:
+            - img "Suvo Sarkar" [ref=f1e369]
+            - generic [ref=f1e370]: Suvo Sarkar
+          - generic [ref=f1e372]:
+            - generic [ref=f1e373]: Suvo Sarkar
+            - generic [ref=f1e374]: Founder & CEO, 3D Advisory
+            - paragraph [ref=f1e375]: Suvo has over 36 years of experience across Asia and the Middle East. His last job was at Emirates NBD, where he held the positions of Senior Executive Vice President and Group Head of Retail Banking and Wealth Management. In 2020, he won the Global Lifetime Achievement award.
+        - generic [ref=f1e377]:
+          - generic [ref=f1e378]:
+            - img "Vignesh Ramanujam" [ref=f1e379]
+            - generic [ref=f1e380]: Vignesh Ramanujam
+          - generic [ref=f1e382]:
+            - generic [ref=f1e383]: Vignesh Ramanujam
+            - generic [ref=f1e384]: CEO, second venture
+            - paragraph [ref=f1e385]: Vignesh is an entrepreneur, previously a Partner at Lok Capital, where he oversaw investments in over 40 companies, achieving significant exits and IPOs. He has also personally supported over 50 startups globally, spanning technology investing, fundraising, and early-stage strategy.
+    - generic [ref=f1e387]:
+      - heading "Every bank in these markets has a deadline. Let's talk about yours." [level=3] [ref=f1e388]
+      - link "Book a demo" [ref=f1e390] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=f1e391]:
+    - generic [ref=f1e392]:
+      - generic [ref=f1e393]:
+        - img "Ektar" [ref=f1e395]
+        - generic [ref=f1e396]:
+          - heading "Products" [level=4] [ref=f1e397]
+          - link "ekShield" [ref=f1e398] [cursor=pointer]:
+            - /url: /ekshield
+          - link "ekProtect" [ref=f1e399] [cursor=pointer]:
+            - /url: /ekprotect
+          - link "ekBind" [ref=f1e400] [cursor=pointer]:
+            - /url: /ekbind
+          - link "ekSign" [ref=f1e401] [cursor=pointer]:
+            - /url: /eksign
+          - link "ekSell" [ref=f1e402] [cursor=pointer]:
+            - /url: /eksell
+        - generic [ref=f1e403]:
+          - heading "Company" [level=4] [ref=f1e404]
+          - link "About us" [ref=f1e405] [cursor=pointer]:
+            - /url: /about
+          - link "AI" [ref=f1e406] [cursor=pointer]:
+            - /url: /ai
+          - link "Blog" [ref=f1e407] [cursor=pointer]:
+            - /url: /blog
+          - link "Careers" [ref=f1e408] [cursor=pointer]:
+            - /url: /join-us
+          - link "Contact" [ref=f1e409] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=f1e410]:
+          - heading "Contact" [level=4] [ref=f1e411]
+          - link "Talk to us" [ref=f1e412] [cursor=pointer]:
+            - /url: /contact
+          - link "LinkedIn" [ref=f1e413] [cursor=pointer]:
+            - /url: https://www.linkedin.com
+          - link "YouTube" [ref=f1e414] [cursor=pointer]:
+            - /url: https://www.youtube.com
+      - generic [ref=f1e415]:
+        - generic [ref=f1e416]:
+          - img "Ektar Singapore office" [ref=f1e417]
+          - heading "Singapore" [level=5] [ref=f1e418]
+          - paragraph [ref=f1e419]: "18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966"
+        - generic [ref=f1e420]:
+          - img "Ektar UAE office" [ref=f1e421]
+          - heading "UAE" [level=5] [ref=f1e422]
+          - paragraph [ref=f1e423]: Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE
+        - generic [ref=f1e424]:
+          - img "Ektar India office" [ref=f1e425]
+          - heading "India" [level=5] [ref=f1e426]
+          - paragraph [ref=f1e427]: "Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India"
+      - generic [ref=f1e428]:
+        - generic [ref=f1e429]: © Ektar 2022–2026. All rights reserved.
+        - generic [ref=f1e430]:
+          - link "Terms of Use" [ref=f1e431] [cursor=pointer]:
+            - /url: /termsofuse
+          - text: ·
+          - link "Privacy Policy" [ref=f1e432] [cursor=pointer]:
+            - /url: /privacy-policy

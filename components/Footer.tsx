@@ -39,7 +39,7 @@ const OFFICES = [
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <div className="fgrid">
           <div>
             <Image src="/ektar-logo.png" alt="Ektar" width={86} height={25} />
@@ -63,10 +63,18 @@ export default function Footer() {
           <div>
             <h4>Contact</h4>
             <Link href="/contact">Talk to us</Link>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/company/ektar-technologies/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn
             </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.youtube.com/@ektar-technologies"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               YouTube
             </a>
           </div>

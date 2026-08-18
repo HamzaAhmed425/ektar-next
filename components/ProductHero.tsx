@@ -21,7 +21,7 @@ export default function ProductHero({
       {motif}
       <div className="glow" />
       <div className="scan" />
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <div className="hero">
           <div className="reveal">
             <p className="status mono">

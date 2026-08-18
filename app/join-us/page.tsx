@@ -15,7 +15,7 @@ export default function CareersPage() {
         <div className="mesh" />
         <div className="glow" />
         <div className="scan" />
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <div className="hero">
             <div className="reveal">
               <p className="status mono">
@@ -71,7 +71,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <section className="sec reveal">
           <span className="kicker mono">Join us</span>
           <JoinForm />

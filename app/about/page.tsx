@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div className="mesh" />
         <div className="glow" />
         <div className="scan" />
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <div className="hero">
             <div className="reveal">
               <p className="status mono">
@@ -88,7 +88,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <div className="strip mono">
           {atAGlance.map((f) => (
             <div key={f.k}>
@@ -128,7 +128,7 @@ export default function AboutPage() {
       </div>
 
       <section className="close reveal">
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <h3>{closing.heading}</h3>
           <div className="row">
             <Link href="/contact" className="btn btn-primary">

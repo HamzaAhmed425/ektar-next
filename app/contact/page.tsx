@@ -14,7 +14,7 @@ export default function ContactPage() {
         <div className="mesh" />
         <div className="glow" />
         <div className="scan" />
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <div className="hero">
             <div className="reveal">
               <p className="status mono">
@@ -64,7 +64,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <div className="layout">
           <div className="pane reveal">
             <span className="kicker mono">Request a demo</span>

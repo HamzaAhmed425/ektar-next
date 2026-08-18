@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { hero, whatWeWriteAbout, placeholderPosts } from "@/lib/content/blog";
+import { hero, whatWeWriteAbout, posts } from "@/lib/content/blog";
 
 export const metadata: Metadata = {
   title: "Blog — Ektar",
@@ -14,7 +15,7 @@ export default function BlogPage() {
         <div className="mesh" />
         <div className="glow" />
         <div className="scan" />
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <div className="hero">
             <div className="reveal">
               <p className="status mono">
@@ -65,23 +66,31 @@ export default function BlogPage() {
                 ))}
               </div>
               <div className="vnote">
-                Posts are <b>placeholders</b> until real entries are published
+                <b>{posts.length} posts</b> published so far
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <section className="sec reveal">
-          <span className="kicker mono">Placeholder entries — replace with real posts</span>
+          <span className="kicker mono">Latest posts</span>
           <div className="posts">
-            {placeholderPosts.map((p, i) => (
-              <div className="post" key={i}>
-                <p className="meta">{p.meta}</p>
-                <h3>{p.title}</h3>
-                <p>{p.standfirst}</p>
-              </div>
+            {posts.map((p) => (
+              <Link className="post" key={p.slug} href={`/blog/${p.slug}`}>
+                <div className="post-thumb">
+                  <Image src={p.image} alt={p.imageAlt} fill sizes="(max-width: 1000px) 100vw, 33vw" />
+                </div>
+                <div className="post-body">
+                  <p className="meta">
+                    {p.dateLabel} · {p.tag}
+                  </p>
+                  <h3>{p.title}</h3>
+                  <p>{p.excerpt}</p>
+                  <span className="read">Read the post →</span>
+                </div>
+              </Link>
             ))}
           </div>
         </section>

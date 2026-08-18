@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <section className="sec reveal">
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <span className="kicker mono">Legal</span>
         <h1 className="h2">Privacy Policy</h1>
         <p className="lede">

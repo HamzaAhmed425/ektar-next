@@ -21,7 +21,7 @@ export default function Home() {
         <div className="mesh" />
         <div className="glow" />
         <div className="scanline" />
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <div className="hero">
             <div className="reveal">
               <HeroRotator words={hero.rotatorWords} />
@@ -49,7 +49,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <AnnouncementStrip />
         <div className="reveal">
           <AttackSurfaceGrid />
@@ -80,7 +80,7 @@ export default function Home() {
       </div>
 
       <section className="close reveal">
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <h3>{closingCta.heading}</h3>
           <div className="row">
             <Link href={closingCta.cta.href} className="btn btn-primary">

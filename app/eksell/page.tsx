@@ -79,7 +79,7 @@ export default function EkSellPage() {
         }
       />
 
-      <div className="wrap">
+      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <div className="strip mono">
           {quickFacts.map((f) => (
             <div key={f.k}>
@@ -104,7 +104,7 @@ export default function EkSellPage() {
       </div>
 
       <section className="close reveal">
-        <div className="wrap">
+        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
           <h3>{closing.heading}</h3>
           <div className="row">
             <Link href="/contact" className="btn btn-primary">

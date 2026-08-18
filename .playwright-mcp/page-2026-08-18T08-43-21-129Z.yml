@@ -1,0 +1,139 @@
+- generic [active] [ref=f8e1]:
+  - banner [ref=f8e2]:
+    - link "Ektar home" [ref=f8e3] [cursor=pointer]:
+      - /url: /
+      - img "Ektar" [ref=f8e4]
+    - generic [ref=f8e5]: Notes
+    - navigation [ref=f8e7]:
+      - link "ekShield" [ref=f8e8] [cursor=pointer]:
+        - /url: /ekshield
+      - link "ekProtect" [ref=f8e9] [cursor=pointer]:
+        - /url: /ekprotect
+      - link "ekBind" [ref=f8e10] [cursor=pointer]:
+        - /url: /ekbind
+      - link "ekSign" [ref=f8e11] [cursor=pointer]:
+        - /url: /eksign
+      - link "ekSell" [ref=f8e12] [cursor=pointer]:
+        - /url: /eksell
+      - link "AI" [ref=f8e13] [cursor=pointer]:
+        - /url: /ai
+      - link "About" [ref=f8e14] [cursor=pointer]:
+        - /url: /about
+    - button "Toggle theme" [ref=f8e15] [cursor=pointer]
+    - link "Book a demo" [ref=f8e18] [cursor=pointer]:
+      - /url: /contact
+  - generic [ref=f8e19]:
+    - generic [ref=f8e21]: Five products
+    - generic [ref=f8e23]: One signal layer — each product sharpens the others.
+  - generic [ref=f8e24]:
+    - generic [ref=f8e27]:
+      - generic [ref=f8e28]:
+        - paragraph [ref=f8e29]: Blog
+        - heading "Notes on fraud, devices, and regulation." [level=1] [ref=f8e31]
+        - paragraph [ref=f8e32]: Where the threat is moving, what regulators are ordering next, and what it means for a bank with a deadline.
+        - generic [ref=f8e33]:
+          - link "Book a demo" [ref=f8e34] [cursor=pointer]:
+            - /url: /contact
+          - link "← Home" [ref=f8e35] [cursor=pointer]:
+            - /url: /
+      - generic [ref=f8e36]:
+        - generic [ref=f8e37]:
+          - generic [ref=f8e38]: What we write about
+          - generic [ref=f8e39]: Notes
+        - generic [ref=f8e40]:
+          - generic [ref=f8e41]:
+            - generic [ref=f8e45]: Fraud tactics in digital channels
+            - generic [ref=f8e46]: Analysis
+          - generic [ref=f8e47]:
+            - generic [ref=f8e52]: Regulation and deadlines
+            - generic [ref=f8e53]: Briefings
+          - generic [ref=f8e54]:
+            - generic [ref=f8e59]: Engineering notes
+            - generic [ref=f8e60]: Practice
+        - generic [ref=f8e61]:
+          - generic [ref=f8e62]: 3 posts
+          - text: published so far
+    - generic [ref=f8e64]:
+      - generic [ref=f8e65]: Latest posts
+      - generic [ref=f8e66]:
+        - 'link "ektar Technologies and Hitachi Payment Services partnership announcement 27 Feb 2026 · Partnership ektar Technologies and Hitachi Payment Services Partnership: Advancing Secure Digital Transactions in India and the GCC ektar Technologies partners with Hitachi Payment Services to bring next-generation digital banking, payments, and multi-factor authentication to institutions across India and the GCC. Read the post →" [ref=f8e67] [cursor=pointer]':
+          - /url: /blog/ektar-hitachi-payment-services-partnership
+          - img "ektar Technologies and Hitachi Payment Services partnership announcement" [ref=f8e69]
+          - generic [ref=f8e70]:
+            - paragraph [ref=f8e71]: 27 Feb 2026 · Partnership
+            - 'heading "ektar Technologies and Hitachi Payment Services Partnership: Advancing Secure Digital Transactions in India and the GCC" [level=3] [ref=f8e72]'
+            - paragraph [ref=f8e73]: ektar Technologies partners with Hitachi Payment Services to bring next-generation digital banking, payments, and multi-factor authentication to institutions across India and the GCC.
+            - generic [ref=f8e74]: Read the post →
+        - 'link "Digital banking and global connectivity 13 Aug 2025 · Distribution Banking at Your Fingertips: How Digital Self-Service is Transforming Banking in the UAE Not long ago, opening a bank account or applying for a credit card meant a branch visit and a stack of paperwork. Here''s how digital self-service — and ekSell''s B2B2C model — is rewriting that experience in the UAE. Read the post →" [ref=f8e75] [cursor=pointer]':
+          - /url: /blog/banking-at-your-fingertips-digital-self-service-uae
+          - img "Digital banking and global connectivity" [ref=f8e77]
+          - generic [ref=f8e78]:
+            - paragraph [ref=f8e79]: 13 Aug 2025 · Distribution
+            - 'heading "Banking at Your Fingertips: How Digital Self-Service is Transforming Banking in the UAE" [level=3] [ref=f8e80]'
+            - paragraph [ref=f8e81]: Not long ago, opening a bank account or applying for a credit card meant a branch visit and a stack of paperwork. Here's how digital self-service — and ekSell's B2B2C model — is rewriting that experience in the UAE.
+            - generic [ref=f8e82]: Read the post →
+        - link "Weak authentication risk in digital banking 27 May 2025 · Authentication Why weak authentication is a serious threat to banks? If your bank still relies on passwords, SMS OTPs, or email OTPs, now is the time to strengthen your digital security — here's why weak authentication puts fraud, compliance, and customer trust at risk. Read the post →" [ref=f8e83] [cursor=pointer]:
+          - /url: /blog/why-weak-authentication-is-a-serious-threat-to-banks
+          - img "Weak authentication risk in digital banking" [ref=f8e85]
+          - generic [ref=f8e86]:
+            - paragraph [ref=f8e87]: 27 May 2025 · Authentication
+            - heading "Why weak authentication is a serious threat to banks?" [level=3] [ref=f8e88]
+            - paragraph [ref=f8e89]: If your bank still relies on passwords, SMS OTPs, or email OTPs, now is the time to strengthen your digital security — here's why weak authentication puts fraud, compliance, and customer trust at risk.
+            - generic [ref=f8e90]: Read the post →
+  - contentinfo [ref=f8e91]:
+    - generic [ref=f8e92]:
+      - generic [ref=f8e93]:
+        - img "Ektar" [ref=f8e95]
+        - generic [ref=f8e96]:
+          - heading "Products" [level=4] [ref=f8e97]
+          - link "ekShield" [ref=f8e98] [cursor=pointer]:
+            - /url: /ekshield
+          - link "ekProtect" [ref=f8e99] [cursor=pointer]:
+            - /url: /ekprotect
+          - link "ekBind" [ref=f8e100] [cursor=pointer]:
+            - /url: /ekbind
+          - link "ekSign" [ref=f8e101] [cursor=pointer]:
+            - /url: /eksign
+          - link "ekSell" [ref=f8e102] [cursor=pointer]:
+            - /url: /eksell
+        - generic [ref=f8e103]:
+          - heading "Company" [level=4] [ref=f8e104]
+          - link "About us" [ref=f8e105] [cursor=pointer]:
+            - /url: /about
+          - link "AI" [ref=f8e106] [cursor=pointer]:
+            - /url: /ai
+          - link "Blog" [ref=f8e107] [cursor=pointer]:
+            - /url: /blog
+          - link "Careers" [ref=f8e108] [cursor=pointer]:
+            - /url: /join-us
+          - link "Contact" [ref=f8e109] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=f8e110]:
+          - heading "Contact" [level=4] [ref=f8e111]
+          - link "Talk to us" [ref=f8e112] [cursor=pointer]:
+            - /url: /contact
+          - link "LinkedIn" [ref=f8e113] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/ektar-technologies/
+          - link "YouTube" [ref=f8e114] [cursor=pointer]:
+            - /url: https://www.youtube.com/@ektar-technologies
+      - generic [ref=f8e115]:
+        - generic [ref=f8e116]:
+          - img "Ektar Singapore office" [ref=f8e117]
+          - heading "Singapore" [level=5] [ref=f8e118]
+          - paragraph [ref=f8e119]: "18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966"
+        - generic [ref=f8e120]:
+          - img "Ektar UAE office" [ref=f8e121]
+          - heading "UAE" [level=5] [ref=f8e122]
+          - paragraph [ref=f8e123]: Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE
+        - generic [ref=f8e124]:
+          - img "Ektar India office" [ref=f8e125]
+          - heading "India" [level=5] [ref=f8e126]
+          - paragraph [ref=f8e127]: "Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India"
+      - generic [ref=f8e128]:
+        - generic [ref=f8e129]: © Ektar 2022–2026. All rights reserved.
+        - generic [ref=f8e130]:
+          - link "Terms of Use" [ref=f8e131] [cursor=pointer]:
+            - /url: /termsofuse
+          - text: ·
+          - link "Privacy Policy" [ref=f8e132] [cursor=pointer]:
+            - /url: /privacy-policy
