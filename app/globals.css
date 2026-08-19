@@ -241,7 +241,7 @@ textarea.input { min-height: 110px; resize: vertical; }
 @keyframes caretblink { 50% { opacity: 0; } }
 @keyframes ringout { 0% { transform: scale(.75); opacity: .75; } 100% { transform: scale(1.9); opacity: 0; } }
 @keyframes fpsweep { 0%, 100% { top: 6%; } 50% { top: 92%; } }
-@keyframes pulse { 0%, 100% { width: 24%; } 50% { width: 86%; } }
+@keyframes barpulse { 0%, 100% { width: 24%; } 50% { width: 86%; } }
 @keyframes flow { to { background-position: 22px 0; } }
 @keyframes drift { to { transform: translateX(-50%); } }
 @keyframes navfade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -515,7 +515,7 @@ textarea.input { min-height: 110px; resize: vertical; }
 .ltitle { font-family: var(--font-heading); font-weight: 600; font-size: 20px; letter-spacing: -.01em; margin: 0 0 10px; }
 .lcopy { font-size: 15px; line-height: 1.65; color: var(--dim); margin: 0 0 12px; max-width: 58ch; }
 .pulsebar { height: 5px; background: color-mix(in srgb, var(--paper) 10%, transparent); position: relative; overflow: hidden; max-width: 320px; }
-.pulsebar i { position: absolute; inset: 0 auto 0 0; background: var(--color-accent); animation: pulse 3.4s ease-in-out infinite; display: block; }
+.pulsebar i { position: absolute; inset: 0 auto 0 0; background: var(--color-accent); animation: barpulse 3.4s ease-in-out infinite; display: block; }
 .layer:nth-of-type(2) .pulsebar i { animation-delay: .6s; }
 .layer:nth-of-type(3) .pulsebar i { animation-delay: 1.2s; }
 .go { align-self: center; font-size: 12.5px; color: var(--accent-lt); text-decoration: none; border: 2px solid var(--line); padding: 9px 14px; white-space: nowrap; transition: color .2s, border-color .2s; }

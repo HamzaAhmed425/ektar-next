@@ -68,27 +68,27 @@ export const attackSurface = {
       name: "SMS OTP interception",
       description:
         "The most exploited authentication method — banned or restricted in five markets.",
-      closedBy: "ekShield & ekBind",
+      closedBy: "Closed by ekShield & ekBind",
     },
     {
       name: "Overlay attacks",
       description: "A fake screen drawn over the real app captures credentials in place.",
-      closedBy: "ekProtect",
+      closedBy: "Closed by ekProtect",
     },
     {
       name: "Rooted devices & RATs",
       description: "Remote access tools drive the session while the customer watches.",
-      closedBy: "ekProtect",
+      closedBy: "Closed by ekProtect",
     },
     {
       name: "Malware in the app",
       description: "Runtime injection and tampering inside an otherwise trusted app.",
-      closedBy: "ekProtect",
+      closedBy: "Closed by ekProtect",
     },
     {
       name: "Forged documents",
       description: "Salary certificates, statements and letters altered after issuance.",
-      closedBy: "ekSign",
+      closedBy: "Closed by ekSign",
     },
     {
       name: "Deepfakes & synthetic IDs",

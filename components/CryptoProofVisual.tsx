@@ -49,7 +49,7 @@ export default function CryptoProofVisual() {
           </div>
         </div>
 
-        <img className="ss-img-0b1c" src="/Passwordless%201.png" alt="Placeholder" />
+        <img className="ss-img-0b1c" src="/same.png" alt="Placeholder" />
       </div>
     </section>
   );

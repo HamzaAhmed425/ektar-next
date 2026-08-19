@@ -42,9 +42,6 @@ export default function Footer() {
       <div className="wrap pt-10! pb-10! mt-10! mb-10!">
         <div className="fgrid">
           <div>
-            <Image src="/ektar-logo.png" alt="Ektar" width={86} height={25} />
-          </div>
-          <div>
             <h4>Products</h4>
             {PRODUCTS.map((p) => (
               <Link key={p.href} href={p.href}>
@@ -80,22 +77,6 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="foffices">
-          {OFFICES.map((office) => (
-            <div className="office" key={office.name}>
-              <Image
-                className="mark"
-                src={office.image}
-                alt={`Ektar ${office.name} office`}
-                width={160}
-                height={56}
-              />
-              <h5>{office.name}</h5>
-              <p>{office.address}</p>
-            </div>
-          ))}
-        </div>
-
         <div className="fbot">
           <span>© Ektar 2022–2026. All rights reserved.</span>
           <span>
@@ -103,6 +84,22 @@ export default function Footer() {
             {" · "}
             <Link href="/privacy-policy">Privacy Policy</Link>
           </span>
+        </div>
+
+        <div className="foffices">
+          {OFFICES.map((office) => (
+            <div className="office" key={office.name}>
+              <h5>{office.name}</h5>
+              <Image
+                className="mark"
+                src={office.image}
+                alt={`Ektar ${office.name} office`}
+                width={160}
+                height={56}
+              />
+              <p>{office.address}</p>
+            </div>
+          ))}
         </div>
       </div>
     </footer>

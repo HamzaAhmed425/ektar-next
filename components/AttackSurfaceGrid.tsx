@@ -25,7 +25,7 @@ export default function AttackSurfaceGrid() {
             </svg>
             <p className="n">{v.name}</p>
             <p className="d">{v.description}</p>
-            <p className="st">Closed by {v.closedBy}</p>
+            <p className="st"> {v.closedBy}</p>
           </div>
         ))}
       </div>

@@ -28,7 +28,7 @@ export default function ThreeLayersSection() {
       <p className="lede">{threeLayers.intro}</p>
 
       {threeLayers.layers.map((layer, i) => (
-        <div className="layer" key={layer.num}>
+        <div className="layer [padding-left:0px]! [padding-right:0px]!" key={layer.num}>
           <span className="iconbox">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               {ICONS[i]}
