@@ -1,269 +1,145 @@
-// Structured content for app/page.tsx, transcribed from PAGES.md §1.
+// Structured content for app/page.tsx, transcribed from PAGES.md §1 (v3).
 
 export const hero = {
-  statusPill: "Systems live",
+  statusText: "Digital security for banks",
   rotatorWords: ["the User", "the App", "the Device"],
-  h1Lines: ["Digital security,", "engineered for ", "Banks"],
+  h1Lines: ["Stop fraud at every", "real entry point"],
   subhead:
-    "Fraud has moved to the device, the app, and the authentication layer. Ektar secures all three — with integrated solutions and proven products built by bankers who know where the gaps are.",
+    "Ektar protects the user, the device, and the app — Built by ex-bankers who've run the channels they now secure.",
   primaryCta: { label: "Book a demo", href: "/contact" },
-  secondaryCta: { label: "See the three layers", href: "#layers" },
+  secondaryCta: { label: "See the suite", href: "#solutions" },
 };
 
-export const solutions = [
+// The cycle3 tri-scene hero visual (DESIGN.md §4.1)
+export const heroScenes = [
   {
-    num: "01",
-    name: "ekShield",
-    role: "Authentication",
-    description:
-      "Device-bound, phishing-resistant login across mobile, web, call centre, ATM and 3DS.",
-    href: "/ekshield",
+    label: "Protect the user",
+    context: "Login attempt",
+    verifiedTitle: "Customer verified",
+    verifiedDetail: "Device-bound · no code sent",
+    chips: [
+      { text: "SMS OTP replay", flag: "blocked" },
+      { text: "Call-centre impersonation", flag: "challenged" },
+    ],
   },
   {
-    num: "02",
-    name: "ekProtect",
-    role: "Attest & risk",
-    description: "Malware, overlays, rooted devices and RATs, caught inside the app.",
-    href: "/ekprotect",
+    label: "Protect the device",
+    context: "Session check",
+    verifiedTitle: "Device bound",
+    verifiedDetail: "Same phone · same SIM",
+    chips: [
+      { text: "SIM swap attempt", flag: "blocked" },
+      { text: "Rooted device", flag: "denied" },
+    ],
   },
   {
-    num: "03",
-    name: "ekBind",
-    role: "SIM binding",
-    description:
-      "Operator-verified SIM checks via Silent Network Authentication and Reverse SMS.",
-    href: "/ekbind",
-  },
-  {
-    num: "04",
-    name: "ekSign",
-    role: "Signing",
-    description: "In-channel document signing, bound to the document and sealed with SHA-256.",
-    href: "/eksign",
-  },
-  {
-    num: "05",
-    name: "ekSell",
-    role: "Distribution",
-    description: "Bank products into employer, fintech and retail channels.",
-    href: "/eksell",
+    label: "Protect the app",
+    context: "Runtime check",
+    verifiedTitle: "App verified",
+    verifiedDetail: "No tampering detected",
+    chips: [
+      { text: "Overlay attack", flag: "blocked" },
+      { text: "Remote access tool", flag: "suspended" },
+    ],
   },
 ];
 
+// The trust suite — three tiered panels
+export const trustSuite = {
+  heading: "One suite. Seven products, one engine.",
+  intro:
+    "Each product is licensed on its own — deploy one or all seven, and the portals, APIs and SDKs behave the same either way. The whole suite runs inside your own infrastructure, with no runtime dependency on Ektar.",
+  tiers: [
+    {
+      tier: "Live today",
+      count: "Two products",
+      products: [
+        { num: "01", name: "ekShield", role: "Authentication", description: "Replaces one-time codes with a login that can't be phished.", href: "/ekshield" },
+        { num: "02", name: "ekProtect", role: "Device & app integrity", description: "Spots malware, fake screens, and compromised phones in real time.", href: "/ekprotect" },
+      ],
+    },
+    {
+      tier: "Shipping through 2026",
+      count: "Three products",
+      products: [
+        { num: "03", name: "ekBind", role: "SIM & network trust", description: "Catches a SIM swap before a transaction goes through.", href: "/ekbind" },
+        { num: "04", name: "ekSign", role: "Document signing", description: "Signed documents that can't be altered after the fact, right inside your app.", href: "/eksign" },
+        { num: "05", name: "ekKey", role: "Passkeys", description: "Login without a password at all, tied to the customer's own device.", href: "/ekkey" },
+      ],
+    },
+    {
+      tier: "Building now",
+      count: "Two products",
+      products: [
+        { num: "06", name: "ekPulse", role: "Behavioural biometrics", description: "Learns how a real customer types and moves, and flags when it isn't them.", href: "/ekpulse" },
+        { num: "07", name: "ekRules", role: "Risk decisioning", description: "Takes every signal above and makes one real-time call: allow, verify further, or block.", href: "/ekrules" },
+      ],
+    },
+  ],
+};
+
 export const proofStrip = [
-  { k: "Deployed", v: "UAE's 3rd largest bank" },
-  { k: "Contracted", v: "Oman's 3rd largest bank" },
-  { k: "Aligned with", v: "CBUAE · RBI · SAMA · FIDO Member" },
+  { k: "Live", v: "At a top-3 UAE bank" },
+  { k: "Contracted", v: "With a top-3 Oman bank" },
+  { k: "Secured", v: "Over 10 million authentications" },
+  { k: "Aligned with", v: "CBUAE · RBI · SAMA · FIDO" },
 ];
 
 export const hashTicker =
   "9c4e f17b a208 31dd 04af 7b21 e5c9 3f9a c2e1 88d0 5b6e a417 f0c3 92bb 7de4 1a58 · ecdsa p-256 · sha-256 · fido2 · device-bound";
 
-export const attackSurface = {
-  heading: "Six ways into a banking app. Ektar closes all six.",
-  intro:
-    "Mobile apps, internet banking portals, and payment APIs created an attack surface fraudsters can probe from anywhere, at scale, at near-zero cost. These are the vectors we shut down.",
-  vectors: [
+// "How Ektar protects you" — three surface cards (replaces the old flat attack-surface grid)
+export const surfaceGrid = {
+  heading: "Three places fraud gets in. We close all three.",
+  intro: "Every attack on a banking app is really an attack on one of three things — the customer, their phone, or the app itself.",
+  surfaces: [
     {
-      name: "SMS OTP interception",
-      description:
-        "The most exploited authentication method — banned or restricted in five markets.",
-      closedBy: "Closed by ekShield & ekBind",
+      num: "user",
+      label: "user",
+      products: "ekShield · ekKey · ekPulse · ekSign",
+      copy: "A login that can't be phished, copied, or intercepted — closing the door on stolen one-time codes and call-centre scams.",
+      threats: ["Stolen text-message codes", "Phishing and fake login pages", "Call-centre social engineering", "Deepfakes and synthetic identities"],
+      href: "/protect-the-user",
     },
     {
-      name: "Overlay attacks",
-      description: "A fake screen drawn over the real app captures credentials in place.",
-      closedBy: "Closed by ekProtect",
+      num: "device",
+      label: "device",
+      products: "ekBind · ekProtect · ekShield",
+      copy: "Confirming it's really your customer's phone and number — catching a SIM swap or a hijacked session before money moves.",
+      threats: ["SIM swap and re-issue", "Hijacked sessions", "Rooted and jailbroken phones"],
+      href: "/protect-the-device",
     },
     {
-      name: "Rooted devices & RATs",
-      description: "Remote access tools drive the session while the customer watches.",
-      closedBy: "Closed by ekProtect",
-    },
-    {
-      name: "Malware in the app",
-      description: "Runtime injection and tampering inside an otherwise trusted app.",
-      closedBy: "Closed by ekProtect",
-    },
-    {
-      name: "Forged documents",
-      description: "Salary certificates, statements and letters altered after issuance.",
-      closedBy: "Closed by ekSign",
-    },
-    {
-      name: "Deepfakes & synthetic IDs",
-      description: "AI-generated identities and documents — up 1,210% in 2025.",
-      closedBy: "Closed across all three layers",
+      num: "app",
+      label: "app",
+      products: "ekProtect · ekPulse",
+      copy: "Watching for malware, fake overlay screens, and tampering hiding inside the app itself.",
+      threats: ["Fake overlay screens", "Malware inside the app", "Repackaging and tampering", "Debuggers and hooking", "Remote access tools"],
+      href: "/protect-the-app",
     },
   ],
 };
 
-export const threeLayers = {
-  heading: "Three security challenges. Three proven solutions.",
-  intro:
-    "Every solution addresses a distinct layer of fraud risk in banking's digital channels. They work independently and share a common signal layer that makes each one more accurate when deployed together.",
-  layers: [
-    {
-      num: "01",
-      title: "ekShield · ekBind",
-      subtitle: "Device-bound authentication, bound to a verified SIM",
-      copy: "Replace SMS OTP with phishing-resistant, device-bound authentication across every channel — mobile, web, call centre, ATM, and 3DS. ekBind adds SIM binding via Silent Network Authentication and Reverse SMS, so a swapped SIM is caught before a transaction proceeds. Compliant with CBUAE, RBI, SAMA, BSP, and MAS mandates.",
-      href: "/ekshield",
-    },
-    {
-      num: "02",
-      title: "ekProtect",
-      subtitle: "Attestation, runtime defence and behavioural risk",
-      copy: "Attest device and app integrity, detect malware, overlay attacks, rooted devices, and remote access tools — from inside the banking app — and suspend the session automatically when a threat is found. Behavioural analysis and ML-driven per-transaction risk decisioning turn every signal into a real-time score. CBUAE-mandated.",
-      href: "/ekprotect",
-    },
-    {
-      num: "03",
-      title: "ekSign",
-      subtitle: "In-channel signing with cryptographic proof",
-      copy: "Customers sign inside the banking app or on a bank-branded page, authenticated by the MFA they already use. Each signature is bound to a SHA-256 fingerprint of the document and chained across signatories, so any later alteration fails verification — and the bank keeps the record.",
-      href: "/eksign",
-    },
-  ],
-  signal:
-    "Shared signal layer — all three layers feed one signal layer — each product becomes more accurate with every other product a bank deploys.",
-};
-
-export const cryptoProof = {
-  heading: "Signed at issuance. Verified in milliseconds.",
-  intro:
-    "Every document a bank issues is signed with an ECDSA key pair at the moment of creation. Alter one character and the signature no longer matches — tampering stops being a judgement call and becomes arithmetic.",
-  steps: [
-    {
-      label: "Sign",
-      detail: "Issuing system calls one API; ECDSA P-256 signature bound to the document's exact contents.",
-    },
-    {
-      label: "Seal",
-      detail: "A QR seal carries the signature and verification endpoint; no change to the document workflow.",
-    },
-    {
-      label: "Verify",
-      detail: "Any party scans the seal; authenticity returns in milliseconds — no login, no portal, no callback to the bank.",
-    },
-  ],
-  card: {
-    title: "Salary certificate · signed",
-    sha256: "9c4e·f17b·a208·31dd",
-    sig: "3f9a·c2e1",
-    status: "Signature valid.",
-  },
-};
-
-export const products = [
-  {
-    name: "ekShield",
-    category: "Authentication",
-    description:
-      "Device-bound, phishing-resistant authentication across mobile, web, call centre, ATM, and 3DS. White-labelled and live at UAE's 3rd largest bank.",
-    href: "/ekshield",
-  },
-  {
-    name: "ekProtect",
-    category: "Attest & behavioural risk",
-    description:
-      "Embeds in the banking app. Attests device and app integrity, detects malware, overlays, rooted devices and RATs, suspends sessions on detection, and scores risk per transaction.",
-    href: "/ekprotect",
-  },
-  {
-    name: "ekBind",
-    category: "SIM binding",
-    description:
-      "SIM binding via Silent Network Authentication and Reverse SMS. Catches SIM swap, port-out, and device change before a transaction proceeds.",
-    href: "/ekbind",
-  },
-  {
-    name: "ekSign",
-    category: "Document integrity",
-    description:
-      "In-channel signing authenticated by the bank's own MFA, plus ECDSA signing and a SHA-256 seal that makes tampering detectable. The bank owns the journey and the audit trail.",
-    href: "/eksign",
-  },
-  {
-    name: "ekSell",
-    category: "Distribution",
-    description:
-      "Connect banks to retail ecosystems — employers, fintechs, retailers — for cost-effective digital product distribution. Ektar's founding platform.",
-    href: "/eksell",
-  },
-];
-
-export const productsSection = {
-  heading: "Five products. One signal layer.",
-  intro:
-    "Each can be deployed independently or as part of an integrated platform. All share a common signal layer that compounds in value with every product a bank deploys.",
-};
+export const decisionEngineCallout =
+  "One engine — ekRules — takes signals from all three and decides in real time: allow, verify further, or block.";
 
 export const regulatorySection = {
-  heading: "Regulators are ordering the upgrade.",
-  intro:
-    "Across the GCC, South Asia, and Southeast Asia, regulators have banned SMS OTP, mandated passkeys, and required real-time malware detection. Every bank in these markets needs what Ektar builds — and many have a hard deadline to decide.",
+  heading: "Regulators are ordering the upgrade",
+  intro: "Across the Gulf, South Asia, and Southeast Asia, one-time codes sent by text are being banned outright — with hard deadlines.",
   rows: [
-    {
-      market: "UAE",
-      regulation: "CBUAE Notice 3057",
-      requirement:
-        "SMS OTP and email OTP banned. In-app verification, passkeys, and biometrics mandated. Real-time malware session suspension required.",
-    },
-    {
-      market: "Saudi Arabia",
-      regulation: "SAMA Counter-Fraud Framework",
-      requirement:
-        "FIDO2 device-bound credentials mandated. Real-time fraud monitoring required. Penalties up to SAR 5M per breach.",
-    },
-    {
-      market: "India",
-      regulation: "RBI Authentication Directions 2025",
-      requirement:
-        "Sole reliance on SMS OTP banned for high-risk transactions. Real-time risk-based authentication mandatory per transaction.",
-    },
-    {
-      market: "Singapore",
-      regulation: "MAS/ABS Directive",
-      requirement: "SMS OTP phased out for all retail bank digital token users.",
-    },
-    {
-      market: "Philippines",
-      regulation: "BSP Circular 1213",
-      requirement: "Direct prohibition on SMS/email OTP for high-risk banking transactions.",
-    },
-    {
-      market: "Malaysia",
-      regulation: "BNM RMiT 2026",
-      requirement:
-        "Device binding, adaptive MFA, and risk-based authentication mandated for all licensed banks.",
-    },
+    { market: "UAE", requirement: "Text and email codes banned. Banks must move to in-app verification and passkeys by March 2026." },
+    { market: "Saudi Arabia", requirement: "Device-bound login required. Fines of up to SAR 5 million per breach." },
+    { market: "India", requirement: "Banks can no longer rely on text codes alone for high-risk transactions." },
+    { market: "Singapore & Philippines", requirement: "Text-message codes are being phased out for retail banking." },
   ],
 };
 
 export const statBand = {
-  heading: "Banking fraud has changed. Most defences haven't.",
-  intro: "The tools most banks rely on were built for a different era. The threat has moved on.",
+  heading: "Fraud has outgrown yesterday's defences",
   stats: [
-    {
-      tag: "Data / 01",
-      n: "~$485B",
-      label: "Banking fraud losses (2023)",
-      detail: "Part of $1.03 trillion in total consumer scam losses globally. Card fraud alone: $33.4B.",
-    },
-    {
-      tag: "Data / 02",
-      n: "+1,210%",
-      label: "AI-enabled fraud (2025)",
-      detail: "Deepfakes, synthetic identities, AI-generated documents. Traditional defences cannot keep pace.",
-    },
-    {
-      tag: "Data / 03",
-      n: "93%",
-      label: "Still using SMS OTP",
-      detail:
-        "The most exploited authentication method — now banned or restricted across UAE, India, Saudi Arabia, Philippines, and Singapore.",
-    },
+    { tag: "Data / 01", n: "$485B", label: "Lost to banking fraud", detail: "$485 billion lost to banking fraud in a single year." },
+    { tag: "Data / 02", n: "93%", label: "Still on text-message codes", detail: "93% of banks still rely on text-message codes — the method regulators are banning." },
+    { tag: "Data / 03", n: "+12x", label: "AI-generated fraud", detail: "AI-generated fraud is up more than 12x in the last year alone." },
   ],
 };
 

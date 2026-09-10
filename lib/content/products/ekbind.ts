@@ -6,6 +6,7 @@ export const hero = {
   title: "Bind the account to the SIM. Catch the swap.",
   description:
     "ekBind verifies the SIM behind every session. Silent Network Authentication confirms the SIM directly with the mobile operator over the data connection — no code, no customer action. Reverse SMS proves possession of the SIM from the device itself. Both bind the account to a known SIM, so a swapped SIM or a moved number is caught before a transaction proceeds.",
+  badge: "Shipping 2026",
 };
 
 export const ledgerRows: LedgerRow[] = [
@@ -36,5 +37,10 @@ export const howItWorks = [
   { tag: "02", t: "Reverse SMS", d: "The device sends the message rather than receiving a code — possession of the SIM is proven by the sender, not trusted from an inbound message." },
   { tag: "03", t: "SIM-swap and port-out detection", d: "A changed SIM breaks the binding. The session is re-verified before the transaction is allowed to continue." },
 ];
+
+export const whyNow = {
+  heading: "Regulators are mandating device and SIM-level proof",
+  text: "Saudi Arabia's SAMA framework mandates device-bound credentials, and Malaysia's BNM RMiT 2026 mandates device binding for every licensed bank — SIM-swap and port-out checks are a core part of meeting that bar.",
+};
 
 export const closing = { heading: "Bind every session to a verified SIM." };

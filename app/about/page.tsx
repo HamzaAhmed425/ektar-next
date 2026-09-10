@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { hero, atAGlance, liveNotTheoretical, vision, mission, closing } from "@/lib/content/about";
-import TeamSection from "@/components/TeamSection";
+import { hero, atAGlance, vision, mission, founders, advisors, beyondBanking, closing } from "@/lib/content/about";
 
 export const metadata: Metadata = {
   title: "About — Ektar",
@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div className="mesh" />
         <div className="glow" />
         <div className="scan" />
-        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+        <div className="wrap">
           <div className="hero">
             <div className="reveal">
               <p className="status mono">
@@ -88,7 +88,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+      <div className="wrap">
         <div className="strip mono">
           {atAGlance.map((f) => (
             <div key={f.k}>
@@ -97,16 +97,6 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-
-        <section className="sec reveal">
-          <div className="split">
-            <div>
-              <h3>{liveNotTheoretical.heading}</h3>
-              <p>{liveNotTheoretical.body}</p>
-            </div>
-            <img className="ss-img-afbe" src="/Group-27-1-1024x294-1.webp" alt="Placeholder" />
-          </div>
-        </section>
 
         <section className="sec reveal">
           <span className="kicker mono">Vision &amp; mission</span>
@@ -122,13 +112,52 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <div className="reveal">
-          <TeamSection />
-        </div>
+        <section className="sec reveal">
+          <span className="kicker mono">Our founders</span>
+          <h2 className="h2">Three ex-bankers who lived the problem.</h2>
+          <div className="pgrid">
+            {founders.map((f) => (
+              <div className="pcard" key={f.name}>
+                <Image className="portrait" src={f.image} alt={f.name} width={320} height={400} />
+                <h4>{f.name}</h4>
+                <p className="role">{f.role}</p>
+                <p className="bio">{f.bio}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="sec reveal">
+          <span className="kicker mono">Advisory board</span>
+          <div className="pgrid pgrid-4">
+            {advisors.map((a) => (
+              <div className="pcard" key={a.name}>
+                <Image className="portrait" src={a.image} alt={a.name} width={320} height={400} />
+                <h4>{a.name}</h4>
+                <p className="role">{a.role}</p>
+                <p className="bio">{a.bio}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="sec reveal">
+          <span className="kicker mono">Beyond banking</span>
+          <div className="vm-grid">
+            {beyondBanking.map((b) => (
+              <div key={b.heading}>
+                <h3>{b.heading}</h3>
+                <p>
+                  <Link href={b.href}>{b.label}</Link>
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
 
       <section className="close reveal">
-        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+        <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">
             <Link href="/contact" className="btn btn-primary">

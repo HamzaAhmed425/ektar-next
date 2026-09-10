@@ -1,28 +1,36 @@
-# PAGES.md — Ektar Page Content & Layout (verified from source)
+# PAGES.md — Ektar Page Content & Layout (v3, verified from source)
 
-All copy below is transcribed from the real `.dc.html` files in `ektar_com.zip`, not reconstructed. Every page in this export has real, finished copy — this is a far more complete site than the earlier scrape suggested. Referenced by `CLAUDE.md`. See `SITEMAP.md` for the route tree and nav structure.
+All copy transcribed verbatim from the client's latest theme export. This supersedes the v2 `PAGES.md` — the product lineup, navigation, homepage, and several individual pages changed substantially. Referenced by `CLAUDE.md`. See `SITEMAP.md` for the route tree.
+
+---
+
+## What changed since v2 — read this first
+
+- **The suite grew from 5 to 8 products.** New: **ekKey** (passkeys), **ekPulse** (behavioural biometrics), **ekRules** (risk decisioning engine). ekShield, ekProtect, ekBind, ekSign, ekSell all continue to exist.
+- **Three new "surface" pages** sit between the homepage and individual products: `/protect-the-user`, `/protect-the-device`, `/protect-the-app` — each groups several products by which attack surface they defend.
+- **New Investors page.**
+- **The AI page (`/ai`) is gone.** Not in this export — treat as retired.
+- **Careers page rewritten** — no longer a resume-upload form; now culture/pitch copy with a "Get in touch" CTA.
+- **ekShield, ekProtect, ekSign, ekSell pages substantially rewritten** — see each page's section below for exactly what changed.
+- **Homepage restructured end to end** — new hero visual, new "trust suite" tiered product listing, new "How Ektar protects you" surface-grid section, condensed regulatory section, updated stats.
 
 ---
 
 ## Global chrome (every page)
 
-### Topbar
+### Topbar navigation — see `SITEMAP.md` §2 for the full tree
 
-Logo (wordmark, links home) → magnetic product nav: **ekShield · ekProtect · ekBind · ekSign · ekSell · AI · About** → theme toggle (sun/moon) → **"Book a demo"** button (links to Contact). A small live-status pill sits near the logo, its label changing per page context (e.g. "Systems live" on the homepage, "Layer 01 secured" on the ekShield page, "SIM verified" on ekBind, "Signatures valid" on ekSign, "Founding platform" on ekSell, "Since 2022" on About, "We are hiring" on Careers, "Channel open" on Contact, "Notes" on Blog).
+Home · Protect the User (dropdown: ekShield, ekKey, ekSign, ekPulse) · Protect the Device (dropdown: ekBind, ekProtect, ekShield) · Protect the App (dropdown: ekProtect, ekPulse) · About · theme toggle · "Book a demo" (→ Contact).
 
-### Footer (identical structure on every page)
+A status pill sits near the logo, changing per page: "Systems live" (Home), "Since 2022" (About, Investors, Careers), "Session secured" (ekShield), "Device & app secured" (ekProtect), "SIM verified" (ekBind), "Signatures valid" (ekSign), "Founding platform" (ekSell), "Notes" (Blog), "Channel open" (Contact). ekKey/ekPulse/ekRules/the three surface pages show the default "Systems live" topbar pill but carry their own in-page status badge instead (see each page below).
 
-**Products** — ekShield · ekProtect · ekBind · ekSign · ekSell
-**Company** — About us · AI · Blog · Careers · Contact
+### Footer (every page)
+
+**Products** — ekShield · ekProtect · ekBind · ekSign · ekSell · ekKey · ekPulse · ekRules (8 items, up from 5)
+**Company** — About us · Blog · Careers · Investors · Contact (AI removed, Investors added)
 **Contact** — Talk to us · LinkedIn · YouTube
 
-**Offices:**
-
-| Office | Address |
-|---|---|
-| Singapore | 18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966 |
-| UAE | Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE |
-| India | Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India |
+**Offices** — unchanged from v2: Singapore (18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966) · UAE (Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE) · India (Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India)
 
 **Copyright:** © Ektar 2022–2026. All rights reserved. · **Legal:** Terms of Use · Privacy Policy
 
@@ -30,494 +38,553 @@ Logo (wordmark, links home) → magnetic product nav: **ekShield · ekProtect ·
 
 ## 1. Home (`index.dc.html` → `/`)
 
-The canonical, current homepage. (A superseded earlier draft, "Home v1 (light)", also exists in the export — see §11.)
+Entirely restructured from v2. New section order:
 
 ### 1.1 Hero
-- **Status pill:** "Systems live"
-- **Rotator line:** "Protect **the User** / **the App** / **the Device**" (cycling — see `DESIGN.md` §5.1)
-- **H1:** "Digital security, engineered for **Banks**"
-- **Subhead:** "Fraud has moved to the device, the app, and the authentication layer. Ektar secures all three — with integrated solutions and proven products built by bankers who know where the gaps are."
+- **Eyebrow:** "Digital security for banks"
+- **Rotator line:** "Protect **the User** / **the App** / **the Device**" (unchanged mechanic — `DESIGN.md` §4)
+- **H1:** "Stop fraud at every **real entry point**"
+- **Subhead:** "Ektar protects the user, the device, and the app — Built by ex-bankers who've run the channels they now secure."
 - **Primary CTA:** "Book a demo" → Contact
-- **Secondary CTA:** "See the three layers" → `#layers` anchor
-- **Right column — Solutions panel**, header "Five products · one security layer":
+- **Secondary CTA:** "See the suite" → `#solutions` anchor
+- **Hero visual:** the new `cycle3` tri-scene cross-fade (`DESIGN.md` §4.1) — "Protect the user" (Login attempt: Customer verified/Device-bound · no code sent; chips: SMS OTP replay blocked, Call-centre impersonation challenged) → "Protect the device" (Session check: Device bound/Same phone · same SIM; chips: SIM swap attempt blocked, Rooted device denied) → "Protect the app" (Runtime check: App verified/No tampering detected; chips: Overlay attack blocked, Remote access tool suspended)
 
+### 1.2 The trust suite (id: `solutions`)
+**Heading:** "One suite. Seven products, one engine."
+**Intro:** "Each product is licensed on its own — deploy one or all seven, and the portals, APIs and SDKs behave the same either way. The whole suite runs inside your own infrastructure, with no runtime dependency on Ektar."
+
+Three tiered panels, each reusing the `.solpanel`/`.sol` list component with its own header:
+
+**Live today · Two products**
 | # | Product | Role | Description |
 |---|---|---|---|
-| 01 | ekShield | Authentication | Device-bound, phishing-resistant login across mobile, web, call centre, ATM and 3DS. |
-| 02 | ekProtect | Attest & risk | Malware, overlays, rooted devices and RATs, caught inside the app. |
-| 03 | ekBind | SIM binding | Operator-verified SIM checks via Silent Network Authentication and Reverse SMS. |
-| 04 | ekSign | Signing | In-channel document signing, bound to the document and sealed with SHA-256. |
-| 05 | ekSell | Distribution | Bank products into employer, fintech and retail channels. |
+| 01 | ekShield | Authentication | Replaces one-time codes with a login that can't be phished. |
+| 02 | ekProtect | Device & app integrity | Spots malware, fake screens, and compromised phones in real time. |
 
-### 1.2 Proof strip
-- **Deployed** — UAE's 3rd largest bank
-- **Contracted** — Oman's 3rd largest bank
-- **Aligned with** — CBUAE · RBI · SAMA · FIDO Member
-- Decorative hex/crypto-term ticker running beneath: `ecdsa p-256 · sha-256 · fido2 · device-bound` (repeating hash fragments)
+**Shipping through 2026 · Three products**
+| # | Product | Role | Description |
+|---|---|---|---|
+| 03 | ekBind | SIM & network trust | Catches a SIM swap before a transaction goes through. |
+| 04 | ekSign | Document signing | Signed documents that can't be altered after the fact, right inside your app. |
+| 05 | ekKey | Passkeys | Login without a password at all, tied to the customer's own device. |
 
-### 1.3 The attack surface
-**Heading:** "Six ways into a banking app. Ektar closes all six."
-**Intro:** "Mobile apps, internet banking portals, and payment APIs created an attack surface fraudsters can probe from anywhere, at scale, at near-zero cost. These are the vectors we shut down."
+**Building now · Two products**
+| # | Product | Role | Description |
+|---|---|---|---|
+| 06 | ekPulse | Behavioural biometrics | Learns how a real customer types and moves, and flags when it isn't them. |
+| 07 | ekRules | Risk decisioning | Takes every signal above and makes one real-time call: allow, verify further, or block. |
 
-| Vector | Description | Closed by |
-|---|---|---|
-| SMS OTP interception | The most exploited authentication method — banned or restricted in five markets. | ekShield & ekBind |
-| Overlay attacks | A fake screen drawn over the real app captures credentials in place. | ekProtect |
-| Rooted devices & RATs | Remote access tools drive the session while the customer watches. | ekProtect |
-| Malware in the app | Runtime injection and tampering inside an otherwise trusted app. | ekProtect |
-| Forged documents | Salary certificates, statements and letters altered after issuance. | ekSign |
-| Deepfakes & synthetic IDs | AI-generated identities and documents — up 1,210% in 2025. | Closed across all three layers |
+**Note: ekSell is not part of this seven-product "trust suite" list** — it remains a separate distribution product, listed in the footer but not in this tiered breakdown (matches its positioning in v2 as "Ektar's founding platform", distinct from the fraud-prevention suite).
 
-### 1.4 The three layers (id: `layers`)
-**Heading:** "Three security challenges. Three proven solutions."
-**Intro:** "Every solution addresses a distinct layer of fraud risk in banking's digital channels. They work independently and share a common signal layer that makes each one more accurate when deployed together."
+### 1.3 Proof strip
+- **Live** — At a top-3 UAE bank
+- **Contracted** — With a top-3 Oman bank
+- **Secured** — Over 10 million authentications *(new stat, not present in v2)*
+- **Aligned with** — CBUAE · RBI · SAMA · FIDO
+- Decorative hex/crypto-term ticker beneath (unchanged): `ecdsa p-256 · sha-256 · fido2 · device-bound`
 
-**Layer 01 — ekShield · ekBind — "Device-bound authentication, bound to a verified SIM"**
-> Replace SMS OTP with phishing-resistant, device-bound authentication across every channel — mobile, web, call centre, ATM, and 3DS. ekBind adds SIM binding via Silent Network Authentication and Reverse SMS, so a swapped SIM is caught before a transaction proceeds. Compliant with CBUAE, RBI, SAMA, BSP, and MAS mandates.
-Link: "Open →" → ekShield
+### 1.4 How Ektar protects you
+**Heading:** "Three places fraud gets in. We close all three."
+**Intro:** "Every attack on a banking app is really an attack on one of three things — the customer, their phone, or the app itself."
 
-**Layer 02 — ekProtect — "Attestation, runtime defence and behavioural risk"**
-> Attest device and app integrity, detect malware, overlay attacks, rooted devices, and remote access tools — from inside the banking app — and suspend the session automatically when a threat is found. Behavioural analysis and ML-driven per-transaction risk decisioning turn every signal into a real-time score. CBUAE-mandated.
-Link: "Open →" → ekProtect
+Three cards (replaces v2's six-item flat attack-surface grid):
 
-**Layer 03 — ekSign — "In-channel signing with cryptographic proof"**
-> Customers sign inside the banking app or on a bank-branded page, authenticated by the MFA they already use. Each signature is bound to a SHA-256 fingerprint of the document and chained across signatories, so any later alteration fails verification — and the bank keeps the record.
-Link: "Open →" → ekSign
+**Protect the user** — ekShield · ekKey · ekPulse · ekSign
+> A login that can't be phished, copied, or intercepted — closing the door on stolen one-time codes and call-centre scams.
+Threats listed: Stolen text-message codes · Phishing and fake login pages · Call-centre social engineering · Deepfakes and synthetic identities
+Link: "Open →" → `/protect-the-user`
 
-Callout: "Shared signal layer — all three layers feed one signal layer — each product becomes more accurate with every other product a bank deploys."
+**Protect the device** — ekBind · ekProtect · ekShield
+> Confirming it's really your customer's phone and number — catching a SIM swap or a hijacked session before money moves.
+Threats listed: SIM swap and re-issue · Hijacked sessions · Rooted and jailbroken phones
+Link: "Open →" → `/protect-the-device`
 
-### 1.5 Cryptographic proof
-**Heading:** "Signed at issuance. Verified in milliseconds."
-> Every document a bank issues is signed with an ECDSA key pair at the moment of creation. Alter one character and the signature no longer matches — tampering stops being a judgement call and becomes arithmetic.
+**Protect the app** — ekProtect · ekPulse
+> Watching for malware, fake overlay screens, and tampering hiding inside the app itself.
+Threats listed: Fake overlay screens · Malware inside the app · Repackaging and tampering · Debuggers and hooking · Remote access tools
+Link: "Open →" → `/protect-the-app`
 
-Three steps: **Sign** (issuing system calls one API; ECDSA P-256 signature bound to the document's exact contents) → **Seal** (a QR seal carries the signature and verification endpoint; no change to the document workflow) → **Verify** (any party scans the seal; authenticity returns in milliseconds — no login, no portal, no callback to the bank).
+**Callout — "One decision engine":** "One engine — ekRules — takes signals from all three and decides in real time: allow, verify further, or block."
 
-Visual: a sample "Salary certificate · signed" card showing `sha256 9c4e·f17b·a208·31dd`, `sig r/s 3f9a·c2e1`, status "Signature valid."
+### 1.5 Why now (regulatory)
+**Heading:** "Regulators are ordering the upgrade"
+**Intro:** "Across the Gulf, South Asia, and Southeast Asia, one-time codes sent by text are being banned outright — with hard deadlines."
 
-### 1.6 Our products
-**Heading:** "Five products. One signal layer."
-**Intro:** "Each can be deployed independently or as part of an integrated platform. All share a common signal layer that compounds in value with every product a bank deploys."
+- **UAE.** Text and email codes banned. Banks must move to in-app verification and passkeys by **March 2026**.
+- **Saudi Arabia.** Device-bound login required. Fines of up to SAR 5 million per breach.
+- **India.** Banks can no longer rely on text codes alone for high-risk transactions.
+- **Singapore & Philippines.** Text-message codes are being phased out for retail banking.
 
-| Product | Category | Description |
-|---|---|---|
-| ekShield | Authentication | Device-bound, phishing-resistant authentication across mobile, web, call centre, ATM, and 3DS. White-labelled and live at UAE's 3rd largest bank. |
-| ekProtect | Attest & behavioural risk | Embeds in the banking app. Attests device and app integrity, detects malware, overlays, rooted devices and RATs, suspends sessions on detection, and scores risk per transaction. |
-| ekBind | SIM binding | SIM binding via Silent Network Authentication and Reverse SMS. Catches SIM swap, port-out, and device change before a transaction proceeds. |
-| ekSign | Document integrity | In-channel signing authenticated by the bank's own MFA, plus ECDSA signing and a SHA-256 seal that makes tampering detectable. The bank owns the journey and the audit trail. |
-| ekSell | Distribution | Connect banks to retail ecosystems — employers, fintechs, retailers — for cost-effective digital product distribution. Ektar's founding platform. |
+*(Condensed from v2's six-market list to four bullets — Malaysia is no longer on the homepage version of this list, though it still appears on `/protect-the-device`, §12 below. Don't drop Malaysia from the product/surface pages that still cite it.)*
 
-Each links "Learn more →" to its product page.
-
-### 1.7 Regulatory tailwinds
-**Heading:** "Regulators are ordering the upgrade."
-**Intro:** "Across the GCC, South Asia, and Southeast Asia, regulators have banned SMS OTP, mandated passkeys, and required real-time malware detection. Every bank in these markets needs what Ektar builds — and many have a hard deadline to decide."
-
-| Market | Regulation | Requirement |
-|---|---|---|
-| UAE | CBUAE Notice 3057 | SMS OTP and email OTP banned. In-app verification, passkeys, and biometrics mandated. Real-time malware session suspension required. |
-| Saudi Arabia | SAMA Counter-Fraud Framework | FIDO2 device-bound credentials mandated. Real-time fraud monitoring required. Penalties up to SAR 5M per breach. |
-| India | RBI Authentication Directions 2025 | Sole reliance on SMS OTP banned for high-risk transactions. Real-time risk-based authentication mandatory per transaction. |
-| Singapore | MAS/ABS Directive | SMS OTP phased out for all retail bank digital token users. |
-| Philippines | BSP Circular 1213 | Direct prohibition on SMS/email OTP for high-risk banking transactions. |
-| Malaysia | BNM RMiT 2026 | Device binding, adaptive MFA, and risk-based authentication mandated for all licensed banks. |
-
-### 1.8 The problem (stat band)
-**Heading:** "Banking fraud has changed. Most defences haven't."
-**Intro:** "The tools most banks rely on were built for a different era. The threat has moved on."
+### 1.6 Why it matters (stat band)
+**Heading:** "Fraud has outgrown yesterday's defences"
 
 | # | Stat | Label | Detail |
 |---|---|---|---|
-| Data/01 | ~$485B | Banking fraud losses (2023) | Part of $1.03 trillion in total consumer scam losses globally. Card fraud alone: $33.4B. |
-| Data/02 | +1,210% | AI-enabled fraud (2025) | Deepfakes, synthetic identities, AI-generated documents. Traditional defences cannot keep pace. |
-| Data/03 | 93% | Still using SMS OTP | The most exploited authentication method — now banned or restricted across UAE, India, Saudi Arabia, Philippines, and Singapore. |
+| Data/01 | $485B | Lost to banking fraud | $485 billion lost to banking fraud in a single year. |
+| Data/02 | 93% | Still on text-message codes | 93% of banks still rely on text-message codes — the method regulators are banning. |
+| Data/03 | +12x | AI-generated fraud | AI-generated fraud is up more than 12x in the last year alone. |
 
-### 1.9 Closing CTA
+*(The $485B and 93% figures are unchanged from v2. The AI-fraud growth figure is now framed as "+12x" rather than v2's "+1,210%" — same underlying magnitude, reworded for punch; use "+12x" going forward, it's the current copy.)*
+
+### 1.7 Closing CTA
 "Every bank in these markets has a deadline. Let's talk about yours." → "Book a demo"
 
 ---
 
 ## 2. About (`about.dc.html` → `/about`)
 
+Mostly unchanged from v2 (founders, advisory board, vision/mission all identical):
+
 - **Status pill:** "Since 2022"
 - **Eyebrow:** "Our story — Dubai · Singapore · Chennai"
 - **H1:** "We think like bankers. We build like technologists."
 - **Intro:** "Ektar was founded in 2022 by three experienced ex-bankers. We build digital security solutions for banking's digital channels — and we have lived inside the institutions we now serve, which means we understand the operational constraints, compliance requirements, and procurement realities that shape how banks actually adopt technology."
+- **At a glance:** Founded 2022 · Founders: 3 ex-bankers · Markets: GCC · South Asia · SEA · Offices: Dubai · Singapore · Chennai. Sub-line: "Standard Chartered leadership backgrounds — we have run the channels we now secure."
 
-**At a glance:** Founded 2022 · Founders: 3 ex-bankers (Standard Chartered) · Markets: GCC · South Asia · SEA · Offices: Dubai · Singapore · Chennai
-Sub-line: "Standard Chartered leadership backgrounds — we have run the channels we now secure."
-Callout: "Live, not theoretical — Our products are live. Our clients are some of the largest banks in the region. Our roadmap is defined by where the fraud threat and the regulatory landscape are going next."
+*(The v2 "Live, not theoretical" callout block has been removed.)*
 
 **Vision:** "To make banking safer, smarter, and more trustworthy — for every bank, every channel, and every customer — until trust is no longer something people hope for, but something they simply expect from the banks they rely on each and every day."
 
 **Mission:** "We build digital security products that close the three layers of vulnerability in banking's digital channels — protecting every device, every app, and every user interaction — so banks can serve their customers with confidence."
 
-**Our founders** — "Three ex-bankers who lived the problem."
+**Founders** (unchanged): Sandeep Bose (Co-Founder & CEO, 29 years Standard Chartered), Ramanathan Mullainathan (Co-Founder & CTO, 23 years IT leadership), Sethu Ramaswamy (Co-founder & CPO, 26 years Standard Chartered).
 
-| Name | Role | Bio |
-|---|---|---|
-| Sandeep Bose | Co-Founder and CEO | 29 years at Standard Chartered Bank in Consumer Banking Leadership roles. Last role: Regional Head of Personal and Business Banking for Africa, Middle East and Europe. Board Member at Bahrain Development Bank and Advisor at Foundation Holdings. |
-| Ramanathan Mullainathan | Co-Founder and CTO | 23 years of IT leadership experience consulting global banks — Standard Chartered, JPMC, Fidelity, State Street, Bear Stearns. Most recent role: Global Head, Technologies for Retail, Private & Business Banking Channels at Standard Chartered. |
-| Sethu Ramaswamy | Co-founder and CPO | 26 years with Standard Chartered Bank in Consumer Banking Leadership roles, with deep expertise in Product Management and Credit Cards/Payments. Last role: Regional Head of Affluent Banking for Africa, Middle East & Europe. |
+**Advisory board** (unchanged): A. D. Ganesh, Andrew Bainbridge, Suvo Sarkar, Vignesh Ramanujam — no duplicate entries.
 
-**Advisory board:**
-
-| Name | Role | Bio |
-|---|---|---|
-| A. D. Ganesh | Founder & CEO, Quantum Consultants FZ LLC | 26 years of banking experience across India, Middle East, Sub-Saharan Africa and Europe. Formerly Managing Director and Regional Head of Commercial Banking, Africa and Middle East, at Standard Chartered Bank. |
-| Andrew Bainbridge | Chair, Private Infrastructure Development Group | Extensive experience in commercial banking, risk management, infrastructure financing, business strategy, and acquisitions and disposals across emerging and developed markets. |
-| Suvo Sarkar | Founder & CEO, 3D Advisory | Over 36 years of experience across Asia and the Middle East. Formerly Senior Executive Vice President and Group Head of Retail Banking and Wealth Management at Emirates NBD. |
-| Vignesh Ramanujam | CEO, second venture | Previously a Partner at Lok Capital, overseeing investments in over 40 companies. Has personally supported over 50 startups globally, spanning technology investing, fundraising, and early-stage strategy. |
+### 2.1 New section — "Beyond banking"
+- "Interested in joining us?" → **Careers** (`/join-us`)
+- "Interested in investing in Ektar?" → **Get in touch** → **Investors** (`/investors`, not directly to Contact)
 
 **Closing:** "Built by bankers, for bankers." → "Book a demo"
 
-*(Note: unlike the earlier scrape's finding, the advisor list here does **not** duplicate any entry — four distinct advisors, transcribed cleanly.)*
-
 ---
 
-## 3. AI at Ektar (`ai.dc.html` → `/ai`)
+## 3. ekShield — Authentication (`authentication.dc.html` → `/ekshield`)
 
-- **Status pill:** "AI at Ektar" / page eyebrow repeats as H1
-- **H1:** "AI is not just in our products. It's in how we build them."
-- **Intro:** "Two places AI shows up at Ektar: inside the products that detect fraud, and inside the engineering practice that ships them."
-- Back-link: "← Home"
+**Substantially rewritten from v2** — reframed around a business case rather than a security-architecture deep dive. The old "security architecture" hardware-chip section, PIN-policy/retry/lockout table, and hardware-backed-vs-PIN-only comparison table are **all removed**. Do not carry those over from the v2 documentation.
 
-**Two places** (summary chips): ekSign — fraud pattern detection (AI-assisted) · RASP SDK — behavioural analysis (Runtime) · Fraud & Risk Engine (ML-driven) · Engineering practice (AI-assisted, "Human engineers accountable for every design decision, security control and integration point")
-
-**Where AI sits:**
-
-**01 — AI in our products**
-> ekSign uses AI-assisted fraud pattern detection. The RASP SDK uses behavioural analysis to distinguish legitimate users from malware at runtime. The Fraud & Risk Engine will be ML driven at its core — per-transaction risk decisioning across all signal layers.
-
-**02 — AI in how we build**
-> Our engineering teams use AI-assisted development practices to accelerate delivery and maintain high code quality — with human engineers accountable for every design decision, security control, and integration point.
-
-**Closing:** "Ask us how the risk engine decides." → "Book a demo"
-
-*(Note: this page references a "RASP SDK" and a "Fraud & Risk Engine" as named components — RASP = runtime application self-protection, consistent with ekProtect's in-app runtime defence. Neither has its own dedicated page in this export; they appear to be sub-components of ekProtect's stack, worth confirming with the client before deciding whether they need their own routes.)*
-
----
-
-## 4. ekShield — Authentication (`authentication.dc.html` → `/ekshield`)
-
-- **Status pill:** "Layer 01 secured"
-- **Eyebrow:** "Layer 01 — Authentication · ekShield"
+- **Status pill:** "Session secured"
+- **Eyebrow:** "ekShield · Protect the User"
 - **H1:** "Kill SMS OTP. Keep the login."
-- **Description:** "Replace SMS OTP with phishing-resistant, device-bound authentication across every channel — mobile, web, call centre, ATM, and 3DS. Compliant with CBUAE, RBI, SAMA, BSP, and MAS mandates. White-labelled and live at UAE's 3rd largest bank."
+- **Description:** "No code to steal, no code to intercept. ekShield binds every login and transaction to the customer's own device — phishing-resistant, compliant with CBUAE, RBI, SAMA, BSP and MAS, and already live across mobile, web, call centre and 3DS at the UAE's 3rd largest bank."
 - CTA: "Book a demo" · Back-link: "← All layers"
 
-**Hero visual:** a simulated phone approval flow — "Secure session · Ektar Bank · locked · 09:41", a push notification ("Approve transfer AED 42,500 to Al Futtaim Trading LLC — tap to review"), a transfer detail card (amount AED 42,500.00, recipient Al Futtaim Trading LLC, account AE07····4412, channel Mobile banking), a "Hold to approve" biometric check step, then "Transfer approved — Device-bound passkey · Verified · no OTP sent", reference TRF·88301, ECDSA P-256 signature.
+**Hero visual** (unchanged from v2): simulated transfer-approval flow — "Secure session · Ektar Bank · locked · 09:41", push notification, transfer detail card (AED 42,500.00 to Al Futtaim Trading LLC, account AE07····4412, Mobile banking), biometric hold-to-approve, "Transfer approved — Device-bound passkey · Verified · no OTP sent", reference TRF·88301, ECDSA P-256.
 
-**Quick facts:** Channels — Mobile · Web · Call Centre · ATM · 3DS. Compliance — CBUAE · RBI · SAMA · BSP · MAS. Live at — UAE's 3rd largest bank.
+**Proof line:** Live — Securing logins at two tier-1 banks in the UAE. Contracted — Deployment underway at a top-3 Omani bank.
 
-**Capabilities:**
-01. Device-bound, phishing-resistant credentials
-02. One system across mobile, web, call centre, ATM, and 3DS
-03. Compliant with CBUAE, RBI, SAMA, BSP, and MAS
+### 3.1 The business case — three reasons banks switch (new section)
+01. **Reduce risk.** Closes the phishing, SIM-swap, and replay gaps that SMS OTP can't.
+02. **Save cost.** Removes the per-message fee banks pay telecom operators on every SMS OTP, multiplied across millions of logins a month.
+03. **Improve customer experience.** One tap on a trusted device, replacing a code that's slow, easy to mistype, and frustrating to wait for.
 
-**Security architecture — "Secrets that never leave the phone's security chip."**
-> The secret behind every one-time code is created on Ektar's servers, delivered once during registration, and stored only after every check passes. It belongs to one customer, on one device, for one bank — and it is never written down in readable form anywhere on the phone.
+### 3.2 The breaking point — "SMS OTP is the weakest link in digital banking" (new section)
+> Six digits, no binding, no encryption — and every way of stealing them already works at scale.
 
-| What we protect | How it is protected |
-|---|---|
-| The one-time code secret | Held inside the phone's dedicated security chip, encrypted, and marked so it cannot sync to the cloud, be backed up, or be restored onto another device. On Android the code is calculated inside the chip itself, so the secret is never handed to the app at all. |
-| Registration details and PIN | Encrypted at rest with bank-grade AES-256 encryption, using a key that also lives in hardware. The PIN is stored one-way wherever it does not need to be recovered. |
-| Biometric approval | Bound to the customer's current fingerprint or face enrolment. If a new biometric is added or the set changes, the binding is invalidated and the customer must re-authenticate. |
+- **Account takeover.** SIM swap, SS7 exploits and overlay malware intercept the code before it reaches the customer.
+- **Real-time phishing.** A code read aloud or typed into a fake screen reaches the attacker as fast as the customer.
+- **Zero transaction binding.** One code approves any amount, to anyone — no link to what it authorized.
+- **Regulatory bans.** CBUAE, SAMA, RBI, MAS and BSP have already outlawed it for high-risk transactions.
+- **Approval fatigue.** Look-alike prompts with no number matching train customers to tap "approve" on anything.
+- **Delivery & cost.** Carrier delays, dead zones and rising per-SMS fees erode trust and margin alike.
 
-**What it takes to unlock:** two independent factors together — something only that specific handset holds, and something only the customer knows (their device passcode). Biometric approval adds a third. None of the key material can be exported, copied, or read by software. Data in transit is encrypted as standard, with optional end-to-end encryption on top; secrets and PINs never appear in API responses or logs.
+### 3.3 Capabilities — "Everything ekShield does" (8 items)
+01. Stays inside your own infrastructure — every credential, key, and log lives on the bank's own servers, never on Ektar's.
+02. Extra checks trigger automatically — step-up verification is driven directly by the bank's own fraud-risk score, not a fixed rule.
+03. Works everywhere — mobile, web, ATM, cards, contact centre, and messaging, across Retail, Corporate, and SME, all on one platform.
+04. Number matching — addresses approval fatigue by requiring the customer to match a number, not just tap approve.
+05. Fully offline-capable, with silent registration and automatic key rotation running in the background.
+06. Card-not-present coverage, scheme-agnostic across Visa, Mastercard, and domestic schemes.
+07. Standalone white-label authenticator app, in addition to an embedded SDK.
+08. Pull-based recovery — customers can view and act on any missed approval, right inside the app.
 
-> Full technical whitepaper — including platform flows, enforcement points and risk assessment — available under NDA. *(Matches `uploads/Ektars ekShield Security Whitepaper V2 1.pdf` in the export — real supporting collateral, not a placeholder claim.)*
+### 3.4 How it works (simplified to 3 steps)
+01. On enrollment, the phone generates a rotating credential inside its own secure hardware chip.
+02. Every login or approval is signed with that credential and expires the instant it's used — nothing can be captured and replayed.
+03. Each approval is bound to the exact transaction it authorizes, so a stolen approval can't be reused for a different payment.
 
-**Application controls — "Policy enforced on the device, not just the server."**
+### 3.5 Why now
+> Regulators are banning the old way of proving it's you — and fraud losses are mounting. UAE (CBUAE), Saudi Arabia (SAMA), India (RBI), Singapore (MAS), and the Philippines (BSP) have all banned or are phasing out SMS one-time codes as a standalone authentication method.
 
-| Control | Label | Detail |
-|---|---|---|
-| PIN policy | Rejected before it is accepted | The PIN must match its confirmation, meet the bank's required length, be numeric, and avoid sequences or three or more repeated digits. Old PINs cannot be reused. |
-| Retry & lockout | Per-registration retry counter | Each failed verification decrements the counter; when retries are exhausted the PIN state locks and further attempts are blocked. A successful verification resets it. |
-| Session gating | Local auth, with a reuse window | Biometric availability is checked when the app starts, changes to the customer's biometrics end the trusted state, and once the bank's reuse window expires the customer authenticates again. |
-| Device lock requirement | Without a device lock screen, the model degrades to one factor | ekShield checks that the customer's phone has a passcode or lock screen set, and requires one before registration completes. Ektar recommends enforcing this in production. |
-
-**Hardware-backed vs. PIN-only comparison table:**
-
-| Dimension | Hardware-backed | PIN-only |
-|---|---|---|
-| Physical security | Secrets isolated in the phone's security chip | No hardware barrier — 80% weaker |
-| Attack resistance | Keys cannot be copied off the device | Secrets reachable by software — 80% weaker |
-| Authentication assurance | Hardware proof that the customer was present | The app's word for it — 60% weaker |
-| Key protection | Bound to the handset, non-exportable | Exportable if the PIN is known — 60% weaker |
-| Compliance readiness | Meets strong-authentication and card-industry expectations | Complete loss |
-
-**Regulatory tailwinds** section repeats (condensed, six-market version — same content as homepage §1.7, minus the Data/03 framing).
-
-**Closing:** "Ready to retire SMS OTP?" → "Book a demo"
+**Closing:** "Ready to retire SMS OTP?" — "Join the banks already live on device-bound MFA — watch ekShield stop a phishing attempt and approve a real transaction, in the same 20-minute walkthrough." → "Book a demo"
 
 ---
 
-## 5. ekProtect — App & Device Protection (`ekprotect.dc.html` → `/ekprotect`)
+## 4. ekProtect — Device & App Integrity (`ekprotect.dc.html` → `/ekprotect`)
 
-- **Status pill:** "Layer 02 secured"
-- **Eyebrow:** "Layer 02 — App & Device Protection · ekProtect"
+**Scope narrowed** — behavioural analysis and full malware tracking have moved to ekPulse; ekProtect no longer claims its own risk-decisioning output, that's explicitly ekRules' (or the bank's existing system's) job now.
+
+- **Status pill:** "Device & app secured"
+- **Eyebrow:** "ekProtect · Protect the Device & App"
 - **H1:** "Attest the device. Read the behaviour. Kill the session."
-- **Description:** "ekProtect embeds in the banking app. It attests device and app integrity, detects malware, overlay attacks, rooted devices, and remote access tools in real time, and suspends the session automatically when a threat is found. Behavioural analysis distinguishes legitimate users from malware at runtime, and ML-driven per-transaction risk decisioning turns signals from every layer into a real-time risk score. CBUAE-mandated."
+- **Description:** "ekProtect embeds in the banking app. It attests device and app integrity, detects overlay attacks, malware, rooted devices, and remote access tools in real time, and suspends the session automatically when a threat is found. Every signal feeds into your risk decisioning — your existing system, or ekRules."
 - CTA: "Book a demo" · Back-link: "← All layers"
 
-**Hero visual** (marked "Illustrative"): a runtime-state panel — Session risk score "12", App & device attestation "Pass", Overlay attack "Blocked", Remote access tool "Suspended", Rooted device "Denied". Caption: "Signals from every layer feed one score, per transaction."
+**Hero visual** (marked "Illustrative", now labeled "→ Feeding ekRules"): App & device attestation "Pass", Overlay attack "Blocked", Remote access tool "Suspended", Rooted device "Denied". Caption: "Every detection here is sent to ekRules, alongside the user and device surfaces."
 
-**Quick facts:** Detects — Malware · Overlays · Root · RATs. Response — Automatic session suspension. Mandate — CBUAE.
-
-**Attestation & detection — what ekProtect detects and stops:**
+### 4.1 Capabilities — "What ekProtect detects and stops" (5 items, behavioural analysis removed)
 01. Device & app attestation — confirms the app is genuine and unmodified, and the device is in a state the bank can trust.
-02. Malware and overlay attacks — detects injection and fake screens drawn over the real app, from inside the app itself.
+02. Overlay attacks & basic malware detection — detects fake screens drawn over the real app and flags malicious code running alongside it, from inside the app itself. *(Reframed as "basic" — full malware tracking is now ekPulse's job.)*
 03. Rooted and jailbroken devices — compromised operating systems are identified before a session is trusted.
 04. Remote access tools (RATs) — detects sessions being driven remotely while the customer watches.
 05. Automatic session suspension — when a threat is found the session is suspended automatically, no manual review in the path.
-06. Behavioural analysis at runtime — distinguishes legitimate users from malware by how the session behaves, not just what it declares.
 
-**Risk decisioning — "One risk score, per transaction."**
-> ML-driven per-transaction risk decisioning ingests signals from every security layer — authentication, device, and document — and returns a real-time risk score the bank can act on.
+**Callout:** "Full malware tracking, elimination, and behavioural analysis run on ekPulse — see how →" *(cross-sell link to ekPulse — ekProtect and ekPulse now have a clear, explicit division of labor, don't blur it)*
 
-Inputs: Authentication, device, and document signals ("every layer a bank deploys makes the score more accurate"). Output: a real-time score, per transaction ("decisioned in the transaction path, not after the fact").
+### 4.2 Feeding the decision
+**Heading:** "One signal, wherever your decisioning lives"
+> ekProtect's device and app signals feed straight into your risk decisioning — plugging into the fraud and risk system you already run, or into ekRules if you'd rather bring every layer under one engine.
+
+Inputs: User, device, and app signals ("every layer the bank deploys"). Output: "One real-time decision, made by your risk engine — existing system or ekRules" ("decisioned in the transaction path, not after the fact").
 
 **Closing:** "See ekProtect catch a live threat." → "Book a demo"
 
 ---
 
-## 6. ekBind — SIM Binding (`ekbind.dc.html` → `/ekbind`)
+## 5. ekBind — SIM & Network Trust (`ekbind.dc.html` → `/ekbind`)
+
+Mostly unchanged from v2 — same core mechanism, same background ledger visual. Real changes: a **"Shipping 2026" status badge** now appears, and "Why now" was rewritten with sharper Saudi/Malaysia framing.
 
 - **Status pill:** "SIM verified"
 - **Eyebrow:** "SIM binding · ekBind"
 - **H1:** "Bind the account to the SIM. Catch the swap."
 - **Description:** "ekBind verifies the SIM behind every session. Silent Network Authentication confirms the SIM directly with the mobile operator over the data connection — no code, no customer action. Reverse SMS proves possession of the SIM from the device itself. Both bind the account to a known SIM, so a swapped SIM or a moved number is caught before a transaction proceeds."
+- **Badge:** "Shipping 2026" *(new)*
 - CTA: "Book a demo" · Back-link: "← All products"
 
-**Background ledger visual** (see `DESIGN.md` §5.4): a scrolling column of masked phone numbers across UAE/Oman/India/Singapore/Saudi/Bahrain country codes, each tagged `sim [hash]`, with one row each tagged `sna verified · operator confirmed`, `swap detected`, and `reverse sms · sent from device`.
+**Background ledger visual** (unchanged): masked phone numbers across UAE/Oman/India/Singapore/Saudi/Bahrain, tagged with SIM hashes, one each tagged "sna verified · operator confirmed", "swap detected", "reverse sms · sent from device".
 
-**Hero visual:** a device→banking-app→operator flow diagram — Network check: Silent Network Authentication "Verified", Reverse SMS "Sent from device", SIM swap/port-out "None detected", Code sent to customer "None". Caption: "The SIM is proven with the operator — nothing is sent to intercept."
+**Hero visual** (unchanged): Device→Banking app→Operator flow — Silent Network Authentication "Verified", Reverse SMS "Sent from device", SIM swap/port-out "None detected", Code sent to customer "None".
 
-**Quick facts:** Methods — SNA · Reverse SMS. Catches — SIM swap · port-out · device change. Customer action — None, with SNA.
+**How binding works** (unchanged, 3 items): 01. Silent Network Authentication · 02. Reverse SMS · 03. SIM-swap and port-out detection.
 
-**How binding works:**
-01. Silent Network Authentication — the SIM is confirmed with the mobile operator over the data connection. Nothing is sent to the customer, so there is nothing to intercept or socially engineer.
-02. Reverse SMS — the device sends the message rather than receiving a code; possession of the SIM is proven by the sender, not trusted from an inbound message.
-03. SIM-swap and port-out detection — a changed SIM breaks the binding. The session is re-verified before the transaction is allowed to continue.
+### 5.1 Why now (rewritten)
+**Heading:** "Regulators are mandating device and SIM-level proof"
+> Saudi Arabia's SAMA framework mandates device-bound credentials, and Malaysia's BNM RMiT 2026 mandates device binding for every licensed bank — SIM-swap and port-out checks are a core part of meeting that bar.
+
+*(Malaysia is explicitly named here, even though it was dropped from the homepage's condensed regulatory list — §1.5. Keep it on this page.)*
 
 **Closing:** "Bind every session to a verified SIM." → "Book a demo"
 
 ---
 
-## 7. ekSign — Document Signing & Integrity (`eksign.dc.html` → `/eksign`)
+## 6. ekSign — Document Signing & Integrity (`eksign.dc.html` → `/eksign`)
 
-The deepest page in the export by far — full production-ready product copy.
+**Substantially condensed from v2.** The old three-lettered signing-track breakdown (Track A/B/C with numbered steps each), the sequential/parallel/mixed signing-order table, the detailed "what the signature looks like" table, the "priority use cases" table, and the "authentication by signer type" table are **all removed and consolidated**. This page is now much shorter and punchier.
 
 - **Status pill:** "Signatures valid"
 - **Eyebrow:** "Document signing & integrity · ekSign"
 - **H1:** "Signing inside your own channel. Proof that outlives the session."
-- **Description:** "ekSign brings document signing back inside the bank. Customers review and sign in your app or on your own branded page, authenticated by the MFA they already use — and every signature is cryptographically bound to the document, so tampering is detectable forever. No third-party portal, no third-party brand, no third-party custody of your audit trail."
+- **Description:** "ekSign brings document signing back inside the bank. Customers sign in your own app or branded page — with the MFA they already use, and a signature that's cryptographically bound to the document so tampering is detectable forever."
 - CTA: "Book a demo" · Back-link: "← All products"
 
-**Background ledger visual:** a scrolling column of document types (mandate change, FATCA declaration, suitability form, policy acceptance, joint account opening, credit card agreement, loan agreement, CRS declaration, bancassurance terms, suitability review), each with a short hash, one marked "signed · sha-256 sealed."
+**Background ledger visual** (unchanged): document types (mandate change, FATCA declaration, suitability form, etc.), one marked "signed · sha-256 sealed".
 
-**Hero visual — execution status:** "2 of 3 signed" — Primary borrower: Signed, Co-borrower: Signed, Guarantor: Awaiting. Authentication: Bank MFA · national ID. Seal: `SHA-256 a3f9·c2d1·e4b8` — "any alteration after signing fails verification."
+**Hero visual — execution status** (unchanged): "2 of 3 signed" — Primary borrower Signed, Co-borrower Signed, Guarantor Awaiting. Authentication: Bank MFA · national ID. Seal: `SHA-256 a3f9·c2d1·e4b8`.
 
-**Quick facts:** Cryptography — ECDSA P-256 · SHA-256 document seal. Authentication — Bank MFA · national digital ID. Integration — One API call · no workflow change.
-
-### 7.1 "Why banks move signing in-house" — problem framing
+### 6.1 "Why banks move signing in-house" (unchanged from v2)
 **Heading:** "A third-party portal breaks the journey and holds your record."
-> Most banks sign through an external e-signature platform. That means a customer receives an email that is not from the bank, is redirected to another brand's portal, and verifies with that platform's own SMS OTP — an event with no link to their banking identity. The signed documents and the audit trail then live in the vendor's platform, where the bank is a tenant and pricing or availability changes affect access to its own records.
+Same intro paragraph and same three-row problem framing (Experience / Identity / Custody & cost) as v2.
 
-| Dimension | Problem |
-|---|---|
-| Experience | The journey leaves the bank — another brand's email, domain and portal sit in the middle of a regulated banking action. |
-| Identity | Signing is not tied to the customer — a vendor OTP proves access to an inbox or a phone number, not that your verified customer signed. |
-| Custody & cost | The bank does not own the record — audit trail held externally, priced per envelope. ekSign replaces that with a marginal cost per signing event on infrastructure the bank already runs. |
+### 6.2 How it works — "Two capabilities, joined into one product" (rewritten, 4 bullets)
+> Every signature is mathematically bound to the exact document and to a verified identity — so nothing about it can be faked, altered, or disputed later.
 
-### 7.2 "What ekSign is" — two capabilities
+01. Tamper-evident by design — alter one character after signing, and verification fails immediately.
+02. Bound to a verified identity — the bank's existing MFA fires at the moment of signing, so the signature is tied to a real, verified customer.
+03. Non-customers verified too — guarantors and co-applicants sign using national digital ID, no bank account or new app required.
+04. One complete audit record — every signature, chained to the ones before it, held entirely on the bank's own systems.
 
-**Cryptographic engine — tamper-evident signing and audit**
-> ekSign creates a SHA-256 fingerprint of the document, binds each signing event to that fingerprint with an ECDSA P-256 signature, chains multi-party signatures to one another, and produces a complete audit record the bank holds.
-- Signature bound to exact document contents
-- Any post-signing alteration fails verification
-- Audit record owned and stored by the bank
+### 6.3 Who can sign, and how (new, replaces the old three-track breakdown)
+**Heading:** "One customer, many parties, one process"
 
-**Authentication layer — the MFA your customers already have**
-> The bank's existing MFA — biometric, push approval or TOTP — fires as the signing action, so the signature is bound to a bank-verified identity. Non-customers authenticate with national digital ID (for example UAE Pass, Emirates ID-backed).
-- No new enrolment, app or password
-- Signing event linked to the banking identity
-- Step-up strength configurable per document type
+01. **A single customer** — a push notification, a review inside the banking app, and one authentication step, the same MFA already used for transfers.
+02. **Multiple signatories** — loan agreements, joint accounts, and mandate changes often need more than one signature. ekSign supports signing in sequence, in parallel, or a mix of both; the bank's workflow decides the order.
+03. **Guarantors and other non-customers** — a secure link sent from the bank's own domain, opened on a bank-branded page, verified with national digital ID, no bank account or app required.
 
-### 7.3 Signing journeys — three tracks
-
-**Track A — Single signatory · existing customer**
-1. The bank initiates a signing request; the customer receives a push notification in the banking app.
-2. The customer opens and reviews the document in full, inside the app.
-3. On "Sign", the bank's MFA fires an authentication challenge — biometric, push approval or TOTP.
-4. The signature is recorded, the document sealed, and a signed copy stored in the bank's systems and delivered to the customer.
-
-**Track B — Multi-signatory · sequential, parallel or mixed**
-1. The bank's workflow system initiates the request, specifying each signatory, their role, and the signing order.
-2. ekSign notifies the first signatory (sequential) or all signatories at once (parallel), each in their own channel.
-3. Each party reviews and authenticates — in the banking app for customers, on a bank-branded secure page for everyone else.
-4. Each completed signature is cryptographically chained to the previous one, and the workflow system is notified after every signature.
-5. Once all required parties have signed, the document is sealed with all signature blocks and delivered to all parties.
-
-**Track C — Non-customer · guarantor, co-applicant, prospect**
-1. The bank shares the document as a secure link sent from its own domain, by SMS or email — no third-party domain.
-2. The recipient opens it on a bank-branded signing page in the browser.
-3. They authenticate with national digital ID — no bank account or app required.
-4. The signature is recorded and sealed; the signed document is delivered to the recipient and retained by the bank.
-
-### 7.4 Signing order
-> The bank's workflow sets the mode when it initiates the request, and ekSign enforces it — advancing automatically in sequential mode while the bank retains the ability to pause, redirect or escalate at any point. A document is not executed until every required signature is present.
-
-| Mode | Description | Example |
-|---|---|---|
-| Sequential | Signatories sign one at a time in a defined order; each party is notified only once the previous signature completes. | Borrower → Co-borrower → Guarantor |
-| Parallel | All signatories are notified simultaneously and may sign in any order. Used where no priority sequence is needed. | Joint holder A ∥ Joint holder B |
-| Mixed | Combines both: parties sign in parallel, then a later signatory is notified once the earlier group has completed. | (Co-borrower A ∥ Co-borrower B) → Guarantor |
-
-### 7.5 What the signature looks like
-> Each signature appears as a structured block on the document, labelled with the signatory's role and sequence position, and it travels with both digital and printed copies. Beneath them sits a SHA-256 seal covering all content and all signatures: alter one character of the document, or one field of any signature, and verification fails immediately.
-
-| Element | Detail |
-|---|---|
-| Sequence | Signature n of N, with the signatory's role on the document |
-| Signature | ECDSA P-256, bound to the document fingerprint and chained to the prior signature |
-| Seal | SHA-256 hash over document content and every signature block |
-| Verification | Through the bank's own systems on request, or by QR seal where the bank wants third parties to verify an issued document unaided |
-| Record | Signed copy and audit trail retained by the bank |
-
-Sample signature-block data: Signature 1 of 3, Primary borrower, Signed by A. Al Mansoori, Date & time 23 Jul 2026 · 14:32:07 GST, Authenticated via Bank MFA (biometric), Reference SGN-2026-00891-001, Status Signed, Document hash `a3f9·c2d1·e4b8·f7…`.
-
-### 7.6 Authentication by signer type
-
-| Signer | Method | What it means |
-|---|---|---|
-| Existing customer | Bank MFA | The same MFA used for transfers and high-risk actions. No new enrolment, and the signing event ties directly to a verified banking identity. |
-| Non-customer (guarantor, co-applicant) | National digital ID | Government identity backed by a national ID document. No bank enrolment needed; covers residents and most expatriates. |
-| Prospective customer (onboarding) | National digital ID | Identity is established at the point of signing and linked to the customer record once the account is opened. |
-
-### 7.7 Priority use cases
-
-| Document type | Signing mode | Notes |
-|---|---|---|
-| Loan & credit card agreements | Sequential | Highest legal weight. Borrower → co-borrower → guarantor, each party signing in order. |
-| Joint account opening | Parallel | Both account holders sign simultaneously; completion triggers account activation. |
-| Account mandate changes | Single / sequential | Sole mandate: single signatory. Joint mandate: sequential or parallel by mandate type. |
-| FATCA / CRS declarations | Single | Regulatory identity-verified signature; national digital ID covers non-resident signers. |
-| Investment suitability forms | Single | Risk appetite declaration. Biometric MFA adds evidentiary strength. |
-| Insurance policy acceptance | Single | Bancassurance terms acceptance; the workflow system routes to policy issuance on completion. |
-
-### 7.8 ekSign vs. a third-party portal
+### 6.4 ekSign vs. a third-party portal (condensed to 4 rows, was 8 in v2)
 
 | Third-party e-signature platform | ekSign |
 |---|---|
-| Customer redirected to the vendor's portal and brand | Customer signs in the banking app or on a bank-branded page |
+| Customer redirected to another brand's portal | Customer signs inside your own app or branded page |
 | Authenticated by vendor SMS OTP or email | Authenticated by the bank's own MFA, or national digital ID |
-| Signing event not linked to the banking identity | Signing event cryptographically bound to a bank-verified identity |
-| Multi-signatory routing managed inside the vendor platform | Routing defined and owned by the bank's workflow system |
-| No tamper detection on the signed document | SHA-256 seal detects any alteration after signing |
 | Audit trail held by the vendor — the bank is a tenant | Full audit trail owned and held by the bank |
-| Vendor branding throughout the experience | Bank brand on every touchpoint — app, page, signature block, emails |
-| Fixed per-envelope licence fee at scale | Marginal cost per signing event on Ektar's platform |
+| Fixed per-envelope licence fee | Marginal cost per signing event, on infrastructure the bank already runs |
 
 **Closing:** "Replace a recurring licence with a capability you own." → "Book a demo"
 
-*(This page's depth matches `uploads/ADCB ekSign Concept Note.pdf` in the export — real supporting collateral for a named bank prospect, not placeholder marketing copy.)*
-
 ---
 
-## 8. ekSell — Distribution (`eksell.dc.html` → `/eksell`)
+## 7. ekSell — Distribution (`eksell.dc.html` → `/eksell`)
+
+**Substantially fleshed out from v2**, where it was the thinnest page in the export. Scope explicitly broadened to include insurance products, not just banking products.
 
 - **Status pill:** "Founding platform"
 - **Eyebrow:** "Distribution · ekSell"
-- **H1:** "Bank products, in the places customers already are."
-- **Description:** "Connect banks to retail ecosystems — employers, fintechs, retailers — for cost-effective digital product distribution. Ektar's founding platform."
+- **H1:** "Bank and insurance products, in the places customers already are" *(was banking-only framing in v2)*
+- **Description:** "ekSell connects banks and insurers to the retailers, employers, and platforms people already use — so a customer can apply for a card, account, or policy through a channel they already trust, instead of only through the bank's own website or a sales agent."
+- **Badge:** "Live"
 - CTA: "Book a demo" · Back-link: "← All products"
 
-**Background ledger visual:** a scrolling column of channel partners (employer payroll — 12,400 staff, fintech wallet API, retail chain — 86 stores, telco bundle, marketplace lending, insurance broker, employer benefits portal, ride-hailing platform, grocery chain — 240 outlets, payroll aggregator, e-commerce marketplace, SME accounting suite, travel platform, utility biller), each tagged `queued` except the retail chain, tagged `connected · distributing`.
+**Background ledger visual** (unchanged): channel partners (employer payroll, fintech wallet, retail chain, telco bundle, marketplace lending, insurance broker, etc.), one marked "connected · distributing".
 
-**Hero visual:** Bank → Digital products → Channels (Retail ecosystems) fan-out diagram: Employers "Connected", Fintechs "Connected", Retailers "Connected". Caption: "Ektar's founding platform — cost-effective digital distribution."
+**Hero visual** (unchanged): Bank → Digital products → Channels fan-out — Employers/Fintechs/Retailers all "Connected".
 
-**Quick facts:** Connects — Employers · Fintechs · Retailers. Purpose — Digital product distribution. Status — Ektar's founding platform.
+### 7.1 How it works — "One connection, many channels" (new section)
+01. **Banks and insurers connect via API** — credit cards, accounts, mortgages, and insurance products all flow through the same connection.
+02. **Channel partners reach their own customers** — retailers, employers, and associations offer these products through their own app, website, email, or in-store QR code, no separate build required on their side.
+03. **Applications happen inside a channel people already trust** — a customer applies through a retailer's app or an employer's benefits portal, not a cold digital ad or an unfamiliar bank sign-up page.
 
-**What ekSell does:**
-01. Reach retail ecosystems
-02. Cost-effective digital product distribution
-03. Shares the common signal layer with every Ektar product
+### 7.2 Why banks use it — "A cheaper, safer way to reach new customers" (new section)
+01. **Lower cost per new customer** — compared to direct sales agents and paid digital acquisition.
+02. **Less exposure handling customer data in the field** — a channel partner's own app handles the interaction, not a door-to-door agent.
+03. **Reaches customers earlier in their decision** — through a channel they already use daily, not only when they think to visit a bank's website.
 
 **Closing:** "Take your products to new channels." → "Book a demo"
 
-*(This is the thinnest of the five product pages — three one-line capability bullets versus the multi-section depth of ekShield/ekSign/ekProtect/ekBind. Flag to the client as the page most likely to need more content before launch.)*
+---
+
+## 8. ekKey — Passkeys (`ekkey.dc.html` → `/ekkey`) — NEW PAGE
+
+- **Eyebrow:** "ekKey · Protect the User"
+- **H1:** "Login without a password — or a code — at all"
+- **Description:** "ekKey replaces passwords and one-time codes with a passkey tied to the customer's own device — the same industry standard already used by major banks and tech platforms worldwide."
+- **Badge:** "Shipping 2026"
+- CTA: "Book a demo"
+
+**Hero visual:** "Verifying it's you…" → "Signed in — No password used"
+
+### 8.1 Capabilities — "A credential that can't be stolen, because it never travels"
+- **No password to steal** — there's nothing to phish, guess, or leak in a data breach; the credential never leaves the customer's device.
+- **Built on FIDO2, not a proprietary standard** — works with passkey infrastructure customers may already use elsewhere.
+- **One tap to log in** — face or fingerprint unlock replaces typing anything at all.
+- **Fully device-bound** — a passkey copied off the device is useless; it only works on the hardware it was created on.
+
+### 8.2 How it works — "Three steps, and nothing to type"
+01. The customer's phone generates a unique cryptographic key pair on enrollment.
+02. The private key never leaves the device's secure hardware.
+03. Each login is signed with that key and verified instantly — no code to type, nothing to intercept.
+
+### 8.3 Why now — "Written into the new rules"
+> Directly satisfies the passkey and device-bound login requirements now appearing in UAE, Saudi, and Malaysian banking regulation.
+
+**Closing:** "Ready to remove the password entirely?" → "Book a demo"
 
 ---
 
-## 9. Blog (`blog.dc.html` → `/blog`)
+## 9. ekPulse — Behavioural Biometrics (`ekpulse.dc.html` → `/ekpulse`) — NEW PAGE
 
-- **Status pill:** "Notes"
-- **Eyebrow:** "Blog"
-- **H1:** "Notes on fraud, devices, and regulation."
-- **Intro:** "Where the threat is moving, what regulators are ordering next, and what it means for a bank with a deadline."
-- Back-link: "← Home"
+- **Eyebrow:** "ekPulse · Protect the User & App" *(the only product page explicitly tagged with two surfaces in its own eyebrow)*
+- **H1:** "The way someone types and moves is as unique as a fingerprint"
+- **Description:** "ekPulse learns how a genuine customer holds their phone, types, and swipes — then flags the moment those patterns don't match, even if every password and code was entered correctly."
+- **Badge:** "Building now"
+- CTA: "Book a demo"
 
-**What we write about:** Fraud tactics in digital channels (Analysis) · Regulation and deadlines (Briefings) · Engineering notes (Practice)
+**Hero visual:** "Continuous behaviour check" — "Pattern matched" / "Reviewing signal…"
 
-**The export is explicit that the three post cards shown are placeholders:** each reads "Post title" / "Standfirst goes here — two lines summarising the piece." and the page itself is labelled "Posts are placeholders until real entries are published — Placeholder entries — replace with real posts." **This is the one page in the export that is honestly, deliberately unfinished — build the placeholder state as designed, don't invent real post content.**
+### 9.1 Capabilities — "A signal a stolen credential can't fake"
+- **Works silently in the background** — no extra step for the customer; it learns from normal use of the app.
+- **Catches what passwords can't** — a stolen credential still won't behave like the real customer.
+- **Covers both people and sessions** — flags a different person typing, and a remote-control tool moving the cursor in ways a human wouldn't.
+- **Gets stronger with use** — the more a genuine customer uses the app, the sharper the behavioural profile becomes.
 
----
+### 9.2 How it works — "A profile built from ordinary use"
+01. The app observes typing rhythm, swipe pressure, and how the phone is held during normal use.
+02. Over time, this builds a behavioural profile unique to that customer.
+03. Every new session is compared against that profile in real time, and any mismatch is passed to ekRules as a signal.
 
-## 10. Careers (`careers.dc.html` → `/join-us`)
+### 9.3 Why now — "Continuous, not one-time"
+> Behavioural biometrics are increasingly cited by regulators, including SAMA and RBI, as an expected layer of continuous authentication, beyond a one-time login check.
 
-- **Status pill:** "We are hiring"
-- **Eyebrow:** "Careers"
-- **H1:** "Join us."
-- **Intro:** "Send your details and we'll be in touch when a role fits. Our teams sit in Dubai, Singapore, and Chennai."
-- Back-link: "← Home"
-
-**Where we work:** Dubai, UAE (Office) · Singapore (Office) · Chennai, India (Office)
-
-**Applications:** "Always open" — "Send your details and resume — we reply when a role fits."
-
-**Form ("Join us"):** Name · Email · Attach your resume (file upload) · Send
-
-No open-roles list exists in this export — the entire careers strategy is a single always-open application form, not a job board. **This is a real, deliberate design choice, not a content gap** — don't add a fabricated roles list.
+**Closing:** "Ready to verify more than just a password?" → "Book a demo"
 
 ---
 
-## 11. Contact (`contact.dc.html` → `/contact`)
+## 10. ekRules — Risk Decisioning (`ekrules.dc.html` → `/ekrules`) — NEW PAGE
+
+The explicit "decision engine" every other product and surface page now points to.
+
+- **Eyebrow:** "ekRules · All three surfaces"
+- **H1:** "Every signal, one decision, in real time"
+- **Description:** "ekRules takes every signal from the user, device, and app — a login, a SIM check, a tamper flag — and makes one call in milliseconds: allow, verify further, or block."
+- **Badge:** "Building now"
+- CTA: "Book a demo"
+
+**Hero visual — "Every signal, one verdict":** User → Device → App all feed into ekRules → three possible outputs: Allow / Verify / Block.
+
+### 10.1 Capabilities — "The layer that turns signals into decisions"
+- **One engine, not seven silos** — every product's signal lands in the same place, so nothing gets decided in isolation.
+- **Real-time, not batch** — the decision happens in the moment a transaction or login is attempted.
+- **Three outcomes, not just yes/no** — allow, step up to further verification, or block, matching the actual risk.
+- **Tunable by your own risk team** — rules and thresholds are configured by the bank, not fixed by Ektar.
+
+### 10.2 How it works — "Signals in, one verdict out"
+01. Every surface — user, device, app — continuously sends signals as they're generated.
+02. ekRules evaluates all of them together against your bank's own risk policy.
+03. A verdict is returned in milliseconds, and where applicable, handed to ekSign to create a permanent, signed record of that decision. *(A real, specific cross-product integration claim — ekRules' verdicts can trigger an ekSign record. Preserve this connection if building any kind of product-relationship diagram.)*
+
+### 10.3 Why now — "Static rules are no longer enough"
+> Regulators increasingly expect real-time, risk-based decisioning rather than static rules — this is the layer that makes every other product's signal actually actionable.
+
+**Closing:** "Ready to make every signal count?" → "Book a demo"
+
+---
+
+## 11. Protect the User (`protect-the-user.dc.html` → `/protect-the-user`) — NEW SURFACE PAGE
+
+- **Eyebrow:** "Protect the User"
+- **H1:** "The person is often the easiest way in. We close that door."
+- **Description:** "Fraud rarely breaks through a bank's systems — it goes around them, through a phished login, a stolen code, or a convincing fake. These products make the person themselves the hardest part to fool."
+- **Tier summary line:** "ekShield — live today · ekKey, ekSign — shipping through 2026 · ekPulse — building now"
+- CTA: "Book a demo"
+
+**Hero visual** — two mini panels: **ekShield** (Login attempt: Customer verified/Device-bound · no code sent; chips: SMS OTP replay blocked, Call-centre impersonation challenged) and **ekPulse** (Behaviour check: Behaviour verified/Typing pattern matched; chips: Session takeover flagged, Synthetic identity challenged).
+
+### 11.1 The threats — "Four ways fraud targets the person, not the system"
+- **Stolen text-message codes** — the most exploited method in retail banking today. *Now banned across five markets*
+- **Phishing and fake login pages** — designed to look identical to the real thing. *Credential capture*
+- **Call-centre social engineering** — a convincing voice, not a broken system. *Human channel*
+- **Deepfakes and synthetic identities** — AI-generated voices and faces, up over 12x in the past year. *Fastest-growing vector*
+
+### 11.2 The products — "Four products that protect the person"
+01. **ekShield** — Authentication. Replaces one-time codes with a login that can't be phished — device-bound, working across mobile, web, call centre, ATM, and 3DS.
+02. **ekKey** — Passkeys. Login without a password at all, using the industry-standard FIDO2 passkey tied to the customer's own device.
+03. **ekSign** — Document signing. Signs banking documents against an identity the suite has already proven, so a signed record can't be altered after the fact.
+04. **ekPulse** — Behavioural biometrics. Learns how a real customer types and moves, so it can flag the moment someone else is in control.
+
+**Callout — "One decision engine":** "Every signal from this page — a login, a signature, a typing pattern — feeds into ekRules alongside the device and app surfaces. One engine decides in real time: allow, verify further, or block."
+
+### 11.3 Why now
+**Heading:** "Regulators are banning the old way of proving it's you"
+> UAE (CBUAE), Saudi Arabia (SAMA), India (RBI), Singapore (MAS), and the Philippines (BSP) have all banned or are phasing out SMS one-time codes as a standalone authentication method.
+
+**Closing:** "Ready to close the door on stolen logins?" → "Book a demo"
+
+---
+
+## 12. Protect the Device (`protect-the-device.dc.html` → `/protect-the-device`) — NEW SURFACE PAGE
+
+- **Eyebrow:** "Protect the Device"
+- **H1:** "A stolen password is useless without the right phone. We make sure it stays that way."
+- **Description:** "A SIM swap, a rooted phone, or a hijacked session can undo even a strong login. These products prove it's still the customer's own device."
+- CTA: "Book a demo"
+
+**Hero visual — "Device attestation", six checks all "✓ verified":** SIM binding · Network match · Platform integrity · Root/jailbreak check · Persistent device binding · Reinstall detection. Caption: "Verified continuously · no action needed."
+
+### 12.1 The threats — "Four ways fraud takes over the device itself"
+- **SIM swap and re-issue** — a criminal takes over the customer's phone number. *Network layer*
+- **Hijacked sessions** — a session continues on hardware it was never meant to. *Session layer*
+- **Rooted and jailbroken phones** — the phone's own protections are disabled. *Platform layer*
+- **Overlay attacks** — a fake screen drawn over the real app to capture credentials. *Runtime layer*
+
+### 12.2 The products — "Three products that prove the device"
+01. **ekBind** — SIM & network trust. Confirms the SIM is still the one the customer enrolled with, catching a swap or re-issue before a transaction goes through.
+02. **ekProtect** — Device integrity. Detects rooted or jailbroken phones and platform-level tampering in real time.
+03. **ekShield** — Authentication. Also binds the login itself to the enrolled device, closing the gap a stolen credential alone can't get through.
+
+**Callout — "One decision engine":** "Every signal from this page — a SIM check, a device-integrity read — feeds into ekRules alongside the user and app surfaces. One engine decides in real time: allow, verify further, or block."
+
+### 12.3 Why now
+**Heading:** "Regulators are mandating device-level proof"
+- **Saudi Arabia.** The SAMA framework mandates FIDO2 device-bound credentials, with penalties up to SAR 5 million per breach.
+- **Malaysia.** BNM RMiT 2026 mandates device binding for every licensed bank.
+
+**Closing:** "Ready to stop trusting the device by default?" → "Book a demo"
+
+---
+
+## 13. Protect the App (`protect-the-app.dc.html` → `/protect-the-app`) — NEW SURFACE PAGE
+
+- **Eyebrow:** "Protect the App"
+- **H1:** "Assume the app is already being tampered with. We catch it while it's happening."
+- **Description:** "Malware doesn't need to break in from outside — it can run right alongside a legitimate banking app. We watch the app itself, while it's running, not just at install."
+- CTA: "Book a demo"
+
+**Hero visual — "Runtime integrity scan"**, a terminal-style checklist, all clear/none:
+`binary_integrity ····· clear` · `debugger_hook ········ clear` · `overlay_scan ·········· clear` · `malware_signature ····· none` · `code_integrity ········ clear` · `deny_list_check ······· clear`
+Caption: "Scanning continuously · in real time."
+
+### 13.1 The threats — "Three ways fraud gets inside the app"
+- **Malware running alongside a trusted app** — invisible to the customer. *Runtime layer*
+- **Repackaging and tampering** — a modified copy of the real app. *Binary layer*
+- **Remote access tools** — a criminal quietly controlling the session while the customer watches. *Session layer*
+
+### 13.2 The products — "Two products that defend the app itself"
+01. **ekProtect** — Runtime & app integrity. Detects tampering, repackaging, and malware running inside the app itself, in real time.
+02. **ekPulse** — Behavioural signals. Adds an extra layer of app-level behavioural signal to catch what integrity checks alone might miss.
+
+**Callout — "One decision engine":** "Every signal from this page — an integrity check, a tamper flag — feeds into ekRules alongside the user and device surfaces. One engine decides in real time: allow, verify further, or block."
+
+### 13.3 Why now
+**Heading:** "Regulators now require real-time app defence"
+- **UAE.** CBUAE Notice 3057 requires real-time malware session suspension.
+- **Saudi Arabia.** The SAMA framework requires real-time fraud monitoring at the app layer.
+
+**Closing:** "Ready to stop assuming your app is safe?" → "Book a demo"
+
+---
+
+## 14. Investors (`investors.dc.html` → `/investors`) — NEW PAGE
+
+- **Status pill:** "Since 2022"
+- **H1:** "Investors"
+- **Sub-heading:** "Banking fraud is a large, urgent, and solvable problem"
+- **Intro:** "Regulators across the Gulf, South Asia, and Southeast Asia are actively banning the authentication methods banks rely on today, on hard deadlines. Ektar is already live at a top-3 regional bank, with the rest of a seven-product suite shipping through 2026 and beyond."
+- CTA: "Get in touch"
+
+### 14.1 Why now
+**Heading:** "The old defences are being phased out by regulation, not choice"
+> SMS one-time codes — the method most banks still rely on — are being banned outright across multiple markets, on fixed deadlines. That regulatory pressure is forcing a wave of infrastructure replacement across the region's banks.
+
+### 14.2 The team
+**Heading:** "Three ex-bankers, decades inside the institutions we now serve"
+> Our founders spent a combined 78+ years in senior roles at Standard Chartered Bank, across consumer banking, technology, and product leadership. Our advisory board includes former senior executives from Emirates NBD, Standard Chartered, and experienced venture investors.
+
+**Closing:** "Interested in investing in Ektar? Get in touch to start the conversation." → "Get in touch"
+
+*(No pitch deck, financials, or funding-round details are in this export — this is a relationship-starting page, not a data room. Don't fabricate figures.)*
+
+---
+
+## 15. Blog (`blog.dc.html` → `/blog`) — unchanged from v2
+
+Still honestly placeholder. Same copy as v2: "Notes on fraud, devices, and regulation." / three "What we write about" categories (Fraud tactics — Analysis, Regulation and deadlines — Briefings, Engineering notes — Practice) / explicit "Posts are placeholders until real entries are published" with three placeholder cards. **Still build the placeholder state, don't invent posts.**
+
+---
+
+## 16. Careers (`careers.dc.html` → `/join-us`) — REWRITTEN, no longer a form
+
+**The v2 resume-upload application form is gone entirely.** This is now a culture/pitch page with no form fields at all — confirmed by checking the raw source for any `<form>`, file-upload, or resume-related markup (none found).
+
+- **Eyebrow:** "Careers · Since 2022"
+- **H1:** "Build the security layer banks actually need"
+- **Description:** "We're a small team of ex-bankers and engineers building the products we wished existed when we worked inside these institutions. If you want your work running in production at real banks, not stuck in a pilot, this is that kind of place."
+- CTA: "Get in touch"
+
+### 16.1 Why this matters
+**Heading:** "Fraud at scale is a solvable problem, and we're solving it"
+> Banking fraud isn't a rare edge case — it's a structural gap in how most digital channels were built. The work here goes directly into stopping it, at institutions with millions of real customers.
+
+### 16.2 Culture — "Small team, real customers, fast decisions"
+01. **Founder-led, not committee-run** — our founders spent decades inside the banks we now serve; decisions move fast because we've lived the problem, not guessed at it.
+02. **Your work ships** — products go into production at real banks, not just a pitch deck.
+03. **Based across three hubs** — Dubai, Singapore, and Chennai — a small, connected team rather than a large distributed one.
+
+**Closing:** "Don't see an open role that fits? We're growing steadily — reach out and tell us what you'd bring." → "Get in touch"
+
+*(Both CTAs on this page say "Get in touch", not "Book a demo" — the only page in the export where the primary CTA language changes; port that distinction, don't normalize it to "Book a demo".)*
+
+---
+
+## 17. Contact (`contact.dc.html` → `/contact`) — unchanged from v2
 
 - **Status pill:** "Channel open"
 - **Eyebrow:** "Average response under 24 hours"
 - **H1:** "Let's talk about your fraud gaps."
 - **Intro:** "Tell us where fraud is hitting you — the login, the app, or the document — and we'll show you what closes it."
+- **Quick contact:** customer@ektar.com · Dubai · Singapore · Chennai (3 offices) · "Demo request — Under 24h — Tell us which layer is hurting — login, app, SIM or document"
+- **Form ("Request a demo"):** Name · Email · Phone Number · Company Name · Message · Submit
+- Offices repeated with full addresses (UAE, Singapore, India) plus email.
 
-**Quick contact block:** customer@ektar.com (Email) · Dubai · Singapore · Chennai (3 offices) · Demo request under 24h — "Tell us which layer is hurting — login, app, SIM or document."
-
-**Form ("Request a demo"):** Name · Email · Phone Number · Company Name · Message · Submit
-
-**Offices repeated with full addresses** (UAE, Singapore, India — same as global footer) plus email.
-
-*(Note: this is the actual destination for every "Book a demo" CTA site-wide.)*
-
----
-
-## 12. Superseded draft: "Home v1 (light)" (`Home v1 (light).dc.html`)
-
-**Not a live route — do not build this as a page.** Included in the export as design history. Key differences from the shipped homepage, worth knowing so it isn't accidentally merged back in:
-
-- Light theme by default (not dark), no rotating "Protect the X" line
-- Only **three** solutions shown (Authentication / App & Device Protection / Document Fraud Prevention) — the pre-ekBind, pre-ekSign-as-separate-product, pre-ekSell-integration structure
-- H1: "Digital security, engineered for banking channels." (note: "banking channels", not "Banks")
-- Footer tagline: "Make banking safer, smarter, and more trustworthy — for every bank, every channel, and every customer." and closing line "Founded by ex-bankers from Standard Chartered."
-
-This draft's stat band (§1.8-equivalent) and regulatory framing are near-identical to the shipped site, confirming those numbers were locked early and carried through. Everything else about product naming and count changed between this draft and the shipped version — a useful signal that the product lineup (five, not three) is a recent and deliberate decision, not something to second-guess in the rebuild.
-
----
-
-## 13. Internal design-exploration pages (not routes — reference only)
-
-Three files in the export are design-decision records, not site pages:
-
-- **`Nav Options.dc.html`** — three navigation directions were prototyped (tracking underline, mega panel, magnetic block). The magnetic block shipped (see `DESIGN.md` §5.3).
-- **`Background Options.dc.html`** — per-product animated background treatments were prototyped and refined; the versions described in `DESIGN.md` §5.4 are what shipped.
-- **`Protect Line Options.dc.html`** — four type/transition treatments for the hero rotator were tested; "1a · Poppins italic · blur dissolve" shipped (see `DESIGN.md` §5.1).
-
-Keep these three out of the Next.js route tree entirely — they exist to explain *why* the shipped choice looks the way it does, not to be built as pages themselves.
+This remains the destination for every "Book a demo" CTA site-wide, **and** for Careers' and Investors' own "Get in touch" buttons (both confirmed pointing at `contact.dc.html`). One exception: About's "Interested in investing in Ektar? → Get in touch" link points at `investors.dc.html`, not directly at Contact — About's "Interested in joining us? → Careers" link points at `careers.dc.html` as expected.

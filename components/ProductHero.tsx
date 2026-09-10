@@ -8,6 +8,7 @@ export default function ProductHero({
   backLabel,
   motif,
   visual,
+  badge,
 }: {
   statusText: string;
   title: string;
@@ -15,13 +16,14 @@ export default function ProductHero({
   backLabel: "← All layers" | "← All products";
   motif: ReactNode;
   visual: ReactNode;
+  badge?: ReactNode;
 }) {
   return (
     <section className="stage">
       {motif}
       <div className="glow" />
       <div className="scan" />
-      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+      <div className="wrap">
         <div className="hero">
           <div className="reveal">
             <p className="status mono">
@@ -34,10 +36,11 @@ export default function ProductHero({
               <Link href="/contact" className="btn btn-primary">
                 Book a demo
               </Link>
-              <Link href="/#layers" className="btn btn-ghost btn-onink">
+              <Link href="/" className="btn btn-ghost btn-onink">
                 {backLabel}
               </Link>
             </div>
+            {badge}
           </div>
           <div className="reveal">{visual}</div>
         </div>

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ProductHero from "@/components/ProductHero";
 import LedgerBackground from "@/components/LedgerBackground";
-import { hero, ledgerRows, quickFacts, howItWorks, closing } from "@/lib/content/products/ekbind";
+import TierBadge from "@/components/TierBadge";
+import { hero, ledgerRows, quickFacts, howItWorks, whyNow, closing } from "@/lib/content/products/ekbind";
 
 export const metadata: Metadata = {
   title: "ekBind — SIM binding | Ektar",
@@ -18,6 +19,7 @@ export default function EkBindPage() {
         description={hero.description}
         backLabel="← All products"
         motif={<LedgerBackground rows={ledgerRows} />}
+        badge={<TierBadge label={hero.badge} />}
         visual={
           <div className="viz">
             <div className="vhead">
@@ -89,7 +91,7 @@ export default function EkBindPage() {
         }
       />
 
-      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+      <div className="wrap">
         <div className="strip mono">
           {quickFacts.map((f) => (
             <div key={f.k}>
@@ -112,10 +114,18 @@ export default function EkBindPage() {
             ))}
           </div>
         </section>
+
+        <section className="sec reveal">
+          <span className="kicker mono">Why now</span>
+          <h2 className="h2">{whyNow.heading}</h2>
+          <p className="lede" style={{ marginBottom: 0 }}>
+            {whyNow.text}
+          </p>
+        </section>
       </div>
 
       <section className="close reveal">
-        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+        <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">
             <Link href="/contact" className="btn btn-primary">

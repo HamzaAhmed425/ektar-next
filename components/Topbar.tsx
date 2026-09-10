@@ -6,65 +6,77 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { toggleTheme } from "@/lib/theme";
 
-const PRODUCT_NAV = [
+type DropItem = { href: string; label: string; role: string };
+type NavItem = {
+  href: string;
+  label: string;
+  role: string;
+  line: string;
+  dropdown?: DropItem[];
+};
+
+const NAV: NavItem[] = [
   {
-    href: "/ekshield",
-    label: "ekShield",
-    role: "Authentication",
-    line: "Device-bound, phishing-resistant login across mobile, web, call centre, ATM and 3DS.",
+    href: "/",
+    label: "Home",
+    role: "Home",
+    line: "The full trust suite — seven products across three surfaces.",
   },
   {
-    href: "/ekprotect",
-    label: "ekProtect",
-    role: "Attest & risk",
-    line: "Malware, overlays, rooted devices and RATs, caught inside the app.",
+    href: "/protect-the-user",
+    label: "Protect the User",
+    role: "Protect the User",
+    line: "A login that can't be phished, copied, or intercepted.",
+    dropdown: [
+      { href: "/ekshield", label: "ekShield", role: "Authentication" },
+      { href: "/ekkey", label: "ekKey", role: "Passkeys" },
+      { href: "/eksign", label: "ekSign", role: "Document signing" },
+      { href: "/ekpulse", label: "ekPulse", role: "Behavioural biometrics" },
+    ],
   },
   {
-    href: "/ekbind",
-    label: "ekBind",
-    role: "SIM binding",
-    line: "Operator-verified SIM checks via Silent Network Authentication and Reverse SMS.",
+    href: "/protect-the-device",
+    label: "Protect the Device",
+    role: "Protect the Device",
+    line: "Proof it is still the customer's own phone and number.",
+    dropdown: [
+      { href: "/ekbind", label: "ekBind", role: "SIM & network trust" },
+      { href: "/ekprotect", label: "ekProtect", role: "Device integrity" },
+      { href: "/ekshield", label: "ekShield", role: "Authentication" },
+    ],
   },
   {
-    href: "/eksign",
-    label: "ekSign",
-    role: "Signing",
-    line: "In-channel document signing, bound to the document and sealed with SHA-256.",
-  },
-  {
-    href: "/eksell",
-    label: "ekSell",
-    role: "Distribution",
-    line: "Bank products into employer, fintech and retail channels.",
-  },
-  {
-    href: "/ai",
-    label: "AI",
-    role: "AI at Ektar",
-    line: "Inside the products that detect fraud, and inside how we build them.",
+    href: "/protect-the-app",
+    label: "Protect the App",
+    role: "Protect the App",
+    line: "Malware, overlays and tampering, caught inside the app.",
+    dropdown: [
+      { href: "/ekprotect", label: "ekProtect", role: "Runtime & app integrity" },
+      { href: "/ekpulse", label: "ekPulse", role: "Behavioural signals" },
+    ],
   },
   {
     href: "/about",
     label: "About",
-    role: "About Ektar",
+    role: "About",
     line: "Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.",
   },
 ];
 
-const DEFAULT_ROLE = "Five products";
-const DEFAULT_LINE = "One signal layer — each product sharpens the others.";
+const DEFAULT_ROLE = "Seven products";
+const DEFAULT_LINE = "One decision engine — ekRules weighs every signal the three surfaces emit.";
 
 const STATUS_BY_PATH: Record<string, string> = {
   "/": "Systems live",
-  "/ekshield": "Layer 01 secured",
-  "/ekprotect": "Layer 02 secured",
+  "/ekshield": "Session secured",
+  "/ekprotect": "Device & app secured",
   "/ekbind": "SIM verified",
   "/eksign": "Signatures valid",
   "/eksell": "Founding platform",
-  "/ai": "AI at Ektar",
   "/about": "Since 2022",
+  "/investors": "Since 2022",
   "/blog": "Notes",
-  "/join-us": "We are hiring",
+  "/join-us": "Since 2022",
   "/contact": "Channel open",
 };
 
@@ -91,13 +103,15 @@ export default function Topbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 
+  // Magnetic block — measures/targets top-level items only (a.top), using
+  // getBoundingClientRect so it's robust with the nested dropdown layout.
   useEffect(() => {
     const nav = navRef.current;
     const block = blockRef.current;
     if (!nav || !block) return;
 
     function links() {
-      return Array.from(nav!.querySelectorAll<HTMLAnchorElement>("a"));
+      return Array.from(nav!.querySelectorAll<HTMLAnchorElement>("a.top"));
     }
     function current() {
       return links().find((a) => a.getAttribute("aria-current")) ?? null;
@@ -110,9 +124,11 @@ export default function Topbar() {
     }
     function move(el: HTMLAnchorElement) {
       if (!el.offsetWidth) return;
+      const r = el.getBoundingClientRect();
+      const nr = nav!.getBoundingClientRect();
       block!.style.opacity = "1";
-      block!.style.width = el.offsetWidth + "px";
-      block!.style.transform = "translateX(" + el.offsetLeft + "px)";
+      block!.style.width = r.width + "px";
+      block!.style.transform = "translateX(" + (r.left - nr.left) + "px)";
     }
     function fill(el: HTMLAnchorElement) {
       if (keyRef.current) keyRef.current.textContent = el.dataset.role || "";
@@ -134,14 +150,14 @@ export default function Topbar() {
     }
 
     function onOver(e: Event) {
-      const a = (e.target as HTMLElement).closest?.("a");
+      const a = (e.target as HTMLElement).closest?.("a.top");
       if (a && nav!.contains(a)) {
         move(a as HTMLAnchorElement);
         fill(a as HTMLAnchorElement);
       }
     }
     function onFocusIn(e: Event) {
-      const a = (e.target as HTMLElement).closest?.("a");
+      const a = (e.target as HTMLElement).closest?.("a.top");
       if (a && nav!.contains(a)) {
         move(a as HTMLAnchorElement);
         fill(a as HTMLAnchorElement);
@@ -188,16 +204,28 @@ export default function Topbar() {
         </span>
         <nav className="pnav" ref={navRef} data-default-role={DEFAULT_ROLE} data-default-line={DEFAULT_LINE}>
           <div className="pblock" ref={blockRef} aria-hidden="true" />
-          {PRODUCT_NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              data-role={item.role}
-              data-line={item.line}
-              aria-current={pathname === item.href ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
+          {NAV.map((item) => (
+            <div className="pitem" key={item.href}>
+              <Link
+                href={item.href}
+                className="top"
+                data-role={item.role}
+                data-line={item.line}
+                aria-current={pathname === item.href ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+              {item.dropdown && (
+                <div className="pdrop">
+                  {item.dropdown.map((d, i) => (
+                    <Link key={`${d.href}-${i}`} href={d.href}>
+                      {d.label}
+                      <span>{d.role}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
         <button type="button" className="themebtn" aria-label="Toggle theme" onClick={() => toggleTheme()}>
@@ -229,10 +257,17 @@ export default function Topbar() {
         <div id="mobile-nav" className={mobileOpen ? "mobilenav open" : "mobilenav"}>
           <div className="mobilenav-inner">
             <nav className="mobilenav-list">
-              {PRODUCT_NAV.map((item) => (
-                <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>
-                  {item.label}
-                </Link>
+              {NAV.map((item) => (
+                <div key={item.href}>
+                  <Link href={item.href} aria-current={pathname === item.href ? "page" : undefined}>
+                    {item.label}
+                  </Link>
+                  {item.dropdown?.map((d, i) => (
+                    <Link key={`${d.href}-${i}`} href={d.href} className="mobilenav-sub">
+                      {d.label}
+                    </Link>
+                  ))}
+                </div>
               ))}
               <Link href="/contact" className="btn btn-primary">
                 Book a demo

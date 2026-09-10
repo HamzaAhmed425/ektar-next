@@ -33,7 +33,7 @@ export default function HeroRotator({ words }: { words: string[] }) {
       const t = setTimeout(() => {
         setNoTransition(true);
         setIndex(0);
-      }, 860);
+      }, 520);
       return () => clearTimeout(t);
     }
     if (noTransition) {

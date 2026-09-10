@@ -7,13 +7,16 @@ const PRODUCTS = [
   { label: "ekBind", href: "/ekbind" },
   { label: "ekSign", href: "/eksign" },
   { label: "ekSell", href: "/eksell" },
+  { label: "ekKey", href: "/ekkey" },
+  { label: "ekPulse", href: "/ekpulse" },
+  { label: "ekRules", href: "/ekrules" },
 ];
 
 const COMPANY = [
   { label: "About us", href: "/about" },
-  { label: "AI", href: "/ai" },
   { label: "Blog", href: "/blog" },
   { label: "Careers", href: "/join-us" },
+  { label: "Investors", href: "/investors" },
   { label: "Contact", href: "/contact" },
 ];
 

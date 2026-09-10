@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ProductHero from "@/components/ProductHero";
 import LedgerBackground from "@/components/LedgerBackground";
-import { hero, ledgerRows, quickFacts, capabilities, closing } from "@/lib/content/products/eksell";
+import TierBadge from "@/components/TierBadge";
+import { hero, ledgerRows, howItWorks, whyBanksUseIt, closing } from "@/lib/content/products/eksell";
 
 export const metadata: Metadata = {
   title: "ekSell — Distribution | Ektar",
@@ -18,6 +19,7 @@ export default function EkSellPage() {
         description={hero.description}
         backLabel="← All products"
         motif={<LedgerBackground rows={ledgerRows} />}
+        badge={<TierBadge label={hero.badge} />}
         visual={
           <div className="viz">
             <div className="vhead">
@@ -79,24 +81,31 @@ export default function EkSellPage() {
         }
       />
 
-      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
-        <div className="strip mono">
-          {quickFacts.map((f) => (
-            <div key={f.k}>
-              <span className="k">{f.k}</span>
-              <span className="v">{f.v}</span>
-            </div>
-          ))}
-        </div>
-
+      <div className="wrap">
         <section className="sec reveal">
-          <span className="kicker mono">What ekSell does</span>
-          <h2 className="h2">Cost-effective distribution, without building the channel.</h2>
+          <span className="kicker mono">How it works</span>
+          <h2 className="h2">{howItWorks.heading}</h2>
+          <p className="lede">{howItWorks.intro}</p>
           <div className="cards">
-            {capabilities.map((c) => (
+            {howItWorks.items.map((c) => (
               <div className="card2" key={c.tag}>
                 <p className="tag mono">{c.tag}</p>
                 <p className="t">{c.t}</p>
+                <p className="d">{c.d}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="sec reveal">
+          <span className="kicker mono">Why banks use it</span>
+          <h2 className="h2">{whyBanksUseIt.heading}</h2>
+          <div className="cards">
+            {whyBanksUseIt.items.map((c) => (
+              <div className="card2" key={c.tag}>
+                <p className="tag mono">{c.tag}</p>
+                <p className="t">{c.t}</p>
+                <p className="d">{c.d}</p>
               </div>
             ))}
           </div>
@@ -104,7 +113,7 @@ export default function EkSellPage() {
       </div>
 
       <section className="close reveal">
-        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+        <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">
             <Link href="/contact" className="btn btn-primary">

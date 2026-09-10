@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/styles.css">
+<script src="_ds/modernist-e24f7682-45d3-44d7-95f7-6ac30dfcadde/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+<style>
+:root{--font-heading:'Poppins',sans-serif;--font-body:'Poppins',sans-serif;--leading:28px;--half:14px;--edge:clamp(20px,5vw,72px);--ink:var(--color-text);--paper:var(--color-bg);--line:color-mix(in srgb,var(--paper) 16%,transparent);--line-soft:color-mix(in srgb,var(--paper) 8%,transparent);--dim:color-mix(in srgb,var(--paper) 74%,transparent);--accent-lt:var(--color-accent-400)}
+body{margin:0;text-wrap:pretty;background:var(--ink);color:var(--paper);font-family:var(--font-body)}
+a{color:var(--accent-lt)}
+a:hover{color:var(--paper)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--edge)}
+.mono{font-feature-settings:"tnum" 1;letter-spacing:.12em;text-transform:uppercase}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:clamp(12px,2.4vw,32px);padding:14px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
+.topbar img{height:20px;display:block}
+.topbar .pill{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--accent-lt);border:2px solid var(--color-accent);padding:5px 10px}
+.topbar .pill .dot{width:6px;height:6px;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+@keyframes blink{50%{opacity:.12}}
+.stage{position:relative;overflow:hidden;border-bottom:2px solid var(--line)}
+.mesh{position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to right,var(--line-soft) 0 1px,transparent 1px 72px),repeating-linear-gradient(to bottom,var(--line-soft) 0 1px,transparent 1px 72px)}
+.glow{position:absolute;top:-40%;right:-10%;width:64vw;height:64vw;pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--color-accent) 20%,transparent) 0%,transparent 62%)}
+.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--color-accent),transparent);opacity:.5;animation:sweep 7s linear infinite}
+@keyframes sweep{0%{top:-2%}100%{top:102%}}
+@media(prefers-reduced-motion:reduce){.scan,.topbar .pill .dot{animation:none}}
+.hero{position:relative;padding:calc(3*var(--leading)) 0}
+.status{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.status .dot{width:7px;height:7px;flex:none;background:var(--color-accent);animation:blink 1.5s steps(2,jump-none) infinite}
+.display{font-family:var(--font-heading);font-weight:700;font-size:clamp(38px,5vw,68px);line-height:1.05;letter-spacing:-.03em;margin:0;max-width:20ch}
+.sub{font-size:17.5px;line-height:var(--leading);max-width:62ch;color:var(--dim);margin:calc(1.3*var(--leading)) 0 0}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:2px solid var(--line)}
+.strip div{padding:calc(1.1*var(--leading)) clamp(18px,2.2vw,32px);border-left:2px solid var(--line)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:9px}
+.strip .v{display:block;font-size:15px;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--paper);font-feature-settings:"tnum" 1}
+@media(max-width:800px){.strip{grid-template-columns:1fr}.strip div{border-left:0;border-top:2px solid var(--line);padding-left:0;padding-block:var(--leading)}.strip div:first-child{border-top:0}}
+.sec{padding:calc(3*var(--leading)) 0;border-bottom:2px solid var(--line)}
+.kicker{display:block;font-size:12px;color:var(--accent-lt);margin:0 0 var(--leading)}
+.h2{font-family:var(--font-heading);font-weight:700;font-size:clamp(26px,3vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0 0 calc(1.4*var(--leading));max-width:26ch}
+.lede{font-size:16px;line-height:1.65;max-width:62ch;color:var(--dim);margin:0}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--leading) clamp(24px,5vw,80px);align-items:center}
+.split h3{font-family:var(--font-heading);font-weight:700;font-size:26px;letter-spacing:-.015em;margin:0 0 var(--half)}
+.split p{font-size:16px;line-height:1.65;color:var(--dim);margin:0}
+.split-figure image-slot{width:100%;height:auto;aspect-ratio:4/3}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.vm-grid>div{background:var(--ink);padding:calc(1.3*var(--leading)) clamp(16px,2vw,26px)}
+.vm-grid h3{font-family:var(--font-heading);font-weight:700;font-size:22px;margin:0 0 10px}
+.vm-grid p{font-size:15.5px;line-height:1.65;color:var(--dim);margin:0}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line)}
+.pcard{min-width:0;background:var(--ink);padding:calc(1.3*var(--leading)) clamp(16px,2vw,26px)}
+.pcard .portrait{display:block;width:100%;max-width:320px;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:top center;margin-bottom:var(--half);border:2px solid var(--line);filter:grayscale(1) contrast(1.05)}
+.pcard image-slot{display:block;width:100%;min-width:0;max-width:320px;height:auto;aspect-ratio:4/5;margin-bottom:var(--half);border:2px solid var(--line);filter:grayscale(1) contrast(1.05)}
+.pgrid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1000px){.pgrid-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pcard h4{font-size:18px;margin:0 0 6px;font-weight:600}
+.pcard .role{font-size:11px;color:var(--accent-lt);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin:0 0 12px}
+.pcard p.bio{font-size:14.5px;line-height:1.65;color:var(--dim);margin:0}
+.close{position:relative;background:var(--ink);border-top:2px solid var(--color-accent);overflow:hidden}
+.close::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 150% at 0% 0%,color-mix(in srgb,var(--color-accent) 15%,transparent) 0%,transparent 60%)}
+.close .wrap{position:relative;z-index:1}
+.close h3{color:var(--paper)}
+.close .wrap{padding:calc(3.2*var(--leading)) var(--edge)}
+.close h3{font-family:var(--font-heading);font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.06;letter-spacing:-.025em;margin:0;max-width:22ch}
+.row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:calc(1.4*var(--leading))}
+.btn-onink{color:var(--paper);border-color:var(--paper)}
+.foffices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(1.5*var(--leading));margin-top:0;padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
+.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--accent-lt);margin:0 0 12px}
+.office .mark{display:block;height:56px;width:auto;margin-bottom:12px}
+.office p{font-size:13px;line-height:1.6;color:var(--dim);margin:0;max-width:28ch;text-wrap:pretty}
+@media(max-width:620px){.foffices{grid-template-columns:1fr}}
+.footer{padding:calc(2.2*var(--leading)) 0 calc(1.4*var(--leading))}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
+.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin:0 0 var(--half)}
+.fgrid a{display:block;color:var(--dim);text-decoration:none;margin-bottom:8px;font-size:14px}
+.fgrid a:hover{color:var(--accent-lt)}
+.fbot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:var(--leading) 0;font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+@media(max-width:1000px){.split{grid-template-columns:1fr}.vm-grid{grid-template-columns:1fr}.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.pgrid,.pgrid-4{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:620px){.fgrid{grid-template-columns:1fr}}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,60px);align-items:center}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}}
+.viz{position:relative;border:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.viz .vhead{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:2px solid var(--line);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt)}
+.viz .vbody{padding:14px 16px}
+.vrow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--dim)}
+.vrow:last-child{border-bottom:0}
+.vrow .ic{color:var(--accent-lt);display:flex}
+.vrow b{color:var(--paper);font-weight:500}
+.vrow .ok{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap}
+.vrow .no{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 58%,transparent);text-decoration:line-through;white-space:nowrap}
+.vnote{padding:12px 16px;border-top:2px solid var(--color-accent);font-size:11.5px;letter-spacing:.06em;color:var(--dim);line-height:1.6}
+.vnote b{color:var(--accent-lt);font-weight:600}
+.gauge{display:flex;align-items:center;gap:18px;padding:8px 0 14px;border-bottom:1px solid var(--line-soft)}
+.gauge .num{font-family:var(--font-heading);font-weight:700;font-size:32px;color:var(--paper);line-height:1}
+.gauge .cap{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin-top:6px}
+.nodes{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:4px 0 14px}
+.node{border:2px solid var(--line);padding:10px;font-size:12.5px;color:var(--paper)}
+.node span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:5px}
+.dashlink{height:2px;background:repeating-linear-gradient(to right,var(--color-accent) 0 8px,transparent 8px 16px);min-width:34px;animation:flowx 1.4s linear infinite}
+@keyframes flowx{to{background-position:16px 0}}
+@media(prefers-reduced-motion:reduce){.dashlink{animation:none}}
+/* page signature — wide architectural grid */
+.mesh{background-image:repeating-linear-gradient(to right,color-mix(in srgb,var(--paper) 6%,transparent) 0 1px,transparent 1px 84px),repeating-linear-gradient(to bottom,color-mix(in srgb,var(--paper) 6%,transparent) 0 1px,transparent 1px 84px)}
+body{background-image:repeating-linear-gradient(to bottom,color-mix(in srgb,var(--paper) 2.5%,transparent) 0 1px,transparent 1px 112px);background-attachment:fixed}
+/* light theme — swaps ground and ink; every rule below reads --ink / --paper */
+html[data-theme="light"],body[data-theme="light"]{--ink:var(--color-bg);--paper:var(--color-text);--line:color-mix(in srgb,var(--color-text) 18%,transparent);--line-soft:color-mix(in srgb,var(--color-text) 9%,transparent);--dim:color-mix(in srgb,var(--color-text) 76%,transparent);--accent-lt:var(--color-accent-700)}
+html[data-theme="light"] .themebtn .sun,body[data-theme="light"] .themebtn .sun{display:block}
+html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moon{display:none}
+/* magnetic product nav */
+.pnav{position:relative;display:flex;gap:2px;margin-left:auto}
+.pnav a{position:relative;z-index:1;padding:10px 14px;font-size:13px;line-height:1;color:var(--dim);text-decoration:none;white-space:nowrap;transition:color .3s ease}
+.pnav a:hover,.pnav a:focus-visible,.pnav a[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
+.pnav .pblock{position:absolute;top:0;bottom:0;left:0;width:0;opacity:0;background:var(--color-accent);z-index:0;transition:transform .46s cubic-bezier(.34,1.4,.44,1),width .46s cubic-bezier(.34,1.4,.44,1),opacity .3s ease}
+.pnav .pitem{position:relative;display:flex}
+.pnav .pdrop{position:absolute;top:100%;left:0;z-index:60;min-width:270px;border:2px solid var(--line);border-top:0;background:var(--ink);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+.pnav .pitem:hover .pdrop,.pnav .pitem:focus-within .pdrop{opacity:1;visibility:visible;transform:none}
+.pnav .pdrop a{display:block;padding:11px 14px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.35;white-space:nowrap;color:var(--paper)}
+.pnav .pdrop a:last-child{border-bottom:0}
+.pnav .pdrop a span{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt);margin-top:3px}
+.pnav .pdrop a:hover span,.pnav .pdrop a:focus-visible span{color:var(--color-bg)}
+@media(prefers-reduced-motion:reduce){.pnav .pdrop{transition:none}}
+.navstrip{display:flex;align-items:center;gap:14px;padding:11px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));border-bottom:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
+.navstrip .dot{width:7px;height:7px;background:var(--color-accent);flex:none}
+.navstrip .key{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap;font-weight:600}
+.navstrip .sep{width:1px;height:15px;background:var(--line);flex:none}
+.navstrip .val{font-size:12.5px;color:var(--dim)}
+.navstrip .val.fade{animation:navfade .42s cubic-bezier(.22,1,.36,1)}
+@keyframes navfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.themebtn{appearance:none;background:none;border:2px solid var(--line);color:var(--paper);width:34px;height:34px;flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease}
+.themebtn:hover{border-color:var(--color-accent);color:var(--accent-lt)}
+.themebtn .sun{display:none}
+[data-theme="light"] .themebtn .sun{display:block}
+[data-theme="light"] .themebtn .moon{display:none}
+@media(prefers-reduced-motion:reduce){.pnav .pblock{transition-duration:.01ms}.navstrip .val.fade{animation:none}}
+@media(max-width:1240px){.topbar .pill{display:none}}
+@media(max-width:900px){.pnav,.navstrip{display:none}}
+@media(max-width:1000px){.pnav a{padding:10px 11px;font-size:12.5px}}
+</style>
+<script src="./site.js"></script>
+</helmet>
+
+<header class="topbar">
+  <a href="index.dc.html"><img src="assets/ektar-logo.png" alt="Ektar"></a>
+  <span class="pill mono"><span class="dot"></span>Since 2022</span>
+  <nav class="pnav" data-default-role="Seven products" data-default-line="One decision engine — ekRules weighs every signal the three surfaces emit.">
+    <div class="pitem"><a class="top" href="index.dc.html" data-role="Home" data-line="The full trust suite — seven products across three surfaces.">Home</a></div>
+    <div class="pitem"><a class="top" href="protect-the-user.dc.html" data-role="Protect the User" data-line="A login that can't be phished, copied, or intercepted.">Protect the User</a>
+      <div class="pdrop">
+        <a href="authentication.dc.html">ekShield<span>Authentication</span></a>
+        <a href="ekkey.dc.html">ekKey<span>Passkeys</span></a>
+        <a href="eksign.dc.html">ekSign<span>Document signing</span></a>
+        <a href="ekpulse.dc.html">ekPulse<span>Behavioural biometrics</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="protect-the-device.dc.html" data-role="Protect the Device" data-line="Proof it is still the customer's own phone and number.">Protect the Device</a>
+      <div class="pdrop">
+        <a href="ekbind.dc.html">ekBind<span>SIM &amp; network trust</span></a>
+        <a href="ekprotect.dc.html">ekProtect<span>Device integrity</span></a>
+        <a href="authentication.dc.html">ekShield<span>Authentication</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="protect-the-app.dc.html" data-role="Protect the App" data-line="Malware, overlays and tampering, caught inside the app.">Protect the App</a>
+      <div class="pdrop">
+        <a href="ekprotect.dc.html">ekProtect<span>Runtime &amp; app integrity</span></a>
+        <a href="ekpulse.dc.html">ekPulse<span>Behavioural signals</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="about.dc.html" aria-current="page" data-role="About" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a></div>
+    <span class="pblock"></span>
+  </nav>
+  <button type="button" class="themebtn" aria-label="Switch between dark and light theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg></button>
+  <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
+</header>
+<div class="navstrip"><span class="dot"></span><span class="key"></span><span class="sep"></span><span class="val"></span></div>
+
+
+<section class="stage">
+  <div class="mesh"></div>
+  <div class="glow"></div>
+  <div class="scan"></div>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+      <p class="status mono"><span class="dot"></span>Investors</p>
+      <h1 class="display">Banking fraud is a large, urgent, and solvable problem</h1>
+      <p class="sub">Regulators across the Gulf, South Asia, and Southeast Asia are actively banning the authentication methods banks rely on today, on hard deadlines. Ektar is already live at a top-3 regional bank, with the rest of a seven-product suite shipping through 2026 and beyond.</p>
+      <div class="row">
+        <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Get in touch</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec">
+    <span class="kicker mono">Why now</span>
+    <h2 class="h2">The old defences are being phased out by regulation, not choice</h2>
+    <p class="lede">SMS one-time codes — the method most banks still rely on — are being banned outright across multiple markets, on fixed deadlines. That regulatory pressure is forcing a wave of infrastructure replacement across the region's banks.</p>
+  </section>
+
+  <section class="sec">
+    <span class="kicker mono">The team</span>
+    <h2 class="h2">Three ex-bankers, decades inside the institutions we now serve</h2>
+    <p class="lede">Our founders spent a combined 78+ years in senior roles at Standard Chartered Bank, across consumer banking, technology, and product leadership. Our advisory board includes former senior executives from Emirates NBD, Standard Chartered, and experienced venture investors.</p>
+  </section>
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <h3>Interested in investing in Ektar?</h3>
+    <p class="sub">Get in touch to start the conversation.</p>
+    <div class="row">
+      <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Get in touch</button>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="footer">
+    <div class="fgrid">
+      <div>
+        <h4>Products</h4>
+        <a href="authentication.dc.html">ekShield</a>
+        <a href="ekprotect.dc.html">ekProtect</a>
+        <a href="ekbind.dc.html">ekBind</a>
+        <a href="eksign.dc.html">ekSign</a>
+        <a href="eksell.dc.html">ekSell</a>
+        <a href="ekkey.dc.html">ekKey</a>
+        <a href="ekpulse.dc.html">ekPulse</a>
+        <a href="ekrules.dc.html">ekRules</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.dc.html">About us</a>
+        <a href="blog.dc.html">Blog</a>
+        <a href="careers.dc.html">Careers</a>
+        <a href="investors.dc.html">Investors</a>
+        <a href="contact.dc.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="contact.dc.html">Talk to us</a>
+        <a href="https://www.linkedin.com/company/ektar-technologies/">LinkedIn</a>
+        <a href="https://www.youtube.com/@ektar-technologies">YouTube</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© Ektar 2022–2026. All rights reserved.</span>
+      <span><a href="https://ektar.com/termsofuse/" style="color:inherit">Terms of Use</a> · <a href="https://ektar.com/privacy-policy/" style="color:inherit">Privacy Policy</a></span>
+    </div>
+    <div class="foffices">
+      <div class="office">
+        <h5>Singapore</h5>
+        <img class="mark" src="assets/office-singapore.png" alt="">
+        <p>18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966</p>
+      </div>
+      <div class="office">
+        <h5>UAE</h5>
+        <img class="mark" src="assets/office-uae.png" alt="">
+        <p>Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE</p>
+      </div>
+      <div class="office">
+        <h5>India</h5>
+        <img class="mark" src="assets/office-india.png" alt="">
+        <p>Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+</x-dc>
+</body>
+</html>

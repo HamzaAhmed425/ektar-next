@@ -1,34 +1,34 @@
-// Transcribed from PAGES.md §5 (source: ekprotect.dc.html → /ekprotect)
+// Transcribed from PAGES.md §4 (source: ekprotect.dc.html → /ekprotect)
+// Scope narrowed — behavioural analysis and full malware tracking have
+// moved to ekPulse; ekProtect no longer claims its own risk-decisioning
+// output, that's explicitly ekRules' (or the bank's existing system's) job.
 
 export const hero = {
-  statusText: "Layer 02 — App & Device Protection · ekProtect",
+  statusText: "ekProtect · Protect the Device & App",
   title: "Attest the device. Read the behaviour. Kill the session.",
   description:
-    "ekProtect embeds in the banking app. It attests device and app integrity, detects malware, overlay attacks, rooted devices, and remote access tools in real time, and suspends the session automatically when a threat is found. Behavioural analysis distinguishes legitimate users from malware at runtime, and ML-driven per-transaction risk decisioning turns signals from every layer into a real-time risk score. CBUAE-mandated.",
+    "ekProtect embeds in the banking app. It attests device and app integrity, detects overlay attacks, malware, rooted devices, and remote access tools in real time, and suspends the session automatically when a threat is found. Every signal feeds into your risk decisioning — your existing system, or ekRules.",
 };
 
-export const quickFacts = [
-  { k: "Detects", v: "Malware · Overlays · Root · RATs" },
-  { k: "Response", v: "Automatic session suspension" },
-  { k: "Mandate", v: "CBUAE" },
-];
+export const capabilities = {
+  heading: "What ekProtect detects and stops",
+  items: [
+    { tag: "01", t: "Device & app attestation", d: "Confirms the app is genuine and unmodified, and the device is in a state the bank can trust." },
+    { tag: "02", t: "Overlay attacks & basic malware detection", d: "Detects fake screens drawn over the real app and flags malicious code running alongside it, from inside the app itself." },
+    { tag: "03", t: "Rooted and jailbroken devices", d: "Compromised operating systems are identified before a session is trusted." },
+    { tag: "04", t: "Remote access tools (RATs)", d: "Detects sessions being driven remotely while the customer watches." },
+    { tag: "05", t: "Automatic session suspension", d: "When a threat is found the session is suspended automatically — no manual review in the path.", span2: true },
+  ],
+  crossSell: "Full malware tracking, elimination, and behavioural analysis run on ekPulse —",
+};
 
-export const capabilities = [
-  { tag: "01", t: "Device & app attestation", d: "Confirms the app is genuine and unmodified, and the device is in a state the bank can trust." },
-  { tag: "02", t: "Malware and overlay attacks", d: "Detects injection and fake screens drawn over the real app, from inside the app itself." },
-  { tag: "03", t: "Rooted and jailbroken devices", d: "Compromised operating systems are identified before a session is trusted." },
-  { tag: "04", t: "Remote access tools (RATs)", d: "Detects sessions being driven remotely while the customer watches." },
-  { tag: "05", t: "Automatic session suspension", d: "When a threat is found the session is suspended automatically — no manual review in the path." },
-  { tag: "06", t: "Behavioural analysis at runtime", d: "Distinguishes legitimate users from malware by how the session behaves, not just what it declares." },
-];
-
-export const riskDecisioning = {
-  heading: "One risk score, per transaction.",
+export const feedingDecision = {
+  heading: "One signal, wherever your decisioning lives",
   intro:
-    "ML-driven per-transaction risk decisioning ingests signals from every security layer — authentication, device, and document — and returns a real-time risk score the bank can act on.",
+    "ekProtect's device and app signals feed straight into your risk decisioning — plugging into the fraud and risk system you already run, or into ekRules if you'd rather bring every layer under one engine.",
   cards: [
-    { tag: "Inputs", t: "Authentication, device, and document signals", d: "Every layer a bank deploys makes the score more accurate." },
-    { tag: "Output", t: "A real-time score, per transaction", d: "Decisioned in the transaction path, not after the fact." },
+    { tag: "Inputs", t: "User, device, and app signals", d: "Every layer the bank deploys." },
+    { tag: "Output", t: "One real-time decision, made by your risk engine — existing system or ekRules", d: "Decisioned in the transaction path, not after the fact." },
   ],
 };
 

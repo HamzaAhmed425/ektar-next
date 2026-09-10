@@ -1,17 +1,13 @@
 import Link from "next/link";
 import HeroRotator from "@/components/HeroRotator";
-import SolutionsPanel from "@/components/SolutionsPanel";
+import HeroCycle from "@/components/HeroCycle";
 import HashRain from "@/components/HashRain";
 import AnnouncementStrip from "@/components/AnnouncementStrip";
-import AttackSurfaceGrid from "@/components/AttackSurfaceGrid";
-import ThreeLayersSection from "@/components/ThreeLayersSection";
-import CryptoProofVisual from "@/components/CryptoProofVisual";
-import ProductGrid from "@/components/ProductGrid";
-import AiAtEktar from "@/components/AiAtEktar";
-import TeamSection from "@/components/TeamSection";
+import TieredSolutionsPanel from "@/components/TieredSolutionsPanel";
+import SurfaceGrid from "@/components/SurfaceGrid";
 import RegulatoryTailwinds from "@/components/RegulatoryTailwinds";
 import StatBand from "@/components/StatBand";
-import { hero, closingCta } from "@/lib/content/home";
+import { hero, heroScenes, trustSuite, regulatorySection, closingCta } from "@/lib/content/home";
 
 export default function Home() {
   return (
@@ -21,15 +17,18 @@ export default function Home() {
         <div className="mesh" />
         <div className="glow" />
         <div className="scanline" />
-        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+        <div className="wrap">
           <div className="hero">
             <div className="reveal">
+              <p className="status mono">
+                <span className="dot" />
+                {hero.statusText}
+              </p>
               <HeroRotator words={hero.rotatorWords} />
               <h1 className="display">
                 <span className="line">{hero.h1Lines[0]}</span>
-                <span className="line">{hero.h1Lines[1]}</span>
                 <span className="line">
-                  <em>{hero.h1Lines[2]}</em>
+                  <em>{hero.h1Lines[1]}</em>
                 </span>
               </h1>
               <p className="sub">{hero.subhead}</p>
@@ -43,44 +42,38 @@ export default function Home() {
               </div>
             </div>
             <div className="reveal">
-              <SolutionsPanel />
+              <HeroCycle scenes={heroScenes} />
             </div>
           </div>
         </div>
       </section>
 
-      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+      <div className="wrap" id="solutions">
+        <section className="sec reveal">
+          <span className="kicker mono">The trust suite</span>
+          <h2 className="h2">{trustSuite.heading}</h2>
+          <p className="lede">{trustSuite.intro}</p>
+          {trustSuite.tiers.map((t) => (
+            <TieredSolutionsPanel key={t.tier} tier={t.tier} count={t.count} products={t.products} />
+          ))}
+        </section>
+      </div>
+
+      <div className="wrap">
         <AnnouncementStrip />
         <div className="reveal">
-          <AttackSurfaceGrid />
+          <SurfaceGrid />
         </div>
         <div className="reveal">
-          <ThreeLayersSection />
-        </div>
-        <div className="reveal">
-          <CryptoProofVisual />
-        </div>
-        <div className="reveal">
-          <ProductGrid />
-        </div>
-        <div className="reveal">
-          <RegulatoryTailwinds />
+          <RegulatoryTailwinds heading={regulatorySection.heading} intro={regulatorySection.intro} rows={regulatorySection.rows} />
         </div>
         <div className="reveal">
           <StatBand />
         </div>
       </div>
 
-      <div className="wrap reveal">
-        <AiAtEktar />
-      </div>
-
-      <div className="wrap reveal">
-        <TeamSection />
-      </div>
-
       <section className="close reveal">
-        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+        <div className="wrap">
           <h3>{closingCta.heading}</h3>
           <div className="row">
             <Link href={closingCta.cta.href} className="btn btn-primary">

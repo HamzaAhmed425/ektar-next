@@ -62,19 +62,19 @@ a:hover{color:var(--paper)}
 .close h3{color:var(--paper)}
 .close .wrap{padding:calc(3.2*var(--leading)) var(--edge)}
 .close h3{font-family:var(--font-heading);font-weight:700;font-size:clamp(32px,4.2vw,54px);line-height:1.08;letter-spacing:-.025em;margin:0;max-width:22ch}
-.foffices{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1.5*var(--leading));margin-top:calc(1.6*var(--leading));padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
-.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--paper);margin:0 0 12px}
+.foffices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(1.5*var(--leading));margin-top:0;padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
+.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--accent-lt);margin:0 0 12px}
 .office .mark{display:block;height:56px;width:auto;margin-bottom:12px}
 .office p{font-size:13px;line-height:1.6;color:var(--dim);margin:0;max-width:28ch;text-wrap:pretty}
 @media(max-width:620px){.foffices{grid-template-columns:1fr}}
 .footer{padding:calc(2.2*var(--leading)) 0 calc(1.4*var(--leading))}
-.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
-.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);margin:0 0 var(--half)}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
+.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin:0 0 var(--half)}
 .fgrid a{display:block;color:var(--dim);text-decoration:none;margin-bottom:8px;font-size:14px}
 .fgrid a:hover{color:var(--accent-lt)}
-.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:var(--half);font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+.fbot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:var(--leading) 0;font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
 @media(max-width:1000px){.cards{grid-template-columns:1fr}.mgrid{grid-template-columns:1fr}}
-@media(max-width:700px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.fgrid{grid-template-columns:1fr}}
 .cards.two{grid-template-columns:repeat(2,1fr)}
 .card2 p.d{font-size:14px;line-height:1.6;color:var(--dim);margin:10px 0 0}
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,60px);align-items:center}
@@ -112,6 +112,14 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
 .pnav a{position:relative;z-index:1;padding:10px 14px;font-size:13px;line-height:1;color:var(--dim);text-decoration:none;white-space:nowrap;transition:color .3s ease}
 .pnav a:hover,.pnav a:focus-visible,.pnav a[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
 .pnav .pblock{position:absolute;top:0;bottom:0;left:0;width:0;opacity:0;background:var(--color-accent);z-index:0;transition:transform .46s cubic-bezier(.34,1.4,.44,1),width .46s cubic-bezier(.34,1.4,.44,1),opacity .3s ease}
+.pnav .pitem{position:relative;display:flex}
+.pnav .pdrop{position:absolute;top:100%;left:0;z-index:60;min-width:270px;border:2px solid var(--line);border-top:0;background:var(--ink);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+.pnav .pitem:hover .pdrop,.pnav .pitem:focus-within .pdrop{opacity:1;visibility:visible;transform:none}
+.pnav .pdrop a{display:block;padding:11px 14px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.35;white-space:nowrap;color:var(--paper)}
+.pnav .pdrop a:last-child{border-bottom:0}
+.pnav .pdrop a span{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt);margin-top:3px}
+.pnav .pdrop a:hover span,.pnav .pdrop a:focus-visible span{color:var(--color-bg)}
+@media(prefers-reduced-motion:reduce){.pnav .pdrop{transition:none}}
 .navstrip{display:flex;align-items:center;gap:14px;padding:11px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));border-bottom:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
 .navstrip .dot{width:7px;height:7px;background:var(--color-accent);flex:none}
 .navstrip .key{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap;font-weight:600}
@@ -134,15 +142,31 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
 
 <header class="topbar">
   <a href="index.dc.html"><img src="assets/ektar-logo.png" alt="Ektar"></a>
-  <span class="pill mono"><span class="dot"></span>Layer 02 secured</span>
-  <nav class="pnav">
-    <a href="authentication.dc.html" data-role="ekShield · Authentication" data-line="Device-bound, phishing-resistant login — mobile, web, call centre, ATM, 3DS.">ekShield</a>
-    <a href="ekprotect.dc.html" aria-current="page" data-role="ekProtect · Attest & risk" data-line="Malware, overlays, rooted devices and RATs, caught inside the app.">ekProtect</a>
-    <a href="ekbind.dc.html" data-role="ekBind · SIM binding" data-line="Operator-verified SIM checks via SNA and Reverse SMS. No code to intercept.">ekBind</a>
-    <a href="eksign.dc.html" data-role="ekSign · Signing" data-line="In-channel signing, bound to the document and sealed with SHA-256.">ekSign</a>
-    <a href="eksell.dc.html" data-role="ekSell · Distribution" data-line="Bank products into employer, fintech and retail channels.">ekSell</a>
-    <a href="ai.dc.html" data-role="AI at Ektar" data-line="In the products that detect fraud, and in the practice that ships them.">AI</a>
-    <a href="about.dc.html" data-role="About Ektar" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a>
+  <span class="pill mono"><span class="dot"></span>Device &amp; app secured</span>
+  <nav class="pnav" data-default-role="Seven products" data-default-line="One decision engine — ekRules weighs every signal the three surfaces emit.">
+    <div class="pitem"><a class="top" href="index.dc.html" data-role="Home" data-line="The full trust suite — seven products across three surfaces.">Home</a></div>
+    <div class="pitem"><a class="top" href="protect-the-user.dc.html" data-role="Protect the User" data-line="A login that can't be phished, copied, or intercepted.">Protect the User</a>
+      <div class="pdrop">
+        <a href="authentication.dc.html">ekShield<span>Authentication</span></a>
+        <a href="ekkey.dc.html">ekKey<span>Passkeys</span></a>
+        <a href="eksign.dc.html">ekSign<span>Document signing</span></a>
+        <a href="ekpulse.dc.html">ekPulse<span>Behavioural biometrics</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="protect-the-device.dc.html" data-role="Protect the Device" data-line="Proof it is still the customer's own phone and number.">Protect the Device</a>
+      <div class="pdrop">
+        <a href="ekbind.dc.html">ekBind<span>SIM &amp; network trust</span></a>
+        <a href="ekprotect.dc.html">ekProtect<span>Device integrity</span></a>
+        <a href="authentication.dc.html">ekShield<span>Authentication</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="protect-the-app.dc.html" aria-current="page" data-role="Protect the App" data-line="Malware, overlays and tampering, caught inside the app.">Protect the App</a>
+      <div class="pdrop">
+        <a href="ekprotect.dc.html">ekProtect<span>Runtime &amp; app integrity</span></a>
+        <a href="ekpulse.dc.html">ekPulse<span>Behavioural signals</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="about.dc.html" data-role="About" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a></div>
     <span class="pblock"></span>
   </nav>
   <button type="button" class="themebtn" aria-label="Switch between dark and light theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg></button>
@@ -161,9 +185,9 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
   <div class="wrap">
     <div class="hero">
       <div>
-      <p class="status mono"><span class="dot"></span>Layer 02 — App &amp; Device Protection · ekProtect</p>
+      <p class="status mono"><span class="dot"></span>ekProtect · Protect the Device &amp; App</p>
       <h1 class="display">Attest the device. Read the behaviour. Kill the session.</h1>
-      <p class="sub">ekProtect embeds in the banking app. It attests device and app integrity, detects malware, overlay attacks, rooted devices, and remote access tools in real time, and suspends the session automatically when a threat is found. Behavioural analysis distinguishes legitimate users from malware at runtime, and ML-driven per-transaction risk decisioning turns signals from every layer into a real-time risk score. CBUAE-mandated.</p>
+      <p class="sub">ekProtect embeds in the banking app. It attests device and app integrity, detects overlay attacks, malware, rooted devices, and remote access tools in real time, and suspends the session automatically when a threat is found. Every signal feeds into your risk decisioning — your existing system, or ekRules.</p>
       <div class="row">
         <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
         <button type="button" class="btn btn-ghost btn-onink" onclick="location.href='index.dc.html'">← All layers</button>
@@ -172,51 +196,39 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
       <div class="viz">
         <div class="vhead"><span>ekProtect · runtime state</span><span>Illustrative</span></div>
         <div class="vbody">
-        <div class="gauge">
-          <svg width="76" height="76" viewBox="0 0 76 76" fill="none" stroke-width="6">
-            <circle cx="38" cy="38" r="32" stroke="color-mix(in srgb,var(--paper) 14%,transparent)"></circle>
-            <circle cx="38" cy="38" r="32" stroke="var(--color-accent)" stroke-dasharray="201" stroke-dashoffset="177" stroke-linecap="butt" transform="rotate(-90 38 38)"></circle>
-          </svg>
-          <span><span class="num">12</span><span class="cap">Session risk score</span></span>
-        </div>
+        <p class="vfeed mono" style="margin:0 0 4px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt)">→ Feeding ekRules</p>
         <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.5 8.5 9 10 5.5-1.5 9-5 9-10V6z"></path></svg></span><span><b>App &amp; device attestation</b></span><span class="ok">Pass</span></div>
         <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20"></rect><path d="M9 18h6"></path></svg></span><span><b>Overlay attack</b></span><span class="ok">Blocked</span></div>
         <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="6" width="12" height="12"></rect><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"></path></svg></span><span><b>Remote access tool</b></span><span class="ok">Suspended</span></div>
         <div class="vrow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 10V7a5 5 0 0 1 10 0v3"></path><rect x="3" y="10" width="18" height="11"></rect></svg></span><span><b>Rooted device</b></span><span class="ok">Denied</span></div>
         </div>
-        <div class="vnote">Signals from every layer feed <b>one score, per transaction</b></div>
+        <div class="vnote">Every detection here is sent to <b>ekRules</b>, alongside the user and device surfaces.</div>
       </div>
     </div>
   </div>
 </section>
 
 <div class="wrap">
-  <div class="strip mono">
-    <div><span class="k">Detects</span><span class="v">Malware · Overlays · Root · RATs</span></div>
-    <div><span class="k">Response</span><span class="v">Automatic session suspension</span></div>
-    <div><span class="k">Mandate</span><span class="v">CBUAE</span></div>
-  </div>
-
   <section class="sec">
-    <span class="kicker mono">Attestation &amp; detection</span>
+    <span class="kicker mono">Capabilities</span>
     <h2 class="h2">What ekProtect detects and stops</h2>
     <div class="cards">
       <div class="card2"><p class="tag mono">01</p><p class="t">Device &amp; app attestation</p><p class="d">Confirms the app is genuine and unmodified, and the device is in a state the bank can trust.</p></div>
-      <div class="card2"><p class="tag mono">02</p><p class="t">Malware and overlay attacks</p><p class="d">Detects injection and fake screens drawn over the real app, from inside the app itself.</p></div>
+      <div class="card2"><p class="tag mono">02</p><p class="t">Overlay attacks &amp; basic malware detection</p><p class="d">Detects fake screens drawn over the real app and flags malicious code running alongside it, from inside the app itself.</p></div>
       <div class="card2"><p class="tag mono">03</p><p class="t">Rooted and jailbroken devices</p><p class="d">Compromised operating systems are identified before a session is trusted.</p></div>
       <div class="card2"><p class="tag mono">04</p><p class="t">Remote access tools (RATs)</p><p class="d">Detects sessions being driven remotely while the customer watches.</p></div>
-      <div class="card2"><p class="tag mono">05</p><p class="t">Automatic session suspension</p><p class="d">When a threat is found the session is suspended automatically — no manual review in the path.</p></div>
-      <div class="card2"><p class="tag mono">06</p><p class="t">Behavioural analysis at runtime</p><p class="d">Distinguishes legitimate users from malware by how the session behaves, not just what it declares.</p></div>
+      <div class="card2" style="grid-column:span 2"><p class="tag mono">05</p><p class="t">Automatic session suspension</p><p class="d">When a threat is found the session is suspended automatically — no manual review in the path.</p></div>
     </div>
+    <p class="lede" style="margin:calc(1.4*var(--leading)) 0 0">Full malware tracking, elimination, and behavioural analysis run on ekPulse — <a href="ekpulse.dc.html">see how →</a></p>
   </section>
 
   <section class="sec">
-    <span class="kicker mono">Risk decisioning</span>
-    <h2 class="h2">One risk score, per transaction.</h2>
-    <p class="lede">ML-driven per-transaction risk decisioning ingests signals from every security layer — authentication, device, and document — and returns a real-time risk score the bank can act on.</p>
+    <span class="kicker mono">Feeding the decision</span>
+    <h2 class="h2">One signal, wherever your decisioning lives</h2>
+    <p class="lede">ekProtect's device and app signals feed straight into your risk decisioning — plugging into the fraud and risk system you already run, or into ekRules if you'd rather bring every layer under one engine.</p>
     <div class="cards two">
-      <div class="card2"><p class="tag mono">Inputs</p><p class="t">Authentication, device, and document signals</p><p class="d">Every layer a bank deploys makes the score more accurate.</p></div>
-      <div class="card2"><p class="tag mono">Output</p><p class="t">A real-time score, per transaction</p><p class="d">Decisioned in the transaction path, not after the fact.</p></div>
+      <div class="card2"><p class="tag mono">Inputs</p><p class="t">User, device, and app signals</p><p class="d">Every layer the bank deploys.</p></div>
+      <div class="card2"><p class="tag mono">Output</p><p class="t">One real-time decision, made by your risk engine — existing system or ekRules</p><p class="d">Decisioned in the transaction path, not after the fact.</p></div>
     </div>
   </section>
 </div>
@@ -240,13 +252,16 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
         <a href="ekbind.dc.html">ekBind</a>
         <a href="eksign.dc.html">ekSign</a>
         <a href="eksell.dc.html">ekSell</a>
+        <a href="ekkey.dc.html">ekKey</a>
+        <a href="ekpulse.dc.html">ekPulse</a>
+        <a href="ekrules.dc.html">ekRules</a>
       </div>
       <div>
         <h4>Company</h4>
         <a href="about.dc.html">About us</a>
-        <a href="ai.dc.html">AI</a>
         <a href="blog.dc.html">Blog</a>
         <a href="careers.dc.html">Careers</a>
+        <a href="investors.dc.html">Investors</a>
         <a href="contact.dc.html">Contact</a>
       </div>
       <div>

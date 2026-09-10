@@ -42,7 +42,7 @@
     var block = nav.querySelector('.pblock');
     function strip() { return document.querySelector('.navstrip'); }
 
-    function links() { return Array.prototype.slice.call(nav.querySelectorAll('a')); }
+    function links() { return Array.prototype.slice.call(nav.querySelectorAll('a.top')); }
 
     function current() {
       var all = links();
@@ -56,15 +56,17 @@
       if (!s) return;
       var key = s.querySelector('.key');
       var val = s.querySelector('.val');
-      if (key) key.textContent = nav.dataset.defaultRole || 'Five products';
-      if (val) val.textContent = nav.dataset.defaultLine || 'One signal layer — each product sharpens the others.';
+      if (key) key.textContent = nav.dataset.defaultRole || 'Seven products';
+      if (val) val.textContent = nav.dataset.defaultLine || 'One decision engine — ekRules weighs every signal the three surfaces emit.';
     }
 
     function move(el) {
       if (!block || !el || !el.offsetWidth) return;
+      var r = el.getBoundingClientRect();
+      var nr = nav.getBoundingClientRect();
       block.style.opacity = '1';
-      block.style.width = el.offsetWidth + 'px';
-      block.style.transform = 'translateX(' + el.offsetLeft + 'px)';
+      block.style.width = r.width + 'px';
+      block.style.transform = 'translateX(' + (r.left - nr.left) + 'px)';
     }
 
     function fill(el) {
@@ -89,11 +91,11 @@
     }
 
     nav.addEventListener('mouseover', function (e) {
-      var a = e.target.closest ? e.target.closest('a') : null;
+      var a = e.target.closest ? e.target.closest('a.top') : null;
       if (a && nav.contains(a)) { move(a); fill(a); }
     });
     nav.addEventListener('focusin', function (e) {
-      var a = e.target.closest ? e.target.closest('a') : null;
+      var a = e.target.closest ? e.target.closest('a.top') : null;
       if (a && nav.contains(a)) { move(a); fill(a); }
     });
     nav.addEventListener('mouseleave', settle);

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ProductHero from "@/components/ProductHero";
 import IntrusionGrid from "@/components/IntrusionGrid";
-import { hero, quickFacts, capabilities, riskDecisioning, closing } from "@/lib/content/products/ekprotect";
+import { hero, capabilities, feedingDecision, closing } from "@/lib/content/products/ekprotect";
 
 export const metadata: Metadata = {
   title: "ekProtect — Attestation & runtime defence | Ektar",
@@ -25,25 +25,9 @@ export default function EkProtectPage() {
               <span>Illustrative</span>
             </div>
             <div className="vbody">
-              <div className="gauge">
-                <svg width="76" height="76" viewBox="0 0 76 76" fill="none" strokeWidth="6">
-                  <circle cx="38" cy="38" r="32" stroke="color-mix(in srgb,var(--paper) 14%,transparent)" />
-                  <circle
-                    cx="38"
-                    cy="38"
-                    r="32"
-                    stroke="var(--color-accent)"
-                    strokeDasharray="201"
-                    strokeDashoffset="177"
-                    strokeLinecap="butt"
-                    transform="rotate(-90 38 38)"
-                  />
-                </svg>
-                <span>
-                  <span className="num">12</span>
-                  <span className="cap">Session risk score</span>
-                </span>
-              </div>
+              <p className="mono" style={{ margin: "0 0 4px", fontSize: 11.5, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--accent-lt)" }}>
+                → Feeding ekRules
+              </p>
               <div className="vrow">
                 <span className="ic">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -93,42 +77,36 @@ export default function EkProtectPage() {
               </div>
             </div>
             <div className="vnote">
-              Signals from every layer feed <b>one score, per transaction</b>
+              Every detection here is sent to <b>ekRules</b>, alongside the user and device surfaces.
             </div>
           </div>
         }
       />
 
-      <div className="wrap pt-10! pb-10! mt-10! mb-10!">
-        <div className="strip mono">
-          {quickFacts.map((f) => (
-            <div key={f.k}>
-              <span className="k">{f.k}</span>
-              <span className="v">{f.v}</span>
-            </div>
-          ))}
-        </div>
-
+      <div className="wrap">
         <section className="sec reveal">
-          <span className="kicker mono">Attestation &amp; detection</span>
-          <h2 className="h2">What ekProtect detects and stops</h2>
+          <span className="kicker mono">Capabilities</span>
+          <h2 className="h2">{capabilities.heading}</h2>
           <div className="cards">
-            {capabilities.map((c) => (
-              <div className="card2" key={c.tag}>
+            {capabilities.items.map((c) => (
+              <div className="card2" key={c.tag} style={c.span2 ? { gridColumn: "span 2" } : undefined}>
                 <p className="tag mono">{c.tag}</p>
                 <p className="t">{c.t}</p>
                 <p className="d">{c.d}</p>
               </div>
             ))}
           </div>
+          <p className="lede" style={{ margin: "calc(1.4 * var(--leading)) 0 0" }}>
+            {capabilities.crossSell} <Link href="/ekpulse">see how →</Link>
+          </p>
         </section>
 
         <section className="sec reveal">
-          <span className="kicker mono">Risk decisioning</span>
-          <h2 className="h2">{riskDecisioning.heading}</h2>
-          <p className="lede">{riskDecisioning.intro}</p>
+          <span className="kicker mono">Feeding the decision</span>
+          <h2 className="h2">{feedingDecision.heading}</h2>
+          <p className="lede">{feedingDecision.intro}</p>
           <div className="cards two">
-            {riskDecisioning.cards.map((c) => (
+            {feedingDecision.cards.map((c) => (
               <div className="card2" key={c.tag}>
                 <p className="tag mono">{c.tag}</p>
                 <p className="t">{c.t}</p>
@@ -140,7 +118,7 @@ export default function EkProtectPage() {
       </div>
 
       <section className="close reveal">
-        <div className="wrap pt-10! pb-10! mt-10! mb-10!">
+        <div className="wrap">
           <h3>{closing.heading}</h3>
           <div className="row">
             <Link href="/contact" className="btn btn-primary">

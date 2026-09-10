@@ -34,8 +34,8 @@ a:hover{color:var(--paper)}
 .hero{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);padding:calc(3*var(--leading)) 0 calc(3.2*var(--leading));align-items:center}
 .protect{display:flex;align-items:center;gap:.3em;font-family:var(--font-heading);font-weight:600;font-size:clamp(26px,3vw,40px);letter-spacing:-.02em;line-height:1.2;color:var(--paper);margin:0 0 var(--half)}
 .protect .swap{display:inline-flex;align-items:center;flex:none}
-.protect .reel{display:block;flex:none;height:1.35em;overflow:hidden;clip-path:inset(0 -.32em)}
-.protect .rin{display:block;transition:transform .85s cubic-bezier(.65,0,.2,1)}
+.protect .reel{display:block;flex:none;height:1.35em;overflow:hidden;clip-path:inset(0 -.6em)}
+.protect .rin{display:block;transition:transform .5s cubic-bezier(.6,0,.2,1)}
 .protect em{display:block;height:1.35em;line-height:1.35em;text-align:left;font-style:italic;font-weight:600;color:var(--color-accent);white-space:pre}
 .protect .caret{display:inline-block;width:.5em;height:1em;background:var(--color-accent);margin-left:.28em;flex:none;animation:caretblink 1.06s steps(2,jump-none) infinite}
 @keyframes caretblink{50%{opacity:0}}
@@ -126,7 +126,22 @@ a:hover{color:var(--paper)}
 .layer:nth-of-type(2) .pulsebar i{animation-delay:.6s}
 .layer:nth-of-type(3) .pulsebar i{animation-delay:1.2s}
 @keyframes pulse{0%,100%{width:24%}50%{width:86%}}
+.emits{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px}
+.emits b{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-lt);font-weight:600}
+.emits span{font-size:11.5px;letter-spacing:.05em;color:var(--dim);border:1px solid var(--line);padding:5px 9px}
+.dets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;margin:0 0 16px;padding:0;max-width:60ch}
+.dets li{list-style:none;display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.5;color:var(--dim);padding:6px 0;border-top:1px solid var(--line-soft)}
+.dets li::before{content:"";flex:none;width:6px;height:6px;background:var(--color-accent);margin-top:6px}
+@media(max-width:700px){.dets{grid-template-columns:1fr}}
 .go{align-self:center;font-size:12.5px;color:var(--accent-lt);text-decoration:none;border:2px solid var(--line);padding:9px 14px;white-space:nowrap;transition:color .2s,border-color .2s}
+.surfaces-viz{position:relative;z-index:1;background:radial-gradient(ellipse at center,var(--ink) 0 55%,transparent 78%);display:flex;justify-content:center;align-items:center;min-height:520px}
+.surfaces-viz svg{width:100%;max-width:460px;height:auto}
+.cycle{position:relative;min-height:452px}
+.cycle .scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;animation:cycle3 9s infinite}
+.cycle .scene:nth-child(2){animation-delay:3s}
+.cycle .scene:nth-child(3){animation-delay:6s}
+@keyframes cycle3{0%,3%{opacity:0}6%,27%{opacity:1}30%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.cycle .scene{animation:none;opacity:0}.cycle .scene:first-child{opacity:1}}
 .signal{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center;border-top:2px solid var(--color-accent);padding:calc(1.3*var(--leading)) 0 0;margin-top:calc(1.3*var(--leading))}
 .signal .lbl{font-size:12px;color:var(--accent-lt);letter-spacing:.12em;text-transform:uppercase;margin:0}
 .signal p{font-size:14.5px;line-height:1.6;color:var(--dim);margin:10px 0 0;max-width:64ch}
@@ -181,19 +196,19 @@ a:hover{color:var(--paper)}
 .close h3{color:var(--paper)}
 .close .wrap{padding:calc(3.2*var(--leading)) var(--edge)}
 .close h3{font-family:var(--font-heading);font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.1;letter-spacing:-.025em;margin:0;max-width:22ch}
-.foffices{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1.5*var(--leading));margin-top:calc(1.6*var(--leading));padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
-.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--paper);margin:0 0 12px}
+.foffices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(1.5*var(--leading));margin-top:0;padding-top:calc(1.6*var(--leading));border-top:2px solid var(--line)}
+.office h5{font-family:var(--font-heading);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--accent-lt);margin:0 0 12px}
 .office .mark{display:block;height:56px;width:auto;margin-bottom:12px}
 .office p{font-size:13px;line-height:1.6;color:var(--dim);margin:0;max-width:28ch;text-wrap:pretty}
 @media(max-width:620px){.foffices{grid-template-columns:1fr}}
 .footer{padding:calc(2.2*var(--leading)) 0 calc(1.4*var(--leading))}
-.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
-.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);margin:0 0 var(--half)}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:0;gap:calc(1.5*var(--leading));padding-bottom:calc(1.6*var(--leading));border-bottom:2px solid var(--line)}
+.fgrid h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-lt);margin:0 0 var(--half)}
 .fgrid a{display:block;color:var(--dim);text-decoration:none;margin-bottom:8px;font-size:14px}
 .fgrid a:hover{color:var(--accent-lt)}
-.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:var(--half);font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+.fbot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:var(--leading) 0;font-size:12px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
 @media(max-width:1050px){.hero{grid-template-columns:1fr}.shield-stack{min-height:480px}.threats{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.crypto{grid-template-columns:1fr}.layer{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.lnum span{margin-top:4px}.go{align-self:flex-start}}
-@media(max-width:700px){.fgrid{grid-template-columns:1fr 1fr}.signal{grid-template-columns:1fr}}
+@media(max-width:620px){.fgrid{grid-template-columns:1fr}.signal{grid-template-columns:1fr}}
 /* light theme — swaps ground and ink; every rule below reads --ink / --paper */
 html[data-theme="light"],body[data-theme="light"]{--ink:var(--color-bg);--paper:var(--color-text);--line:color-mix(in srgb,var(--color-text) 18%,transparent);--line-soft:color-mix(in srgb,var(--color-text) 9%,transparent);--dim:color-mix(in srgb,var(--color-text) 76%,transparent);--accent-lt:var(--color-accent-700)}
 html[data-theme="light"] .themebtn .sun,body[data-theme="light"] .themebtn .sun{display:block}
@@ -203,6 +218,14 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
 .pnav a{position:relative;z-index:1;padding:10px 14px;font-size:13px;line-height:1;color:var(--dim);text-decoration:none;white-space:nowrap;transition:color .3s ease}
 .pnav a:hover,.pnav a:focus-visible,.pnav a[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
 .pnav .pblock{position:absolute;top:0;bottom:0;left:0;width:0;opacity:0;background:var(--color-accent);z-index:0;transition:transform .46s cubic-bezier(.34,1.4,.44,1),width .46s cubic-bezier(.34,1.4,.44,1),opacity .3s ease}
+.pnav .pitem{position:relative;display:flex}
+.pnav .pdrop{position:absolute;top:100%;left:0;z-index:60;min-width:270px;border:2px solid var(--line);border-top:0;background:var(--ink);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+.pnav .pitem:hover .pdrop,.pnav .pitem:focus-within .pdrop{opacity:1;visibility:visible;transform:none}
+.pnav .pdrop a{display:block;padding:11px 14px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.35;white-space:nowrap;color:var(--paper)}
+.pnav .pdrop a:last-child{border-bottom:0}
+.pnav .pdrop a span{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-lt);margin-top:3px}
+.pnav .pdrop a:hover span,.pnav .pdrop a:focus-visible span{color:var(--color-bg)}
+@media(prefers-reduced-motion:reduce){.pnav .pdrop{transition:none}}
 .navstrip{display:flex;align-items:center;gap:14px;padding:11px max(var(--edge),calc((100% - 1280px) / 2 + var(--edge)));border-bottom:2px solid var(--line);background:color-mix(in srgb,var(--paper) 4%,transparent)}
 .navstrip .dot{width:7px;height:7px;background:var(--color-accent);flex:none}
 .navstrip .key{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lt);white-space:nowrap;font-weight:600}
@@ -226,14 +249,30 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
 <header class="topbar">
   <a href="index.dc.html"><img src="assets/ektar-logo.png" alt="Ektar"></a>
   <span class="pill mono"><span class="dot"></span>Systems live</span>
-  <nav class="pnav">
-    <a href="authentication.dc.html" data-role="ekShield · Authentication" data-line="Device-bound, phishing-resistant login — mobile, web, call centre, ATM, 3DS.">ekShield</a>
-    <a href="ekprotect.dc.html" data-role="ekProtect · Attest &amp; risk" data-line="Malware, overlays, rooted devices and RATs, caught inside the app.">ekProtect</a>
-    <a href="ekbind.dc.html" data-role="ekBind · SIM binding" data-line="Operator-verified SIM checks via SNA and Reverse SMS. No code to intercept.">ekBind</a>
-    <a href="eksign.dc.html" data-role="ekSign · Signing" data-line="In-channel signing, bound to the document and sealed with SHA-256.">ekSign</a>
-    <a href="eksell.dc.html" data-role="ekSell · Distribution" data-line="Bank products into employer, fintech and retail channels.">ekSell</a>
-    <a href="ai.dc.html" data-role="AI at Ektar" data-line="In the products that detect fraud, and in the practice that ships them.">AI</a>
-    <a href="about.dc.html" data-role="About Ektar" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a>
+  <nav class="pnav" data-default-role="Seven products" data-default-line="One decision engine — ekRules weighs every signal the three surfaces emit.">
+    <div class="pitem"><a class="top" href="index.dc.html" data-role="Home" data-line="The full trust suite — seven products across three surfaces.">Home</a></div>
+    <div class="pitem"><a class="top" href="protect-the-user.dc.html" data-role="Protect the User" data-line="A login that can't be phished, copied, or intercepted.">Protect the User</a>
+      <div class="pdrop">
+        <a href="authentication.dc.html">ekShield<span>Authentication</span></a>
+        <a href="ekkey.dc.html">ekKey<span>Passkeys</span></a>
+        <a href="eksign.dc.html">ekSign<span>Document signing</span></a>
+        <a href="ekpulse.dc.html">ekPulse<span>Behavioural biometrics</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="protect-the-device.dc.html" data-role="Protect the Device" data-line="Proof it is still the customer's own phone and number.">Protect the Device</a>
+      <div class="pdrop">
+        <a href="ekbind.dc.html">ekBind<span>SIM &amp; network trust</span></a>
+        <a href="ekprotect.dc.html">ekProtect<span>Device integrity</span></a>
+        <a href="authentication.dc.html">ekShield<span>Authentication</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="protect-the-app.dc.html" data-role="Protect the App" data-line="Malware, overlays and tampering, caught inside the app.">Protect the App</a>
+      <div class="pdrop">
+        <a href="ekprotect.dc.html">ekProtect<span>Runtime &amp; app integrity</span></a>
+        <a href="ekpulse.dc.html">ekPulse<span>Behavioural signals</span></a>
+      </div>
+    </div>
+    <div class="pitem"><a class="top" href="about.dc.html" data-role="About" data-line="Founded 2022 by three ex-bankers. Dubai · Singapore · Chennai.">About</a></div>
     <span class="pblock"></span>
   </nav>
   <button type="button" class="themebtn" aria-label="Switch between dark and light theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg></button>
@@ -249,268 +288,222 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
   <div class="wrap">
     <div class="hero">
       <div>
+        <p class="status mono"><span class="dot"></span>Digital security for banks</p>
         <p class="protect">Protect <span class="swap" style="width:{{ swapW }}"><span class="reel"><span class="rin" style="transform:{{ shift }};transition-duration:{{ spinDur }}"><em>the User</em><em>the App</em><em>the Device</em><em>the User</em></span></span></span><span class="caret"></span></p>
-        <h1 class="display"><span class="line">Digital security,</span><span class="line">engineered for</span><span class="line"><em>Banks</em></span></h1>
-        <p class="sub">Fraud has moved to the device, the app, and the authentication layer. Ektar secures all three — with integrated solutions and proven products built by bankers who know where the gaps are.</p>
+        <h1 class="display"><span class="line">Stop fraud at every</span><span class="line"><em>real entry point</em></span></h1>
+        <p class="sub">Ektar protects the user, the device, and the app — Built by ex-bankers who've run the channels they now secure.</p>
         <div class="row">
           <button type="button" class="btn btn-primary" onclick="location.href='contact.dc.html'">Book a demo</button>
-          <button type="button" class="btn btn-ghost btn-onink" onclick="location.href='#layers'">See the three layers</button>
+          <button type="button" class="btn btn-ghost btn-onink" onclick="location.href='#solutions'">See the suite</button>
         </div>
       </div>
 
-      <div class="solpanel">
-        <div class="sp-head mono"><span>Solutions</span><b>Five products · one security layer</b></div>
-        <a class="sol" href="authentication.dc.html">
-          <span class="num mono">01</span><span class="nm">ekShield</span><span class="role">Authentication</span>
-          <p class="d">Device-bound, phishing-resistant login across mobile, web, call centre, ATM and 3DS.</p>
-        </a>
-        <a class="sol" href="ekprotect.dc.html">
-          <span class="num mono">02</span><span class="nm">ekProtect</span><span class="role">Attest &amp; risk</span>
-          <p class="d">Malware, overlays, rooted devices and RATs, caught inside the app.</p>
-        </a>
-        <a class="sol" href="ekbind.dc.html">
-          <span class="num mono">03</span><span class="nm">ekBind</span><span class="role">SIM binding</span>
-          <p class="d">Operator-verified SIM checks via Silent Network Authentication and Reverse SMS.</p>
-        </a>
-        <a class="sol" href="eksign.dc.html">
-          <span class="num mono">04</span><span class="nm">ekSign</span><span class="role">Signing</span>
-          <p class="d">In-channel document signing, bound to the document and sealed with SHA-256.</p>
-        </a>
-        <a class="sol" href="eksell.dc.html">
-          <span class="num mono">05</span><span class="nm">ekSell</span><span class="role">Distribution</span>
-          <p class="d">Bank products into employer, fintech and retail channels.</p>
-        </a>
+      <div class="shield-stack">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="ring r3"></span>
+        <div class="device">
+          <div class="dev-top mono"><span>09:41</span><span class="bars"><i></i><i></i><i></i></span></div>
+          <div class="dev-body cycle">
+            <div class="scene">
+              <p class="dev-label">Protect the user</p>
+              <p class="dev-app">Login attempt</p>
+              <div class="verified">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4 10-11"></path></svg>
+                <div><b>Customer verified</b><span>Device-bound · no code sent</span></div>
+              </div>
+              <div class="chips">
+                <div class="chip"><span class="x"></span>SMS OTP replay<b>blocked</b></div>
+                <div class="chip"><span class="x"></span>Call-centre impersonation<b>challenged</b></div>
+              </div>
+            </div>
+            <div class="scene">
+              <p class="dev-label">Protect the device</p>
+              <p class="dev-app">Session check</p>
+              <div class="verified">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4 10-11"></path></svg>
+                <div><b>Device bound</b><span>Same phone · same SIM</span></div>
+              </div>
+              <div class="chips">
+                <div class="chip"><span class="x"></span>SIM swap attempt<b>blocked</b></div>
+                <div class="chip"><span class="x"></span>Rooted device<b>denied</b></div>
+              </div>
+            </div>
+            <div class="scene">
+              <p class="dev-label">Protect the app</p>
+              <p class="dev-app">Runtime check</p>
+              <div class="verified">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4 10-11"></path></svg>
+                <div><b>App verified</b><span>No tampering detected</span></div>
+              </div>
+              <div class="chips">
+                <div class="chip"><span class="x"></span>Overlay attack<b>blocked</b></div>
+                <div class="chip"><span class="x"></span>Remote access tool<b>suspended</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<div class="wrap" id="solutions">
+  <section class="sec">
+    <span class="kicker mono">The trust suite</span>
+    <h2 class="h2">One suite. Seven products, one engine.</h2>
+    <p class="lede">Each product is licensed on its own — deploy one or all seven, and the portals, APIs and SDKs behave the same either way. The whole suite runs inside your own infrastructure, with no runtime dependency on Ektar.</p>
+
+    <div class="solpanel" style="margin-bottom:2px">
+      <div class="sp-head mono"><span>Live today</span><b>Two products</b></div>
+        <a class="sol" href="authentication.dc.html">
+          <span class="num mono">01</span><span class="nm">ekShield</span><span class="role">Authentication</span>
+          <p class="d">Replaces one-time codes with a login that can't be phished.</p>
+        </a>
+        <a class="sol" href="ekprotect.dc.html">
+          <span class="num mono">02</span><span class="nm">ekProtect</span><span class="role">Device &amp; app integrity</span>
+          <p class="d">Spots malware, fake screens, and compromised phones in real time.</p>
+        </a>
+    </div>
+
+    <div class="solpanel" style="margin-bottom:2px">
+      <div class="sp-head mono"><span>Shipping through 2026</span><b>Three products</b></div>
+        <a class="sol" href="ekbind.dc.html">
+          <span class="num mono">03</span><span class="nm">ekBind</span><span class="role">SIM &amp; network trust</span>
+          <p class="d">Catches a SIM swap before a transaction goes through.</p>
+        </a>
+        <a class="sol" href="eksign.dc.html">
+          <span class="num mono">04</span><span class="nm">ekSign</span><span class="role">Document signing</span>
+          <p class="d">Signed documents that can't be altered after the fact, right inside your app.</p>
+        </a>
+        <a class="sol" href="ekkey.dc.html">
+          <span class="num mono">05</span><span class="nm">ekKey</span><span class="role">Passkeys</span>
+          <p class="d">Login without a password at all, tied to the customer's own device.</p>
+        </a>
+    </div>
+
+    <div class="solpanel">
+      <div class="sp-head mono"><span>Building now</span><b>Two products</b></div>
+        <a class="sol" href="ekpulse.dc.html">
+          <span class="num mono">06</span><span class="nm">ekPulse</span><span class="role">Behavioural biometrics</span>
+          <p class="d">Learns how a real customer types and moves, and flags when it isn't them.</p>
+        </a>
+        <a class="sol" href="ekrules.dc.html">
+          <span class="num mono">07</span><span class="nm">ekRules</span><span class="role">Risk decisioning</span>
+          <p class="d">Takes every signal above and makes one real-time call: allow, verify further, or block.</p>
+        </a>
+    </div>
+  </section>
+</div>
+
 <div class="wrap">
-  <div class="strip mono">
-    <div><span class="k">Deployed</span><span class="v">UAE's 3rd largest bank</span></div>
-    <div><span class="k">Contracted</span><span class="v">Oman's 3rd largest bank</span></div>
-    <div><span class="k">Aligned with</span><span class="v">CBUAE · RBI · SAMA · FIDO Member</span></div>
+  <div class="strip mono" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+    <div><span class="k">Live</span><span class="v">At a top-3 UAE bank</span></div>
+    <div><span class="k">Contracted</span><span class="v">With a top-3 Oman bank</span></div>
+    <div><span class="k">Secured</span><span class="v">Over 10 million authentications</span></div>
+    <div><span class="k">Aligned with</span><span class="v">CBUAE · RBI · SAMA · FIDO</span></div>
   </div>
 
   <div class="hexband" aria-hidden="true"><span>9c4e f17b a208 31dd 04af 7b21 e5c9 3f9a c2e1 88d0 5b6e a417 f0c3 92bb 7de4 1a58 · ecdsa p-256 · sha-256 · fido2 · device-bound · 9c4e f17b a208 31dd 04af 7b21 e5c9 3f9a c2e1 88d0 5b6e a417 f0c3 92bb 7de4 1a58 · ecdsa p-256 · sha-256 · fido2 · device-bound · </span></div>
 
-  <section class="sec">
-    <span class="kicker mono">The attack surface</span>
-    <h2 class="h2">Six ways into a banking app. Ektar closes all six.</h2>
-    <p class="lede">Mobile apps, internet banking portals, and payment APIs created an attack surface fraudsters can probe from anywhere, at scale, at near-zero cost. These are the vectors we shut down.</p>
-    <div class="threats">
-      <div class="threat">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10V7a5 5 0 0 1 10 0v3"></path><rect x="3" y="10" width="18" height="11"></rect><path d="M12 15v2"></path></svg>
-        <p class="n">SMS OTP interception</p>
-        <p class="d">The most exploited authentication method — banned or restricted in five markets.</p>
-        <p class="st">Closed by ekShield &amp; ekBind</p>
-      </div>
-      <div class="threat">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="12" height="12"></rect><rect x="9" y="9" width="12" height="12"></rect></svg>
-        <p class="n">Overlay attacks</p>
-        <p class="d">A fake screen drawn over the real app captures credentials in place.</p>
-        <p class="st">Closed by ekProtect</p>
-      </div>
-      <div class="threat">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20"></rect><path d="M9 18h6"></path><path d="m8 8 3 3-3 3"></path></svg>
-        <p class="n">Rooted devices &amp; RATs</p>
-        <p class="d">Remote access tools drive the session while the customer watches.</p>
-        <p class="st">Closed by ekProtect</p>
-      </div>
-      <div class="threat">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.5 8.5 9 10 5.5-1.5 9-5 9-10V6z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
-        <p class="n">Malware in the app</p>
-        <p class="d">Runtime injection and tampering inside an otherwise trusted app.</p>
-        <p class="st">Closed by ekProtect</p>
-      </div>
-      <div class="threat">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6v20h12V7z"></path><path d="M14 2v5h5"></path><path d="m9 14 2 2 4-4"></path></svg>
-        <p class="n">Forged documents</p>
-        <p class="d">Salary certificates, statements and letters altered after issuance.</p>
-        <p class="st">Closed by ekSign</p>
-      </div>
-      <div class="threat">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"></path><path d="M3 3l18 18"></path></svg>
-        <p class="n">Deepfakes &amp; synthetic IDs</p>
-        <p class="d">AI-generated identities and documents — up 1,210% in 2025.</p>
-        <p class="st">Closed across all three layers</p>
-      </div>
-    </div>
-  </section>
-
   <section class="sec" id="layers">
-    <span class="kicker mono">The three layers</span>
-    <h2 class="h2">Three security challenges. Three proven solutions.</h2>
-    <p class="lede">Every solution addresses a distinct layer of fraud risk in banking's digital channels. They work independently and share a common signal layer that makes each one more accurate when deployed together.</p>
+    <span class="kicker mono">How Ektar protects you</span>
+    <h2 class="h2">Three places fraud gets in. We close all three.</h2>
+    <p class="lede">Every attack on a banking app is really an attack on one of three things — the customer, their phone, or the app itself.</p>
 
     <div class="layer">
-      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10V7a5 5 0 0 1 10 0v3"></path><rect x="3" y="10" width="18" height="11"></rect><circle cx="12" cy="15.5" r="1.5"></circle></svg></span>
-      <p class="lnum">Layer 01<span>ekShield · ekBind</span></p>
+      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"></path></svg></span>
+      <p class="lnum">Protect the<span>user</span></p>
       <div>
-        <h3 class="ltitle">Device-bound authentication, bound to a verified SIM</h3>
-        <p class="lcopy">Replace SMS OTP with phishing-resistant, device-bound authentication across every channel — mobile, web, call centre, ATM, and 3DS. ekBind adds SIM binding via Silent Network Authentication and Reverse SMS, so a swapped SIM is caught before a transaction proceeds. Compliant with CBUAE, RBI, SAMA, BSP, and MAS mandates.</p>
+        <h3 class="ltitle">ekShield · ekKey · ekPulse · ekSign</h3>
+        <p class="lcopy">A login that can't be phished, copied, or intercepted — closing the door on stolen one-time codes and call-centre scams.</p>
+        <ul class="dets">
+          <li>Stolen text-message codes</li>
+          <li>Phishing and fake login pages</li>
+          <li>Call-centre social engineering</li>
+          <li>Deepfakes and synthetic identities</li>
+        </ul>
         <div class="pulsebar"><i></i></div>
       </div>
       <a class="go mono" href="authentication.dc.html">Open →</a>
     </div>
 
     <div class="layer">
-      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20"></rect><path d="M9 18h6"></path><path d="M9 8h6"></path><path d="M9 12h6"></path></svg></span>
-      <p class="lnum">Layer 02<span>ekProtect</span></p>
+      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20"></rect><path d="M10 18h4"></path><path d="M9 7h6"></path><path d="M9 11h6"></path></svg></span>
+      <p class="lnum">Protect the<span>device</span></p>
       <div>
-        <h3 class="ltitle">Attestation, runtime defence and behavioural risk</h3>
-        <p class="lcopy">Attest device and app integrity, detect malware, overlay attacks, rooted devices, and remote access tools — from inside the banking app — and suspend the session automatically when a threat is found. Behavioural analysis and ML-driven per-transaction risk decisioning turn every signal into a real-time score. CBUAE-mandated.</p>
+        <h3 class="ltitle">ekBind · ekProtect · ekShield</h3>
+        <p class="lcopy">Confirming it's really your customer's phone and number — catching a SIM swap or a hijacked session before money moves.</p>
+        <ul class="dets">
+          <li>SIM swap and re-issue</li>
+          <li>Hijacked sessions</li>
+          <li>Rooted and jailbroken phones</li>
+        </ul>
+        <div class="pulsebar"><i></i></div>
+      </div>
+      <a class="go mono" href="ekbind.dc.html">Open →</a>
+    </div>
+
+    <div class="layer">
+      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5v18h14V3h-3"></path><path d="M9 3h6v3H9z"></path><path d="m10 13 2 2 3-4"></path></svg></span>
+      <p class="lnum">Protect the<span>app</span></p>
+      <div>
+        <h3 class="ltitle">ekProtect · ekPulse</h3>
+        <p class="lcopy">Watching for malware, fake overlay screens, and tampering hiding inside the app itself.</p>
+        <ul class="dets">
+          <li>Fake overlay screens</li>
+          <li>Malware inside the app</li>
+          <li>Repackaging and tampering</li>
+          <li>Debuggers and hooking</li>
+          <li>Remote access tools</li>
+        </ul>
         <div class="pulsebar"><i></i></div>
       </div>
       <a class="go mono" href="ekprotect.dc.html">Open →</a>
     </div>
 
-    <div class="layer">
-      <span class="iconbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6v20h12V7z"></path><path d="M14 2v5h5"></path><path d="m9 14 2 2 4-4"></path></svg></span>
-      <p class="lnum">Layer 03<span>ekSign</span></p>
-      <div>
-        <h3 class="ltitle">In-channel signing with cryptographic proof</h3>
-        <p class="lcopy">Customers sign inside the banking app or on a bank-branded page, authenticated by the MFA they already use. Each signature is bound to a SHA-256 fingerprint of the document and chained across signatories, so any later alteration fails verification — and the bank keeps the record.</p>
-        <div class="pulsebar"><i></i></div>
-      </div>
-      <a class="go mono" href="eksign.dc.html">Open →</a>
-    </div>
-
     <div class="signal">
       <div>
-        <p class="lbl">Shared signal layer</p>
-        <p>All three layers feed one signal layer — each product becomes more accurate with every other product a bank deploys.</p>
+        <p class="lbl">One decision engine</p>
+        <p>One engine — ekRules — takes signals from all three and decides in real time: allow, verify further, or block.</p>
       </div>
       <div class="flowbar"></div>
     </div>
   </section>
 
   <section class="sec">
-    <span class="kicker mono">Cryptographic proof</span>
-    <h2 class="h2">Signed at issuance. Verified in milliseconds.</h2>
-    <div class="crypto">
-      <div>
-        <p class="lede" style="margin-bottom:0">Every document a bank issues is signed with an ECDSA key pair at the moment of creation. Alter one character and the signature no longer matches — tampering stops being a judgement call and becomes arithmetic.</p>
-        <div class="csteps">
-          <div class="cstep">
-            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.5 12.5 8-8"></path><path d="m15 4h5v5"></path></svg></span>
-            <span><b>Sign</b><small>The issuing system calls one API. An ECDSA P-256 signature is bound to the document's exact contents.</small></span>
-          </div>
-          <div class="cstep">
-            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16"></rect><path d="M8 8h3v3H8z"></path><path d="M16 16h.01"></path><path d="M13 13h3v3"></path></svg></span>
-            <span><b>Seal</b><small>A QR seal carries the signature and the verification endpoint. No change to the document workflow.</small></span>
-          </div>
-          <div class="cstep">
-            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="m8 12 3 3 5-6"></path></svg></span>
-            <span><b>Verify</b><small>Any party scans the seal. Authenticity returns in milliseconds — no login, no portal, no callback to the bank.</small></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="doccard">
-        <span class="seal"></span>
-        <p class="doc-title">Salary certificate · signed</p>
-        <div class="doc-lines"><i></i><i></i><i></i></div>
-        <div class="qrrow">
-          <svg width="104" height="104" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="2" width="14" height="14"></rect><rect x="6" y="6" width="6" height="6" fill="currentColor" stroke="none"></rect>
-            <rect x="40" y="2" width="14" height="14"></rect><rect x="44" y="6" width="6" height="6" fill="currentColor" stroke="none"></rect>
-            <rect x="2" y="40" width="14" height="14"></rect><rect x="6" y="44" width="6" height="6" fill="currentColor" stroke="none"></rect>
-            <g fill="currentColor" stroke="none">
-              <rect x="22" y="2" width="4" height="4"></rect><rect x="30" y="2" width="4" height="4"></rect>
-              <rect x="22" y="10" width="4" height="4"></rect><rect x="34" y="10" width="4" height="4"></rect>
-              <rect x="2" y="22" width="4" height="4"></rect><rect x="10" y="22" width="4" height="4"></rect>
-              <rect x="22" y="22" width="4" height="4"></rect><rect x="30" y="26" width="4" height="4"></rect>
-              <rect x="40" y="22" width="4" height="4"></rect><rect x="48" y="26" width="4" height="4"></rect>
-              <rect x="22" y="34" width="4" height="4"></rect><rect x="34" y="30" width="4" height="4"></rect>
-              <rect x="22" y="44" width="4" height="4"></rect><rect x="30" y="40" width="4" height="4"></rect>
-              <rect x="40" y="40" width="4" height="4"></rect><rect x="48" y="48" width="4" height="4"></rect>
-              <rect x="34" y="48" width="4" height="4"></rect><rect x="44" y="34" width="4" height="4"></rect>
-            </g>
-          </svg>
-          <div>
-            <p class="hash">sha256 <b>9c4e·f17b·a208·31dd</b><br>sig r/s <b>3f9a·c2e1</b></p>
-            <span class="valid"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4 10-11"></path></svg>Signature valid</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <span class="kicker mono">Our products</span>
-    <h2 class="h2">Five products. One signal layer.</h2>
-    <p class="lede">Each can be deployed independently or as part of an integrated platform. All share a common signal layer that compounds in value with every product a bank deploys.</p>
-    <div class="prodgrid">
-      <div class="prod">
-        <p class="nm">ekShield</p>
-        <p class="role">Authentication</p>
-        <p class="d">Device-bound, phishing-resistant authentication across mobile, web, call centre, ATM, and 3DS. White-labelled and live at UAE's 3rd largest bank.</p>
-        <a href="authentication.dc.html">Learn more →</a>
-      </div>
-      <div class="prod">
-        <p class="nm">ekProtect</p>
-        <p class="role">Attest &amp; behavioural risk</p>
-        <p class="d">Embeds in the banking app. Attests device and app integrity, detects malware, overlays, rooted devices and RATs, suspends sessions on detection, and scores risk per transaction.</p>
-        <a href="ekprotect.dc.html">Learn more →</a>
-      </div>
-      <div class="prod">
-        <p class="nm">ekBind</p>
-        <p class="role">SIM binding</p>
-        <p class="d">SIM binding via Silent Network Authentication and Reverse SMS. Catches SIM swap, port-out, and device change before a transaction proceeds.</p>
-        <a href="ekbind.dc.html">Learn more →</a>
-      </div>
-      <div class="prod">
-        <p class="nm">ekSign</p>
-        <p class="role">Document integrity</p>
-        <p class="d">In-channel signing authenticated by the bank's own MFA, plus ECDSA signing and a SHA-256 seal that makes tampering detectable. The bank owns the journey and the audit trail.</p>
-        <a href="eksign.dc.html">Learn more →</a>
-      </div>
-      <div class="prod">
-        <p class="nm">ekSell</p>
-        <p class="role">Distribution</p>
-        <p class="d">Connect banks to retail ecosystems — employers, fintechs, retailers — for cost-effective digital product distribution. Ektar's founding platform.</p>
-        <a href="eksell.dc.html">Learn more →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <span class="kicker mono">Regulatory tailwinds</span>
-    <h2 class="h2">Regulators are ordering the upgrade.</h2>
-    <p class="lede">Across the GCC, South Asia, and Southeast Asia, regulators have banned SMS OTP, mandated passkeys, and required real-time malware detection. Every bank in these markets needs what Ektar builds — and many have a hard deadline to decide.</p>
+    <span class="kicker mono">Why now</span>
+    <h2 class="h2">Regulators are ordering the upgrade</h2>
+    <p class="lede">Across the Gulf, South Asia, and Southeast Asia, one-time codes sent by text are being banned outright — with hard deadlines.</p>
     <div class="mgrid">
-      <div class="mrow"><span class="sq"></span><p><strong>UAE — CBUAE Notice 3057.</strong> SMS OTP and email OTP banned. In-app verification, passkeys, and biometrics mandated. Real-time malware session suspension required.</p></div>
-      <div class="mrow"><span class="sq"></span><p><strong>Saudi Arabia — SAMA Counter-Fraud Framework.</strong> FIDO2 device-bound credentials mandated. Real-time fraud monitoring required. Penalties up to SAR 5M per breach.</p></div>
-      <div class="mrow"><span class="sq"></span><p><strong>India — RBI Authentication Directions 2025.</strong> Sole reliance on SMS OTP banned for high-risk transactions. Real-time risk-based authentication mandatory per transaction.</p></div>
-      <div class="mrow"><span class="sq"></span><p><strong>Singapore — MAS/ABS Directive.</strong> SMS OTP phased out for all retail bank digital token users.</p></div>
-      <div class="mrow"><span class="sq"></span><p><strong>Philippines — BSP Circular 1213.</strong> Direct prohibition on SMS/email OTP for high-risk banking transactions.</p></div>
-      <div class="mrow"><span class="sq"></span><p><strong>Malaysia — BNM RMiT 2026.</strong> Device binding, adaptive MFA, and risk-based authentication mandated for all licensed banks.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>UAE.</strong> Text and email codes banned. Banks must move to in-app verification and passkeys by March 2026.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>Saudi Arabia.</strong> Device-bound login required. Fines of up to SAR 5 million per breach.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>India.</strong> Banks can no longer rely on text codes alone for high-risk transactions.</p></div>
+      <div class="mrow"><span class="sq"></span><p><strong>Singapore &amp; Philippines.</strong> Text-message codes are being phased out for retail banking.</p></div>
     </div>
   </section>
 
   <section class="sec">
-    <span class="kicker mono">The problem</span>
-    <h2 class="h2">Banking fraud has changed. Most defences haven't.</h2>
-    <p class="lede">The tools most banks rely on were built for a different era. The threat has moved on.</p>
+    <span class="kicker mono">Why it matters</span>
+    <h2 class="h2">Fraud has outgrown yesterday's defences</h2>
     <div class="metrics">
       <div class="metric">
         <p class="tag">Data / 01</p>
-        <p class="n" data-count="485" data-prefix="~$" data-suffix="B">~$485B</p>
-        <p class="lbl">Banking fraud losses (2023)</p>
-        <p class="cp">Part of $1.03 trillion in total consumer scam losses globally. Card fraud alone: $33.4B.</p>
+        <p class="n" data-count="485" data-prefix="$" data-suffix="B">$485B</p>
+        <p class="lbl">Lost to banking fraud</p>
+        <p class="cp">$485 billion lost to banking fraud in a single year.</p>
       </div>
       <div class="metric">
         <p class="tag">Data / 02</p>
-        <p class="n" data-count="1210" data-prefix="+" data-suffix="%">+1,210%</p>
-        <p class="lbl">AI-enabled fraud (2025)</p>
-        <p class="cp">Deepfakes, synthetic identities, AI-generated documents. Traditional defences cannot keep pace.</p>
+        <p class="n" data-count="93" data-suffix="%">93%</p>
+        <p class="lbl">Still on text-message codes</p>
+        <p class="cp">93% of banks still rely on text-message codes — the method regulators are banning.</p>
       </div>
       <div class="metric">
         <p class="tag">Data / 03</p>
-        <p class="n" data-count="93" data-suffix="%">93%</p>
-        <p class="lbl">Still using SMS OTP</p>
-        <p class="cp">The most exploited authentication method — now banned or restricted across UAE, India, Saudi Arabia, Philippines, and Singapore.</p>
+        <p class="n" data-count="12" data-prefix="+" data-suffix="x">+12x</p>
+        <p class="lbl">AI-generated fraud</p>
+        <p class="cp">AI-generated fraud is up more than 12x in the last year alone.</p>
       </div>
     </div>
   </section>
@@ -535,13 +528,16 @@ html[data-theme="light"] .themebtn .moon,body[data-theme="light"] .themebtn .moo
         <a href="ekbind.dc.html">ekBind</a>
         <a href="eksign.dc.html">ekSign</a>
         <a href="eksell.dc.html">ekSell</a>
+        <a href="ekkey.dc.html">ekKey</a>
+        <a href="ekpulse.dc.html">ekPulse</a>
+        <a href="ekrules.dc.html">ekRules</a>
       </div>
       <div>
         <h4>Company</h4>
         <a href="about.dc.html">About us</a>
-        <a href="ai.dc.html">AI</a>
         <a href="blog.dc.html">Blog</a>
         <a href="careers.dc.html">Careers</a>
+        <a href="investors.dc.html">Investors</a>
         <a href="contact.dc.html">Contact</a>
       </div>
       <div>
@@ -609,10 +605,11 @@ class Component extends DCLogic {
           });
           requestAnimationFrame(() => { this.noTrans = false; });
         }, 1000);
-      }, 3200);
+      }, 2000);
     }
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measureWidths());
-    else setTimeout(() => this.measureWidths(), 300);
+    const measure = () => requestAnimationFrame(() => this.measureWidths());
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    else setTimeout(measure, 300);
     this.countUp();
     requestAnimationFrame(() => this.startRain());
     this.onResize = () => this.sizeRain();
@@ -773,7 +770,15 @@ class Component extends DCLogic {
     });
     const totals = this.widths.map(a => a.reduce((x, y) => x + y, 0));
     probe.remove();
-    this.swapW = (Math.max(...totals) + 16).toFixed(2) + "px";
+    const max = Math.max(...totals);
+    if (!max || !isFinite(max)) {
+      this.measureTries = (this.measureTries || 0) + 1;
+      if (this.measureTries < 20) {
+        requestAnimationFrame(() => setTimeout(() => this.measureWidths(), 120));
+      }
+      return;
+    }
+    this.swapW = (max + 26).toFixed(2) + "px";
     this.forceUpdate();
   }
 
@@ -782,7 +787,7 @@ class Component extends DCLogic {
     return {
       chips: this.state.chips, rainRef: this.rainRef,
       shift: "translateY(-" + (w * 1.35).toFixed(2) + "em)",
-      spinDur: this.noTrans ? "0s" : ".85s",
+      spinDur: this.noTrans ? "0s" : ".5s",
       swapW: this.swapW || "auto"
     };
   }

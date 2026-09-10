@@ -8,9 +8,9 @@ import { statBand } from "@/lib/content/home";
 // data-prefix / data-suffix), which DESIGN.md flagged as unverified from
 // CSS alone; the export's own component script confirms it's real.
 const COUNTS: { count: number; prefix?: string; suffix?: string }[] = [
-  { count: 485, prefix: "~$", suffix: "B" },
-  { count: 1210, prefix: "+", suffix: "%" },
+  { count: 485, prefix: "$", suffix: "B" },
   { count: 93, suffix: "%" },
+  { count: 12, prefix: "+", suffix: "x" },
 ];
 
 export default function StatBand() {
@@ -52,9 +52,8 @@ export default function StatBand() {
 
   return (
     <section className="sec">
-      <span className="kicker mono">The problem</span>
+      <span className="kicker mono">Why it matters</span>
       <h2 className="h2">{statBand.heading}</h2>
-      <p className="lede">{statBand.intro}</p>
       <div className="metrics">
         {statBand.stats.map((s, i) => (
           <div className="metric" key={s.tag}>
