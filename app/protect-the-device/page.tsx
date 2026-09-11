@@ -49,6 +49,7 @@ export default function ProtectTheDevicePage() {
         }
         description={hero.description}
         visual={<AttestPanel />}
+        titleClassName="pdev-title"
       />
 
       <div className="wrap">

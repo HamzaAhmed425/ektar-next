@@ -1,0 +1,177 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Ektar home" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "Ektar" [ref=e4]
+    - generic [ref=e5]: Systems live
+    - navigation [ref=e7]:
+      - link "Home" [ref=e9] [cursor=pointer]:
+        - /url: /
+      - link "Protect the User" [ref=e11] [cursor=pointer]:
+        - /url: /protect-the-user
+      - link "Protect the Device" [ref=e13] [cursor=pointer]:
+        - /url: /protect-the-device
+      - link "Protect the App" [ref=e15] [cursor=pointer]:
+        - /url: /protect-the-app
+      - link "About" [ref=e17] [cursor=pointer]:
+        - /url: /about
+    - button "Toggle theme" [ref=e18] [cursor=pointer]
+    - link "Book a demo" [ref=e21] [cursor=pointer]:
+      - /url: /contact
+  - generic [ref=e22]:
+    - generic [ref=e24]: Seven products
+    - generic [ref=e26]: One decision engine — ekRules weighs every signal the three surfaces emit.
+  - generic [ref=e27]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: Protect the Device
+        - heading "A stolen password is useless without the right phone. We make sure it stays that way." [level=1] [ref=e35]:
+          - generic [ref=e36]: A stolen password is useless
+          - generic [ref=e37]: without the right phone.
+          - emphasis [ref=e39]: We make sure it stays that way.
+        - paragraph [ref=e40]: A SIM swap, a rooted phone, or a hijacked session can undo even a strong login. These products prove it's still the customer's own device.
+        - link "Book a demo" [ref=e42] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e44]:
+        - paragraph [ref=e46]: Device attestation
+        - generic [ref=e48]:
+          - generic [ref=e49]: SIM binding
+          - generic [ref=e50]: ✓ verified
+        - generic [ref=e51]:
+          - generic [ref=e52]: Network match
+          - generic [ref=e53]: ✓ verified
+        - generic [ref=e54]:
+          - generic [ref=e55]: Platform integrity
+          - generic [ref=e56]: ✓ verified
+        - generic [ref=e57]:
+          - generic [ref=e58]: Root / jailbreak check
+          - generic [ref=e59]: ✓ verified
+        - generic [ref=e60]:
+          - generic [ref=e61]: Persistent device binding
+          - generic [ref=e62]: ✓ verified
+        - generic [ref=e63]:
+          - generic [ref=e64]: Reinstall detection
+          - generic [ref=e65]: ✓ verified
+        - paragraph [ref=e66]: Verified continuously · no action needed
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - generic [ref=e69]: The threats
+        - heading "Four ways fraud takes over the device itself" [level=2] [ref=e70]
+        - generic [ref=e71]:
+          - generic [ref=e72]:
+            - paragraph [ref=e76]: SIM swap and re-issue
+            - paragraph [ref=e77]: A criminal takes over the customer's phone number.
+            - paragraph [ref=e78]: Network layer
+          - generic [ref=e79]:
+            - paragraph [ref=e83]: Hijacked sessions
+            - paragraph [ref=e84]: A session continues on hardware it was never meant to.
+            - paragraph [ref=e85]: Session layer
+          - generic [ref=e86]:
+            - paragraph [ref=e91]: Rooted and jailbroken phones
+            - paragraph [ref=e92]: The phone's own protections are disabled.
+            - paragraph [ref=e93]: Platform layer
+          - generic [ref=e94]:
+            - paragraph [ref=e98]: Overlay attacks
+            - paragraph [ref=e99]: A fake screen drawn over the real app to capture credentials.
+            - paragraph [ref=e100]: Runtime layer
+      - generic [ref=e101]:
+        - generic [ref=e102]: The products
+        - heading "Three products that prove the device" [level=2] [ref=e103]
+        - generic [ref=e104]:
+          - link "01 ekBind SIM & network trust Confirms the SIM is still the one the customer enrolled with, catching a swap or re-issue before a transaction goes through." [ref=e105] [cursor=pointer]:
+            - /url: /ekbind
+            - generic [ref=e106]: "01"
+            - generic [ref=e107]: ekBind
+            - generic [ref=e108]: SIM & network trust
+            - paragraph [ref=e109]: Confirms the SIM is still the one the customer enrolled with, catching a swap or re-issue before a transaction goes through.
+          - link "02 ekProtect Device integrity Detects rooted or jailbroken phones and platform-level tampering in real time." [ref=e110] [cursor=pointer]:
+            - /url: /ekprotect
+            - generic [ref=e111]: "02"
+            - generic [ref=e112]: ekProtect
+            - generic [ref=e113]: Device integrity
+            - paragraph [ref=e114]: Detects rooted or jailbroken phones and platform-level tampering in real time.
+          - link "03 ekShield Authentication Also binds the login itself to the enrolled device, closing the gap a stolen credential alone can't get through." [ref=e115] [cursor=pointer]:
+            - /url: /ekshield
+            - generic [ref=e116]: "03"
+            - generic [ref=e117]: ekShield
+            - generic [ref=e118]: Authentication
+            - paragraph [ref=e119]: Also binds the login itself to the enrolled device, closing the gap a stolen credential alone can't get through.
+        - generic [ref=e121]:
+          - paragraph [ref=e122]: One decision engine
+          - paragraph [ref=e123]: "Every signal from this page — a SIM check, a device-integrity read — feeds into ekRules alongside the user and app surfaces. One engine decides in real time: allow, verify further, or block."
+      - generic [ref=e126]:
+        - generic [ref=e127]: Why now
+        - heading "Regulators are mandating device-level proof" [level=2] [ref=e128]
+        - generic [ref=e129]:
+          - paragraph [ref=e132]:
+            - strong [ref=e133]: Saudi Arabia.
+            - text: The SAMA framework mandates FIDO2 device-bound credentials, with penalties up to SAR 5 million per breach.
+          - paragraph [ref=e136]:
+            - strong [ref=e137]: Malaysia.
+            - text: BNM RMiT 2026 mandates device binding for every licensed bank.
+    - generic [ref=e139]:
+      - heading "Ready to stop trusting the device by default?" [level=3] [ref=e140]
+      - link "Book a demo" [ref=e142] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=e143]:
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - heading "Products" [level=4] [ref=e147]
+          - link "ekShield" [ref=e148] [cursor=pointer]:
+            - /url: /ekshield
+          - link "ekProtect" [ref=e149] [cursor=pointer]:
+            - /url: /ekprotect
+          - link "ekBind" [ref=e150] [cursor=pointer]:
+            - /url: /ekbind
+          - link "ekSign" [ref=e151] [cursor=pointer]:
+            - /url: /eksign
+          - link "ekSell" [ref=e152] [cursor=pointer]:
+            - /url: /eksell
+          - link "ekKey" [ref=e153] [cursor=pointer]:
+            - /url: /ekkey
+          - link "ekPulse" [ref=e154] [cursor=pointer]:
+            - /url: /ekpulse
+          - link "ekRules" [ref=e155] [cursor=pointer]:
+            - /url: /ekrules
+        - generic [ref=e156]:
+          - heading "Company" [level=4] [ref=e157]
+          - link "About us" [ref=e158] [cursor=pointer]:
+            - /url: /about
+          - link "Blog" [ref=e159] [cursor=pointer]:
+            - /url: /blog
+          - link "Careers" [ref=e160] [cursor=pointer]:
+            - /url: /join-us
+          - link "Investors" [ref=e161] [cursor=pointer]:
+            - /url: /investors
+          - link "Contact" [ref=e162] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e163]:
+          - heading "Contact" [level=4] [ref=e164]
+          - link "Talk to us" [ref=e165] [cursor=pointer]:
+            - /url: /contact
+          - link "LinkedIn" [ref=e166] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/ektar-technologies/
+          - link "YouTube" [ref=e167] [cursor=pointer]:
+            - /url: https://www.youtube.com/@ektar-technologies
+      - generic [ref=e168]:
+        - generic [ref=e169]: © Ektar 2022–2026. All rights reserved.
+        - generic [ref=e170]:
+          - link "Terms of Use" [ref=e171] [cursor=pointer]:
+            - /url: /termsofuse
+          - text: ·
+          - link "Privacy Policy" [ref=e172] [cursor=pointer]:
+            - /url: /privacy-policy
+      - generic [ref=e173]:
+        - generic [ref=e174]:
+          - heading "Singapore" [level=5] [ref=e175]
+          - img "Ektar Singapore office" [ref=e176]
+          - paragraph [ref=e177]: "18 Boon Lay Way #05-95 Tradehub 21, Singapore 609966"
+        - generic [ref=e178]:
+          - heading "UAE" [level=5] [ref=e179]
+          - img "Ektar UAE office" [ref=e180]
+          - paragraph [ref=e181]: Ektar Technologies LLC, 606, Latifa Towers, Near World Trade Center, Dubai, UAE
+        - generic [ref=e182]:
+          - heading "India" [level=5] [ref=e183]
+          - img "Ektar India office" [ref=e184]
+          - paragraph [ref=e185]: "Rattha Tek Meadows, Ground Floor, Tower A, No: 51, Rajiv Gandhi Salai, Sholinganallur, Chennai, Tamil Nadu 600119, India"

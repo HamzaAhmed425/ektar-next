@@ -9,6 +9,7 @@ export default function SurfaceHero({
   tierLine,
   scanline = true,
   visual,
+  titleClassName,
 }: {
   statusText: string;
   title: ReactNode;
@@ -16,6 +17,7 @@ export default function SurfaceHero({
   tierLine?: string;
   scanline?: boolean;
   visual: ReactNode;
+  titleClassName?: string;
 }) {
   return (
     <section className="stage">
@@ -30,7 +32,7 @@ export default function SurfaceHero({
               <span className="dot" />
               {statusText}
             </p>
-            <h1 className="display">{title}</h1>
+            <h1 className={titleClassName ? `display ${titleClassName}` : "display"}>{title}</h1>
             <p className="sub">{description}</p>
             <div className="row">
               <Link href="/contact" className="btn btn-primary">

@@ -46,6 +46,7 @@ export default function ProtectTheAppPage() {
         description={hero.description}
         scanline={false}
         visual={<ScanPanel />}
+        titleClassName="papp-title"
       />
 
       <div className="wrap">

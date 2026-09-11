@@ -430,6 +430,9 @@ textarea.input { min-height: 110px; resize: vertical; }
 }
 .display .line { display: block; }
 .display em { font-style: normal; color: var(--accent-lt); }
+/* Protect the Device hero title — sized to match client-provided mock, this page only */
+.display.pdev-title, .display.papp-title { font-size: 48px; }
+@media (max-width: 1050px) { .display.pdev-title, .display.papp-title { font-size: 30px; } }
 .sub { font-size: 17.5px; line-height: var(--leading); max-width: 52ch; color: var(--dim); margin: calc(1.2 * var(--leading)) 0 0; }
 .row { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: calc(1.4 * var(--leading)); }
 
